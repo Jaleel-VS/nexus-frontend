@@ -3,24 +3,20 @@
     <img src="proj_logo.png" />
     </div>
 
-<div class="login">
+<div class="register">
 
-    <h1 class="text-center">Login Page</h1>
+    <h1 class="text-center">Registration</h1>
 
     <input type="text" v-model="username" placeholder="Username" />
     <input type="password" v-model="password" placeholder="Password" />
-    <button v-on:click="login" >Login</button>
-
-    <router-link to="/register">
-        <button class="r-button">Register</button>
-      </router-link>
+    <button v-on:click="login" >Register</button>
            
     </div>
 </template>
 
 <script>
 export default {
-    name: "Login"
+    name: "Register"
 }
 </script>
 <style scoped>
@@ -34,7 +30,7 @@ img{
             height: auto;
 
 }
-  .login {
+  .register {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,25 +43,13 @@ img{
     color: #333;
   }
   
-  .login h1 {
+  .register h1 {
     font-size: 2.5em;
     margin-bottom: 25px;
   }
   
   
-  .login button {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 1em 2em;
-    font-size: 1em;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 1rem;
-  }
-  .r-button{
+  .register button {
     background-color: #3498db;
     color: white;
     border: none;
