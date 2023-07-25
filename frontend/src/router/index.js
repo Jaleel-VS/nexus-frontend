@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import Login from '../views/Login.vue';
-import Register from '../views/Register.vue'
+import Register from '../views/Register.vue';
+import InfluencerPortal from `../views/Influencer Portal.vue`
 
 const routes = [
   {
@@ -18,6 +19,12 @@ const routes = [
     path: '/register',
     name: 'register',
     component: Register
+  },
+
+  {
+    path: '/influencer_portal',
+    name: 'influencer_portal',
+    component: InfluencerPortal
   },
 ];
 
