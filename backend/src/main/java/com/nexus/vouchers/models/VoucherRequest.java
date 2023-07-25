@@ -6,7 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 import java.sql.Timestamp;
-import com.nexus.vouchers.models.enums.VoucherStatus;
+
+import com.nexus.vouchers.models.enums.RequestStatus;
 
 @Entity
 @Table(name = "voucher_requests")
@@ -32,8 +33,8 @@ public class VoucherRequest {
     private Timestamp requestDate;
 
     @NonNull
-    @Column(name = "voucher_status")
+    @Column(name = "request_status")
     @Enumerated(EnumType.STRING)
-    private VoucherStatus voucherStatus;
+    private RequestStatus requestStatus;
 
 }

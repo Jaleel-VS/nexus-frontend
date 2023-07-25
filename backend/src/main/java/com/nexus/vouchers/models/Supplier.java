@@ -12,7 +12,7 @@ import lombok.Setter;
 @Table(name = "supplier")
 @Getter @Setter
 @NoArgsConstructor
-public class Supplier {
+public class Supplier extends User{
     @NonNull
     @Column(name = "supplier_category")
     protected String supplierCategory;
