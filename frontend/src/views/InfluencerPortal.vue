@@ -3,7 +3,7 @@
     <div>
     <img src="proj_logo.png" />
     </div>
-
+<!-- 
 <div class="Influencer Portal">
 
     <h1 class="text-center">Influencer Portal</h1>
@@ -16,7 +16,7 @@
         <button class="x-button">Request Voucher</button>
       </router-link>
            
-    </div>
+    </div> -->
 </template>
 
 <script>
