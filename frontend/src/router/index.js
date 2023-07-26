@@ -5,6 +5,8 @@ import Register from '../views/Register.vue';
 import InfluencerPortal from '../views/InfluencerPortal.vue'
 import Influencer_Request_Voucher from '../views/Influencer_Request_Voucher.vue'
 import View_Vouchers from '../views/View_Vouchers.vue'
+import SupplierVoucherMetamask from '../views/SupplierVoucherMetamask.vue'
+
 
 const routes = [
   {
@@ -28,6 +30,11 @@ const routes = [
     name: 'influencer_portal',
     component: InfluencerPortal
   },
+  {
+    path: '/supplier_vmm',
+    name: 'supplier_vmm',
+    component: SupplierVoucherMetamask
+  }
 
   {
     path: '/influencer_request_voucher',

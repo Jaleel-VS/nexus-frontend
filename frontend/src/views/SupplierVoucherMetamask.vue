@@ -1,21 +1,44 @@
 <template>
-    <div>
-    <img src="proj_logo.png" />
-    </div>
+  <div>
+  <img src="proj_logo.png" />
+  </div>
 
-<div class="SupplierPortal">
+<div class="SupplierVoucher">
 
-    <h1 class="text-center">Supplier Portal</h1>
-
-    <button v-on:click="VerifyVoucher">Verify Voucher</button>
-       
-    </div>
+<div>
+  <!-- "connect" click event is registered -->
+  <button v-if="!isMetamaskConnected" @click="connect">Connect wallet</button>
+</div>
+     
+  </div>
 </template>
 
 <script>
+// import Web3 from "web3";
+
 export default {
-    name: "SupplierPortal"
+  name: "SupplierVoucherMetamask",
+  data() {
+  return {
+    web3: null,
+    isMetamaskConnected: false,
+  };
+},
+  
+methods: {
+connect: function () {
+    // this connects to the wallet
+  
+  if (window.ethereum) { // first we check if metamask is installed
+    window.ethereum.request({ method: 'eth_requestAccounts' })
+      .then(() => {
+        this.isMetamaskConnected = true; // If users successfully connected their wallet
+      });
+  }
 }
+},
+};
+  
 </script>
 <style scoped>
 
@@ -28,7 +51,7 @@ img{
             height: auto;
 
 }
-  .SupplierPortal {
+  .SupplierVoucher {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,13 +64,7 @@ img{
     color: #333;
   }
   
-  .SupplierPortal h1 {
-    font-size: 2.5em;
-    margin-bottom: 25px;
-  }
-  
-  
-  .SupplierPortal button {
+  .SupplierVoucher button {
     background-color: #3498db;
     color: white;
     border: none;

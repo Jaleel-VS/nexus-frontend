@@ -1,23 +1,22 @@
 <template>
-    <div>
+  <div>
     <img src="proj_logo.png" />
     </div>
 
-<div class="SupplierPortal">
+  <div class="brandDashboard">
+    <h1 class="text-center">Brand Manager Dashboard</h1>
+      <router-link to="/requestsList">
+        <button class="cta-button">Review Requests</button>
+      </router-link>
+  </div>
 
-    <h1 class="text-center">Supplier Portal</h1>
-
-    <button v-on:click="VerifyVoucher">Verify Voucher</button>
-       
-    </div>
 </template>
 
-<script>
-export default {
-    name: "SupplierPortal"
-}
-</script>
-<style scoped>
+  <script setup>
+  import { RouterLink } from 'vue-router';
+  </script>
+
+  <style scoped>
 
 img{
             position: absolute;
@@ -28,7 +27,7 @@ img{
             height: auto;
 
 }
-  .SupplierPortal {
+  .brandDashboard {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,14 +39,13 @@ img{
     font-family: Arial, sans-serif;
     color: #333;
   }
-  
-  .SupplierPortal h1 {
+
+  .brandDashboard h1 {
     font-size: 2.5em;
-    margin-bottom: 25px;
+    margin-bottom: 1em;
   }
-  
-  
-  .SupplierPortal button {
+
+   .cta-button {
     background-color: #3498db;
     color: white;
     border: none;
@@ -57,6 +55,9 @@ img{
     text-decoration: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-top: 1rem;
+  }
+  
+  .cta-button:hover {
+    background-color: #2980b9;
   }
   </style>
