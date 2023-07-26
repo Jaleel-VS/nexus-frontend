@@ -4,6 +4,7 @@ import Login from '../views/Login.vue';
 import Register from '../views/Register.vue';
 import InfluencerPortal from '../views/InfluencerPortal.vue';
 import SupplierPortal from '../views/SupplierPortal.vue';
+import SupplierVoucherMetamask from '../views/SupplierVoucherMetamask.vue';
 
 const routes = [
   {
@@ -32,6 +33,11 @@ const routes = [
     name: 'SupplierPortal',
     component: SupplierPortal
   },
+  // {
+  //   path: '/SupplierVoucherMetamask',
+  //   name: 'SupplierVoucherMetamask',
+  //   component: SupplierVoucherMetamask
+  // },
 
 ];
 

@@ -7,7 +7,7 @@
 
     <h1 class="text-center">Supplier Portal</h1>
 
-    <button v-on:click="RequestVoucher">Request Voucher</button>
+    <button v-on:click="VerifyVoucher">Verify Voucher</button>
        
     </div>
 </template>
