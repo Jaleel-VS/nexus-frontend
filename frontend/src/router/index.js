@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import Login from '../views/Login.vue';
 import Register from '../views/Register.vue';
-import InfluencerPortal from '../views/InfluencerPortal.vue'
+import InfluencerPortal from '../views/InfluencerPortal.vue';
+import SupplierPortal from '../views/SupplierPortal.vue';
 
 const routes = [
   {
@@ -26,6 +27,12 @@ const routes = [
     name: 'influencer_portal',
     component: InfluencerPortal
   },
+  {
+    path: '/SupplierPortal',
+    name: 'SupplierPortal',
+    component: SupplierPortal
+  },
+
 ];
 
 const router = createRouter({
