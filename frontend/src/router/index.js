@@ -3,7 +3,6 @@ import Home from '../views/Home.vue';
 import Login from '../views/Login.vue';
 import Register from '../views/Register.vue';
 import InfluencerPortal from '../views/InfluencerPortal.vue'
-import Influencer_Request_Voucher from '../views/Influencer_Request_Voucher.vue'
 
 const routes = [
   {
@@ -33,6 +32,12 @@ const routes = [
     name: 'influencer_request_voucher',
     component: Influencer_Request_Voucher
   },
+  {
+    path: '/SupplierPortal',
+    name: 'SupplierPortal',
+    component: SupplierPortal
+  },
+
 ];
 
 const router = createRouter({

@@ -4,5 +4,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.nexus.vouchers.models.Voucher;
 
 public interface VoucherRepository extends JpaRepository<Voucher, Long> {
+
+    Iterable<Voucher> findAllByInfluencerId(Long influencerId);
+
+    Iterable<Voucher> findAllBySupplierId(Long supplierId);
     
 }
