@@ -3,6 +3,8 @@ import Home from '../views/Home.vue';
 import Login from '../views/Login.vue';
 import Register from '../views/Register.vue';
 import InfluencerPortal from '../views/InfluencerPortal.vue'
+import SupplierVoucherMetamask from '../views/SupplierVoucherMetamask.vue'
+
 
 const routes = [
   {
@@ -27,16 +29,10 @@ const routes = [
     component: InfluencerPortal
   },
   {
-    path: '/SupplierPortal',
-    name: 'SupplierPortal',
-    component: SupplierPortal
-  },
-  // {
-  //   path: '/SupplierVoucherMetamask',
-  //   name: 'SupplierVoucherMetamask',
-  //   component: SupplierVoucherMetamask
-  // },
-
+    path: '/supplier_vmm',
+    name: 'supplier_vmm',
+    component: SupplierVoucherMetamask
+  }
 ];
 
 const router = createRouter({

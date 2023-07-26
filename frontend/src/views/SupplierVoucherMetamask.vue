@@ -1,48 +1,44 @@
 <template>
-    <div>
-    <img src="proj_logo.png" />
-    </div>
+  <div>
+  <img src="proj_logo.png" />
+  </div>
 
 <div class="SupplierVoucher">
 
-    <button v-on:click="connectMetamask">Connect Metamask</button>
-
-    <button v-on:click="scanVoucher">Scan Voucher</button>
-       
-    </div>
+<div>
+  <!-- "connect" click event is registered -->
+  <button v-if="!isMetamaskConnected" @click="connect">Connect wallet</button>
+</div>
+     
+  </div>
 </template>
 
 <script>
-import Web3 from "web3";
+// import Web3 from "web3";
 
 export default {
-    name: "SupplierVoucherMetamask",
-    data() {
-    return {
-      web3: null,
-      isMetamaskConnected: false,
-    };
-  },
-    
-  methods: {
-    async connectMetamask() {
-      if (typeof window.ethereum !== "undefined") {
-        this.web3 = new Web3(window.ethereum);
-        try {
-          
-          await window.ethereum.enable();
-          this.isMetamaskConnected = true;
-          console.log("Metamask connected!");
-        } catch (error) {
-          console.error("Metamask connection error:", error);
-        }
-      } else {
-        console.error("Metamask is not installed.");
-      }
-    },
+  name: "SupplierVoucherMetamask",
+  data() {
+  return {
+    web3: null,
+    isMetamaskConnected: false,
+  };
+},
+  
+methods: {
+connect: function () {
+    // this connects to the wallet
+  
+  if (window.ethereum) { // first we check if metamask is installed
+    window.ethereum.request({ method: 'eth_requestAccounts' })
+      .then(() => {
+        this.isMetamaskConnected = true; // If users successfully connected their wallet
+      });
+  }
+}
 },
 };
-    
+  
 </script>
 <style scoped>
 
