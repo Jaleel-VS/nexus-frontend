@@ -1,26 +1,22 @@
 <template>
-    <div>
+  <div>
     <img src="proj_logo.png" />
     </div>
 
-<div class="Voucher verification">
+  <div class="brandDashboard">
+    <h1 class="text-center">Brand Manager Dashboard</h1>
+      <router-link to="/requestsList">
+        <button class="cta-button">Review Requests</button>
+      </router-link>
+  </div>
 
-    <h1 class="text-center">Verification</h1>
-
-    <input type="text" v-model="VID" placeholder="Enter Vouche ID" />
-   
-    
-    <button v-on:click="submit" >Submit</button>
-
-    </div>
 </template>
 
-<script>
-export default {
-    name: "invalid voucher or deliver goods"
-}
-</script>
-<style scoped>
+  <script setup>
+  import { RouterLink } from 'vue-router';
+  </script>
+
+  <style scoped>
 
 img{
             position: absolute;
@@ -31,7 +27,7 @@ img{
             height: auto;
 
 }
-  .voucherverif {
+  .brandDashboard {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,37 +39,25 @@ img{
     font-family: Arial, sans-serif;
     color: #333;
   }
-  
-  .voucherverif h1 {
-    font-size: 2.5em;
-    margin-bottom: 25px;
-  }
-  
-  
-  .voucherverif button {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 1em 2em;
-    font-size: 1em;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 1rem;
-  }
-  .t-button{
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 1em 2em;
-    font-size: 1em;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 1rem;
-  }
-  
 
+  .brandDashboard h1 {
+    font-size: 2.5em;
+    margin-bottom: 1em;
+  }
+
+   .cta-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 1em 2em;
+    font-size: 1em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: #2980b9;
+  }
   </style>
