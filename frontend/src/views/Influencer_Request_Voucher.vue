@@ -3,16 +3,25 @@
     <img src="proj_logo.png" />
     </div>
 
-<div class="Influencer request voucher">
+<div class="Influencer_Request_Voucher">
 
-    <h1 class="text-center">Voucher Details</h1>
+    <h1 class="text-center">Request Voucher</h1>
 
+    <div class="input-container">
     <input type="text" v-model="Name" placeholder="Name" />
+  </div>
+  <div class="input-container">
     <input type="text" v-model="Username" placeholder="Username" />
+  </div>
+  <div class="input-container">
     <input type="text" v-model="Brand" placeholder="Brand" />
+  </div>
+  <div class="input-container">
     <input type="text" v-model="SocialMed" placeholder="Social Media Handle" />
+  </div>
+  <div class="input-container">
     <input type="text" v-model="Quantity" placeholder="Quantity" />
-    
+  </div>
     <button v-on:click="submit" >Submit</button>
 
     </div>
@@ -20,7 +29,7 @@
 
 <script>
 export default {
-    name: "Go to brand"
+    name: "Influencer_Request_Voucher"
 }
 </script>
 <style scoped>
@@ -34,7 +43,7 @@ img{
             height: auto;
 
 }
-  .Inflreq {
+  .Influencer_Request_Voucher {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,13 +56,13 @@ img{
     color: #333;
   }
   
-  .Inflreq h1 {
+  .Influencer_Request_Voucher h1 {
     font-size: 2.5em;
     margin-bottom: 25px;
   }
   
   
-  .Inflreq button {
+  .Influencer_Request_Voucher button {
     background-color: #3498db;
     color: white;
     border: none;
@@ -65,6 +74,10 @@ img{
     transition: background-color 0.3s ease;
     margin-top: 1rem;
   }
+
+  .input-container {
+  margin-bottom: 10px; /* You can adjust the spacing as desired */
+}
   .y-button{
     background-color: #3498db;
     color: white;
