@@ -8,4 +8,8 @@ import org.springframework.stereotype.Repository;
 public interface VoucherRequestRepository extends JpaRepository<VoucherRequest, Long> {
 
     Iterable<VoucherRequest> findAllByInfluencerId(Long influencerId);
+
+    Iterable<VoucherRequest> findAllByBrandId(Long brandId);
+
+    Iterable<VoucherRequest> findAllBySupplierId(Long supplierId);
 }
