@@ -26,18 +26,6 @@ const routes = [
     name: 'influencer_portal',
     component: InfluencerPortal
   },
-
-  {
-    path: '/influencer_request_voucher',
-    name: 'influencer_request_voucher',
-    component: Influencer_Request_Voucher
-  },
-  {
-    path: '/SupplierPortal',
-    name: 'SupplierPortal',
-    component: SupplierPortal
-  },
-
 ];
 
 const router = createRouter({
