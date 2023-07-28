@@ -4,6 +4,9 @@ import Login from '../views/Login.vue';
 import Register from '../views/Register.vue';
 import InfluencerPortal from '../views/InfluencerPortal.vue';
 import SupplierPortal from '../views/SupplierPortal.vue';
+import InfluencerPortal from '../views/InfluencerPortal.vue'
+import Influencer_Request_Voucher from '../views/Influencer_Request_Voucher.vue'
+import View_Vouchers from '../views/View_Vouchers.vue'
 import SupplierVoucherMetamask from '../views/SupplierVoucherMetamask.vue'
 
 
@@ -39,6 +42,17 @@ const routes = [
     name: 'SupplierVoucherMetamask',
     component: SupplierVoucherMetamask
   }
+
+  {
+    path: '/influencer_request_voucher',
+    name: 'influencer_request_voucher',
+    component: Influencer_Request_Voucher
+  },
+  {
+    path: '/view_vouchers',
+    name: 'view_vouchers',
+    component: View_Vouchers
+  },
 ];
 
 const router = createRouter({
