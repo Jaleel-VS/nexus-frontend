@@ -31,21 +31,20 @@ const routes = [
     component: InfluencerPortal
   },
   {
-    path: '/supplier_vmm',
-    name: 'supplier_vmm',
-    component: SupplierVoucherMetamask
-  }
-
-  {
-    path: '/influencer_request_voucher',
-    name: 'influencer_request_voucher',
-    component: Influencer_Request_Voucher
-  },
-  {
     path: '/view_vouchers',
     name: 'view_vouchers',
     component: View_Vouchers
   },
+  {
+    path: '/request_voucher',
+    name: 'request_voucher',
+    component: Influencer_Request_Voucher
+  },
+  {
+    path: '/supplier_vmm',
+    name: 'supplier_vmm',
+    component: SupplierVoucherMetamask
+  }
 ];
 
 const router = createRouter({
