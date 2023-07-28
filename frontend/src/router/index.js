@@ -41,13 +41,9 @@ const routes = [
     path: '/SupplierVoucherMetamask',
     name: 'SupplierVoucherMetamask',
     component: SupplierVoucherMetamask
-  }
-
-  {
-    path: '/influencer_request_voucher',
-    name: 'influencer_request_voucher',
-    component: Influencer_Request_Voucher
   },
+
+  
   {
     path: '/view_vouchers',
     name: 'view_vouchers',
