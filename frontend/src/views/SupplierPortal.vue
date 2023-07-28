@@ -6,13 +6,17 @@
 <div class="SupplierPortal">
 
     <h1 class="text-center">Supplier Portal</h1>
-
+    <router-link to="/SupplierVoucherMetamask">
     <button v-on:click="VerifyVoucher">Verify Voucher</button>
-       
+    </router-link>
+    <router-link to="/">
+      <button class="logout-button">Logout</button>
+    </router-link> 
     </div>
 </template>
 
 <script>
+import { RouterLink } from 'vue-router';
 export default {
     name: "SupplierPortal"
 }
@@ -58,5 +62,19 @@ img{
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-top: 1rem;
+  }
+  .logout-button{
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 1em 2em;
+    font-size: 1em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    top: 0;
+    right: 1%;
   }
   </style>

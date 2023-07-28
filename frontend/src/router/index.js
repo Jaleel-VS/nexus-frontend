@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import Login from '../views/Login.vue';
 import Register from '../views/Register.vue';
+import InfluencerPortal from '../views/InfluencerPortal.vue';
+import SupplierPortal from '../views/SupplierPortal.vue';
 import InfluencerPortal from '../views/InfluencerPortal.vue'
 import Influencer_Request_Voucher from '../views/Influencer_Request_Voucher.vue'
 import View_Vouchers from '../views/View_Vouchers.vue'
@@ -29,6 +31,22 @@ const routes = [
     path: '/influencer_portal',
     name: 'influencer_portal',
     component: InfluencerPortal
+  },
+  {
+    path: '/SupplierPortal',
+    name: 'SupplierPortal',
+    component: SupplierPortal
+  },
+  {
+    path: '/SupplierVoucherMetamask',
+    name: 'SupplierVoucherMetamask',
+    component: SupplierVoucherMetamask
+  }
+
+  {
+    path: '/influencer_request_voucher',
+    name: 'influencer_request_voucher',
+    component: Influencer_Request_Voucher
   },
   {
     path: '/view_vouchers',

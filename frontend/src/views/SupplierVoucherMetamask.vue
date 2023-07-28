@@ -43,14 +43,13 @@ connect: function () {
 <style scoped>
 
 img{
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 400px;
-            height: auto;
-
-}
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: auto;
+  }
   .SupplierVoucher {
     display: flex;
     flex-direction: column;
