@@ -4,10 +4,12 @@ import Login from '../views/Login.vue';
 import Register from '../views/Register.vue';
 import InfluencerPortal from '../views/InfluencerPortal.vue';
 import SupplierPortal from '../views/SupplierPortal.vue';
-import InfluencerPortal from '../views/InfluencerPortal.vue'
-import Influencer_Request_Voucher from '../views/Influencer_Request_Voucher.vue'
-import View_Vouchers from '../views/View_Vouchers.vue'
-import SupplierVoucherMetamask from '../views/SupplierVoucherMetamask.vue'
+import InfluencerPortal from '../views/InfluencerPortal.vue';
+import Influencer_Request_Voucher from '../views/Influencer_Request_Voucher.vue';
+import View_Vouchers from '../views/View_Vouchers.vue';
+import SupplierVoucherMetamask from '../views/SupplierVoucherMetamask.vue';
+import Popups from '../views/Popups.vue';
+import Voucher_Popup from '../views/Voucher_Popup.vue'
 
 
 const routes = [
@@ -54,11 +56,24 @@ const routes = [
     name: 'request_voucher',
     component: Influencer_Request_Voucher
   },
+
   {
     path: '/supplier_vmm',
     name: 'supplier_vmm',
     component: SupplierVoucherMetamask
-  }
+  },
+
+  {
+    path: '/voucher_pop',
+    name: 'voucher_pop',
+    component: Voucher_Popup
+  },
+
+  {
+    path: '/popups',
+    name: 'popups',
+    component: Popups
+  },
 ];
 
 const router = createRouter({
