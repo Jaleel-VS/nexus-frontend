@@ -13,7 +13,7 @@
 
 ## Techstack
 - Frontend: VueJS
-- Backend: ASP.NET Core 7
-- Database: MongoDB (Subject to change)
+- Backend: FastAPI
+- Database: MongoDB 
 - Blockchain: Ethereum
 - Smart Contract: Solidity
