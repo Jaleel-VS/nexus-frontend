@@ -15,3 +15,10 @@ class BaseUserModel(BaseModel):
     address: str
     role: UserRole
 
+class BaseUserResponseModel(BaseModel):
+    id: int
+    username: str
+    email: str
+    address: str
+    role: UserRole
+

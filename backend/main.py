@@ -8,7 +8,7 @@ from routers import (brand_router as brand,
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import socket
-from database import db_manager as db
+from database import db
 from utils.exceptions import NotFoundError, InternalServerError
 from fastapi import HTTPException, status
 from fastapi.responses import JSONResponse
@@ -71,7 +71,7 @@ def find_open_port(start_port):
         except OSError:
             port += 1
 
-port = find_open_port(8000)
+port = find_open_port(8080)
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="localhost", port=port)
+    uvicorn.run(app, host="localhost", port=port,)
