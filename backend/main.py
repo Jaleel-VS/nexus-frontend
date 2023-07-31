@@ -4,7 +4,8 @@ from routers import (brand_router as brand,
                      influencer_router as influencer, 
                      product_router as products, 
                      voucher_request_router as voucher_requests,
-                     voucher_router as voucher,)
+                     voucher_router as voucher,
+                     user_router as user)
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import socket
@@ -56,7 +57,7 @@ app.add_middleware(
 
 
 
-routers = [brand, supplier, influencer, products, voucher_requests, voucher]
+routers = [brand, supplier, influencer, products, voucher_requests, voucher, user]
 
 for router in routers:
     app.include_router(router.app)
