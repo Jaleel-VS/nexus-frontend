@@ -1,26 +1,33 @@
 <template>
-    <div>
-    <img src="proj_logo.png" />
-    </div>
+  <div>
+      <img src="proj_logo.png" />
+  </div>
 
-<div class="SupplierPortal">
+  <div class="SupplierPortal">
 
-    <h1 class="text-center">Supplier Portal</h1>
-    <router-link to="/SupplierVoucherMetamask">
-    <button v-on:click="VerifyVoucher">Verify Voucher</button>
-    </router-link>
-    <router-link to="/">
-      <button class="logout-button">Logout</button>
-    </router-link> 
-    </div>
+      <h1 class="text-center">Supplier Portal</h1>
+      <h2>Welcome, {{ userDetails.supplier_name }}</h2>
+      
+      <router-link to="/SupplierVoucherMetamask">
+          <button v-on:click="VerifyVoucher">Verify Voucher</button>
+      </router-link>
+      <router-link to="/">
+          <button class="logout-button">Logout</button>
+      </router-link> 
+  </div>
 </template>
 
 <script>
-import { RouterLink } from 'vue-router';
+import { useUserStore } from '@/store/user'
 export default {
-    name: "SupplierPortal"
+  name: "SupplierPortal",
+  setup() {
+      const userStore = useUserStore()
+      return { userDetails: userStore.details }
+  }
 }
 </script>
+
 <style scoped>
 
 img{

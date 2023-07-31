@@ -5,6 +5,7 @@
 
   <div class="brandDashboard">
     <h1 class="text-center">Brand Manager Dashboard</h1>
+    <h2> Welcome, {{ userDetails.brand_name }}</h2>
       <router-link to="/requestsList">
         <button class="cta-button">Review Requests</button>
       </router-link>
@@ -12,8 +13,19 @@
 
 </template>
 
-  <script setup>
+  <script>
   import { RouterLink } from 'vue-router';
+  import { useUserStore } from '@/store/user'
+
+  export default {
+    name: "brandDashboard",
+    setup() {
+      const userStore = useUserStore()
+      console.log(userStore.details)
+      return { userDetails: userStore.details }
+    }
+  }
+  
   </script>
 
   <style scoped>

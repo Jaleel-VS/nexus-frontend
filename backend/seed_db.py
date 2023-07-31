@@ -212,77 +212,108 @@ def get_collection(collection_name):
 # for product in products:
 #     get_collection("PRODUCTS").insert_one(product)
 
-brands = [
+# brands = [
+#     {
+#         "_id": generate_id(get_collection("BRANDS"), "bra"),
+#         "username": "EcoBloom",
+#         "brand_description": "Crafting sustainable, fashionable clothing for the conscious consumer.",
+#         "brand_category": "Clothing",
+#         "brand_name": "Eco Bloom",
+#         "password": "password",
+#         "email": "ecobloom@gmail.com",
+#         "address": "1234 Main St, San Francisco, CA 94122",
+#         "role": "BRAND",
+#         "products": ["prod_bb935e", "prod_30f482", "prod_44ae80"]
+
+#     },
+#     {
+#         "_id": generate_id(get_collection("BRANDS"), "bra"),
+
+#         "username": "Technova",
+#         "brand_description": "Innovating the future with cutting-edge electronics and gadgets.",
+#         "brand_category": "Electronics",
+#         "brand_name": "Technova",
+#         "password": "password",
+#         "email": "technova@gmail.com",
+#         "address": "35 Fifth Ave, Rondebosch, Cape Town 7800",
+#         "role": "BRAND",
+#         "products": ["prod_2ab3bf", "prod_7c46b7", "prod_5aa689"]
+#     },
+#     {
+#         "_id": generate_id(get_collection("BRANDS"), "bra"),
+
+#         "username": "Zephyrfit",
+#         "brand_description": "Bringing you high-quality fitness equipment for your at-home workouts.",
+#         "brand_category": "Fitness Equipment",
+#         "brand_name": "Zephyrfit",
+#         "password": "password",
+#         "email": "zephyrfit@gmail.com",
+#         "address": "4 Close St, Claremont, Cape Town 7800",
+#         "role": "BRAND",
+#         "products": ["prod_9b8dc9", "prod_294459", "prod_b3c486"]
+#     },
+#     {
+#         "_id": generate_id(get_collection("BRANDS"), "bra"),
+
+#         "username": "Petpamper",
+#         "brand_description": "Elevating your pet's lifestyle with luxury pet products",
+#         "brand_category": "Pet Supplies",
+#         "brand_name": "Petpamper",
+#         "password": "password",
+#         "email": "petpamper@gmail.com",
+#         "address": "105 Main St, Kenilworth, Cape Town 7780",
+#         "role": "BRAND",
+#         "products": ["prod_2cd322", "prod_610452", "prod_f78874"]
+#     },
+#     {
+#         "_id": generate_id(get_collection("BRANDS"), "bra"),
+
+#         "username": "Luxelumina",
+#         "brand_description": "Illuminating your home with designer lighting fixtures.",
+#         "brand_category": "Home Decor",
+#         "brand_name": "Luxelumina",
+#         "password": "password",
+#         "email": "luxelumina@gmail.com",
+#         "address": "103 Long St, Cape Town 7800",
+#         "role": "BRAND",
+#         "products": ["prod_5fef52", "prod_22d0e5", "prod_f11893"]
+#     }
+# ]
+
+# # add brands to database
+
+# for brand in brands:
+#     get_collection("BRANDS").insert_one(brand)
+
+
+influencers = [
     {
-        "_id": generate_id(get_collection("BRANDS"), "bra"),
-        "username": "EcoBloom",
-        "brand_description": "Crafting sustainable, fashionable clothing for the conscious consumer.",
-        "brand_category": "Clothing",
-        "brand_name": "Eco Bloom",
+        "_id": generate_id(get_collection("INFLUENCERS"), "inf"),	
+        "username": "jakebaldino",
         "password": "password",
-        "email": "ecobloom@gmail.com",
-        "address": "1234 Main St, San Francisco, CA 94122",
-        "role": "BRAND",
-        "products": ["prod_bb935e", "prod_30f482", "prod_44ae80"]
+        "first_name": "Jake",
+        "last_name": "Baldino",
+        "email": "jakebaldino@gmail.com",
+        "address": "1234 Main St, Cape Town, 8000",
+        "role": "INFLUENCER",
+        "instagram_handle": "@jakebaldino",
 
     },
     {
-        "_id": generate_id(get_collection("BRANDS"), "bra"),
-
-        "username": "Technova",
-        "brand_description": "Innovating the future with cutting-edge electronics and gadgets.",
-        "brand_category": "Electronics",
-        "brand_name": "Technova",
+        "_id": generate_id(get_collection("INFLUENCERS"), "inf"),
+        "username": "janine_ellis",
         "password": "password",
-        "email": "technova@gmail.com",
-        "address": "35 Fifth Ave, Rondebosch, Cape Town 7800",
-        "role": "BRAND",
-        "products": ["prod_2ab3bf", "prod_7c46b7", "prod_5aa689"]
-    },
-    {
-        "_id": generate_id(get_collection("BRANDS"), "bra"),
-
-        "username": "Zephyrfit",
-        "brand_description": "Bringing you high-quality fitness equipment for your at-home workouts.",
-        "brand_category": "Fitness Equipment",
-        "brand_name": "Zephyrfit",
-        "password": "password",
-        "email": "zephyrfit@gmail.com",
-        "address": "4 Close St, Claremont, Cape Town 7800",
-        "role": "BRAND",
-        "products": ["prod_9b8dc9", "prod_294459", "prod_b3c486"]
-    },
-    {
-        "_id": generate_id(get_collection("BRANDS"), "bra"),
-
-        "username": "Petpamper",
-        "brand_description": "Elevating your pet's lifestyle with luxury pet products",
-        "brand_category": "Pet Supplies",
-        "brand_name": "Petpamper",
-        "password": "password",
-        "email": "petpamper@gmail.com",
-        "address": "105 Main St, Kenilworth, Cape Town 7780",
-        "role": "BRAND",
-        "products": ["prod_2cd322", "prod_610452", "prod_f78874"]
-    },
-    {
-        "_id": generate_id(get_collection("BRANDS"), "bra"),
-
-        "username": "Luxelumina",
-        "brand_description": "Illuminating your home with designer lighting fixtures.",
-        "brand_category": "Home Decor",
-        "brand_name": "Luxelumina",
-        "password": "password",
-        "email": "luxelumina@gmail.com",
-        "address": "103 Long St, Cape Town 7800",
-        "role": "BRAND",
-        "products": ["prod_5fef52", "prod_22d0e5", "prod_f11893"]
+        "email": "janineellis@gmail.com",	
+        "first_name": "Janine",
+        "last_name": "Ellis",
+        "address": "893 Main St, Cape Town, 8000",
+        "role": "INFLUENCER",
+        "instagram_handle": "@janine_ellis",
     }
+
 ]
 
-# add brands to database
+# add influencers to database
 
-for brand in brands:
-    get_collection("BRANDS").insert_one(brand)
-
-
+for influencer in influencers:
+    get_collection("INFLUENCERS").insert_one(influencer)

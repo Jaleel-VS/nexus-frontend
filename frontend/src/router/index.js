@@ -4,12 +4,12 @@ import Login from '../views/Login.vue';
 import Register from '../views/Register.vue';
 import InfluencerPortal from '../views/InfluencerPortal.vue';
 import SupplierPortal from '../views/SupplierPortal.vue';
-import InfluencerPortal from '../views/InfluencerPortal.vue';
 import Influencer_Request_Voucher from '../views/Influencer_Request_Voucher.vue';
 import View_Vouchers from '../views/View_Vouchers.vue';
 import SupplierVoucherMetamask from '../views/SupplierVoucherMetamask.vue';
 import Popups from '../views/Popups.vue';
-import Voucher_Popup from '../views/Voucher_Popup.vue'
+import Voucher_Popup from '../views/Voucher_Popup.vue';
+import Brand_Dashboard from '../views/brandDashboard.vue';
 
 
 const routes = [
@@ -74,6 +74,12 @@ const routes = [
     name: 'popups',
     component: Popups
   },
+
+  {
+    path: '/brand_home',
+    name: 'brand_home',
+    component: Brand_Dashboard
+  }
 ];
 
 const router = createRouter({
