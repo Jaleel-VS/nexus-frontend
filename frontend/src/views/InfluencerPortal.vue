@@ -8,28 +8,41 @@
     <h1 class="text-center">Influencer Portal</h1>
     <h2>Welcome, {{ userDetails.first_name }} {{ userDetails.last_name }}</h2>
 
-    <router-link to="/request_voucher">
-      <button class="cta-button">Request Voucher</button>
-    </router-link>
-    <router-link to="/view_voucher">
-      <button class="cta-button">View Voucher</button>
-    </router-link>
-    <router-link to="/">
-      <button class="logout-button">Log out</button>
-    </router-link>
+    <button class="cta-button" @click="requestVoucher">Request Voucher</button>
+    <button class="cta-button" @click="viewVouchers">View Vouchers</button>
+    <button class="logout-button" @click="logout">Log out</button>
   </div>
 </template>
   
 <script>
 import { useUserStore } from '@/store/user'
+import { useRouter } from 'vue-router'
+
 export default {
   name: "InfluencerPortal",
   setup() {
     const userStore = useUserStore()
-    return { userDetails: userStore.details }
+    const router = useRouter()
+
+    const requestVoucher = () => {
+      router.push('/voucherRequest')
+    }
+
+    const viewVouchers = () => {
+      router.push('/view_voucher')
+    }
+
+    const logout = () => {
+      // you should also clear user data from the store
+      // userStore.clearUserData() // Uncomment this line once you implement the clearUserData action in your store
+      router.push('/')
+    }
+
+    return { userDetails: userStore.details, requestVoucher, viewVouchers, logout }
   }
 }
 </script>
+
 
 <style scoped>
 img {
@@ -95,4 +108,6 @@ img {
 .logout-button:hover {
   background-color: #2980b9;
 }
+
+
 </style>

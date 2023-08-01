@@ -4,13 +4,17 @@ import Login from '../views/Login.vue';
 import Register from '../views/Register.vue';
 import InfluencerPortal from '../views/InfluencerPortal.vue';
 import SupplierPortal from '../views/SupplierPortal.vue';
-import Influencer_Request_Voucher from '../views/Influencer_Request_Voucher.vue';
+// import Influencer_Request_Voucher from '../views/Influencer_Request_Voucher.vue';
 import View_Vouchers from '../views/View_Vouchers.vue';
 import SupplierVoucherMetamask from '../views/SupplierVoucherMetamask.vue';
 import Popups from '../views/Popups.vue';
 import Voucher_Popup from '../views/Voucher_Popup.vue';
 import Brand_Dashboard from '../views/brandDashboard.vue';
+// Influencer routes
+import voucherRequest from '../views/influencer_views/request_voucher.vue'
 
+// Brand routes
+import openRequests from '../views/brand_views/requestsList.vue'
 
 const routes = [
   {
@@ -51,11 +55,6 @@ const routes = [
     name: 'view_vouchers',
     component: View_Vouchers
   },
-  {
-    path: '/request_voucher',
-    name: 'request_voucher',
-    component: Influencer_Request_Voucher
-  },
 
   {
     path: '/supplier_vmm',
@@ -79,7 +78,20 @@ const routes = [
     path: '/brand_home',
     name: 'brand_home',
     component: Brand_Dashboard
-  }
+  },
+  {
+    path: '/voucherRequest',
+    name: 'voucherRequest',
+    component: voucherRequest
+  },
+
+  {
+    path: '/openRequests',
+    name: 'openRequests',
+    component: openRequests
+  },
+
+
 ];
 
 const router = createRouter({
