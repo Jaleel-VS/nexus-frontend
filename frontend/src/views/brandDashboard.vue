@@ -6,7 +6,7 @@
   <div class="brandDashboard">
     <h1 class="text-center">Brand Manager Dashboard</h1>
     <h2> Welcome, {{ userDetails.brand_name }}</h2>
-      <router-link to="/requestsList">
+      <router-link to="/openRequests">
         <button class="cta-button">Review Requests</button>
       </router-link>
   </div>
