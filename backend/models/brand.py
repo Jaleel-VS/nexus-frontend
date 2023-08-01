@@ -4,7 +4,7 @@ class BrandModel(BaseUserModel):
     brand_name: str
     brand_category: str
     brand_description: str
-    associated_products: list
+    products: list
 
 class BrandResponseModel(BaseUserResponseModel):
     brand_name: str

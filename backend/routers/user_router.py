@@ -40,6 +40,11 @@ async def login(user: BaseUserLoginModel):
         if this_user['password'] != user.password:
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Incorrect password")
         
+        # Convert _id to string and rename it to id
+        this_user["id"] = str(this_user.pop("_id"))
+
+        print(this_user)
+        
         if this_user['role'] == UserRole.BRAND:
             return BrandResponseModel(**this_user)
         elif this_user['role'] == UserRole.INFLUENCER:

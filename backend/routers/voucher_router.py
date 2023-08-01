@@ -38,7 +38,7 @@ async def get_all_vouchers():
 
 # get voucher request by id
 @app.get("/vouchers/{voucher_id}")
-async def get_voucher_by_id(voucher_id: int):
+async def get_voucher_by_id(voucher_id: str):
     try:
         voucher = db.get_collection("vouchers").find_one({"_id": voucher_id})
         if voucher is None:

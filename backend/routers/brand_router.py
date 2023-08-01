@@ -24,7 +24,9 @@ async def get_all_brands():
         if not brands:
             raise NotFoundError("No brands found.")
         
-        return {"success": False, "message": "Brands found", "data": brands}
+        brands = list(brands)
+        
+        return {"success":True, "message": "Brands found", "data": brands}
 
     except Exception as e:
         raise InternalServerError(str(e))

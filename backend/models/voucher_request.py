@@ -11,8 +11,7 @@ class RequestStatus(str, Enum):
 class VoucherRequest(BaseModel):
     influencer_id: str
     brand_id: str
-    supplier_id: str
     product_id: str
     request_date: datetime
     request_status: RequestStatus
-    created_at: datetime
+    wallet_address: str

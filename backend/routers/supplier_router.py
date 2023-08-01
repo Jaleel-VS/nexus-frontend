@@ -36,7 +36,7 @@ async def get_all_suppliers():
     
 # get supplier by id
 @app.get("/suppliers/{supplier_id}")
-async def get_supplier_by_id(supplier_id: int):
+async def get_supplier_by_id(supplier_id: str):
     try:
         supplier = db.get_collection("suppliers").find_one({"_id": supplier_id})
         if supplier is None:

@@ -20,7 +20,7 @@ class BaseUserLoginModel(BaseModel):
     password: str
 
 class BaseUserResponseModel(BaseModel):
-    _id: str
+    id: str
     username: str
     email: str
     address: str

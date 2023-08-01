@@ -9,7 +9,11 @@ from fastapi import APIRouter, Depends, HTTPException, status, FastAPI
 from database import db
 from models.voucher_request import VoucherRequest
 from utils.exceptions import NotFoundError, InternalServerError
+from utils.id_generator import generate_id
 
+
+# get voucher-request collection
+voucher_requests = db.get_collection("voucher_requests")
 
 # router definition
 app = APIRouter()
@@ -20,7 +24,9 @@ app = APIRouter()
 @app.post("/voucher-requests")
 async def create_voucher_request(voucher_request: VoucherRequest):
     try:
-        voucher_request = voucher_request.dict()
+        voucher_request = voucher_request.model_dump()
+        voucher_request["_id"] = generate_id(voucher_requests, "vrq")
+        print(voucher_request)
         db.get_collection("voucher_requests").insert_one(voucher_request)
         return {"success": True, "message": "Voucher request created.", "data": voucher_request}
     except Exception as e:
@@ -35,6 +41,9 @@ async def get_all_voucher_requests():
         voucher_requests = db.get_collection("voucher_requests").find()
         if voucher_requests is None:
             raise NotFoundError("No voucher requests found.")
+        
+        voucher_requests = list(voucher_requests)
+
         return {"success": True, "message": "Voucher requests found.", "data": voucher_requests}
     except Exception as e:
         raise InternalServerError(str(e))
@@ -43,7 +52,7 @@ async def get_all_voucher_requests():
 
 
 @app.get("/voucher-requests/{voucher_request_id}")
-async def get_voucher_request_by_id(voucher_request_id: int):
+async def get_voucher_request_by_id(voucher_request_id: str):
     try:
         voucher_request = db.get_collection("voucher_requests").find_one({
             "_id": voucher_request_id})

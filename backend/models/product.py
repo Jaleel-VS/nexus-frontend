@@ -9,7 +9,7 @@ class ProductModel(BaseModel):
     product_price: int
     suppliers: List[str]
 
-class ProductRead(BaseModel):
+class ProductResponseModel(BaseModel):
     id: str
     product_name: str
     product_description: str

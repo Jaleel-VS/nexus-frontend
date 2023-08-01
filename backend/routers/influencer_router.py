@@ -23,7 +23,7 @@ async def get_all_influencers():
 
 # get influencer by id
 @app.get("/influencers/{influencer_id}")
-async def get_influencer_by_id(influencer_id: int):
+async def get_influencer_by_id(influencer_id: str):
     try:
         influencer = db.get_collection(
             "influencers").find_one({"_id": influencer_id})
@@ -50,7 +50,7 @@ async def get_influencer_by_username(username: str):
 
 # get all voucher requests
 @app.get("/influencers/{influencer_id}/voucher-requests")
-async def get_all_voucher_requests(influencer_id: int):
+async def get_all_voucher_requests(influencer_id: str):
     try:
         voucher_requests = db.get_collection(
             "voucher_requests").find({"influencer_id": influencer_id})
@@ -64,7 +64,7 @@ async def get_all_voucher_requests(influencer_id: int):
 
 
 @app.get("/influencers/{influencer_id}/vouchers")
-async def get_all_vouchers(influencer_id: int):
+async def get_all_vouchers(influencer_id: str):
     try:
         vouchers = db.get_collection("vouchers").find(
             {"influencer_id": influencer_id})
