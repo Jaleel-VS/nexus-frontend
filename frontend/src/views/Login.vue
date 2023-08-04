@@ -1,26 +1,73 @@
 <template>
-    <div>
-    <img src="proj_logo.png" />
-    </div>
+  <div>
+      <img src="proj_logo.png" />
+  </div>
 
-<div class="login">
+  <div class="login">
 
-    <h1 class="text-center">Login Page</h1>
+      <h1 class="text-center">Login Page</h1>
 
-    <input type="text" v-model="username" placeholder="Username" />
-    <input type="password" v-model="password" placeholder="Password" />
-    <button v-on:click="login" >Login</button>
+      <input type="text" v-model="username" placeholder="Username" />
+      <input type="password" v-model="password" placeholder="Password" />
+      <button @click="login">Login</button>
 
-    <router-link to="/register">
-        <button class="r-button">Register</button>
-      </router-link>
-           
-    </div>
+      <!-- TODO: Add Register Button -->
+              
+  </div>
 </template>
 
 <script>
+import { ref } from 'vue'
+import axios from 'axios' // You need to install axios via npm install axios
+import { useUserStore } from '@/store/user'
+import { useRouter } from 'vue-router'
+
 export default {
-    name: "Login"
+    name: "Login",
+    setup() {
+        const username = ref('')
+        const password = ref('')
+        const router = useRouter()
+        const userStore = useUserStore()
+
+        const login = async () => {
+            const response = await axios.post('http://localhost:8080/login', {
+                username: username.value,
+                password: password.value
+            }, {
+                headers: {
+                    'accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+
+            if(response.data){
+                console.log("Login Success")
+
+                // Store the user details in the store
+                userStore.setUserDetails(response.data)
+
+                switch(response.data.role){
+                    case 'SUPPLIER':
+                        router.push('/SupplierPortal')
+                        break
+                    case 'INFLUENCER':
+                        router.push('/influencer_portal')
+                        break
+                    case 'BRAND':
+                        router.push('/brand_home')
+                        break
+                    default:
+                        console.log("Invalid Role")
+                }
+            }else{
+                console.log("Login Failed")
+                // Implement code here for what should happen if login fails
+            }
+        }
+
+        return { username, password, login }
+    }
 }
 </script>
 <style scoped>

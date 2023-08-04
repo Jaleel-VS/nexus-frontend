@@ -1,6 +1,10 @@
 <template>
+    <div>
     <h1 class="voucher-heading"> Voucher Lists</h1>
-    <button class="cta-button"> Connect to Metamask</button>
+    <div class="InfluencerViewVoucher"> 
+    
+    <div>   <button v-if="!isMetamaskConnected" @click="connect">Connect wallet</button>   </div>
+   
     <div class="voucher-container">
 <table class="voucher-table">
     <thead>
@@ -25,31 +29,36 @@
     </tbody>
 </table>
     </div>
+</div>
+    </div>
 </template>
 
 <script>
 export default {
-data() {
+    name: "InfluencerVoucherMetamask",
+  data() {
     return {
-        vouchers: [
+      web3: null,
+      isMetamaskConnected: false,
+      vouchers: [
             {
-                'VoucherID': 'VCH12345',
-                'Product Name': 'Product 1',
-                'Expiry Date': 'xxxxx',
-                'Supplier Name': 'Supplier X'
-                
-            },
-            {
-                'VoucherID': 'VCH67891',
-                'Product Name': 'Product 2',
-                'Expiry Date': 'xxxxx',
-                'Supplier Name': 'Supplier Y'
+
             }
             //... other voucher objects
         ]
     }
 },
 methods: {
+    connect: function () {
+    // this connects to the wallet
+    if (window.ethereum) {
+        // first we check if metamask is installed
+        window.ethereum.request({ method: "eth_requestAccounts" })
+          .then(() => {
+            this.isMetamaskConnected = true; // If users successfully connected their wallet
+          });
+      }
+    },
     review(voucher) {
         // Place your review action here
         console.log(`Reviewing voucher with ID ${voucher.VoucherID}`);
@@ -117,4 +126,31 @@ padding: 8px;
 .voucher-table th {
 background-color: #f2f2f2;
 }
+.InfluencerViewVoucher {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    padding: 2em;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    color: #333;
+  }
+  
+  .InfluencerViewVoucher button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 1em 2em;
+    font-size: 1em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+  }
+
+
 </style>
