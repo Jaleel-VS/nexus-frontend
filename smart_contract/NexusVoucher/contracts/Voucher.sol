@@ -1,16 +1,3 @@
-/*
-Nexus voucher that intergrates
-with an escrow contract that stores
-erc20 tokens until the voucher is redeemed
-
-Contract features:
-- Minting of vouchers
-- Redeeming of vouchers
-- Transfer of erc20 tokens to escrow contract
-- Transfer of erc20 tokens from escrow contract
-
-*/
-
 pragma solidity ^0.8.18;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
@@ -22,7 +9,6 @@ contract Voucher is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _voucherIds;
 
-    // voucher metadata
     struct VoucherData {
         string brandID;
         string influencerID;
@@ -33,10 +19,8 @@ contract Voucher is ERC721URIStorage, Ownable {
         uint256 expiryDate;
     }
 
-    // voucher id => voucher metadata
     mapping(uint256 => VoucherData) private _vouchers;
 
-    // events
     event VoucherMinted(uint256 indexed voucherId, address indexed to);
     event VoucherRedeemed(uint256 indexed voucherId, address indexed to);
 
@@ -49,8 +33,7 @@ contract Voucher is ERC721URIStorage, Ownable {
         escrowContract = Escrow(_escrowContract);
     }
 
-     // add owner only modifier to mintVoucher
-    function mintVoucher(address recipient, string memory tokenURI, VoucherData memory data, uint256 amount)
+    function mintVoucher(address recipient, string memory tokenURI, VoucherData memory data)
         public
         onlyOwner
         returns (uint256)
@@ -63,19 +46,14 @@ contract Voucher is ERC721URIStorage, Ownable {
 
         _vouchers[newVoucherId] = data;
 
-        // deposit the funds into the escrow contract
-        escrowContract.deposit(newVoucherId, amount);
-
         return newVoucherId;
     }
-
 
     function _isRedeemable(uint256 voucherId) internal view {
         require(_exists(voucherId), "Voucher does not exist");
         require(!_vouchers[voucherId].redeemed, "Voucher already redeemed");
         require(_vouchers[voucherId].expiryDate >= block.timestamp, "Voucher has expired");
     }
-
 
     function redeem(uint256 voucherId, address supplierAddress) public {
         _isRedeemable(voucherId);
@@ -90,16 +68,11 @@ contract Voucher is ERC721URIStorage, Ownable {
         _burn(voucherId);
     }
 
-    // Get voucher data
     function getVoucher(uint256 voucherId) public view returns (VoucherData memory) {
         return _vouchers[voucherId];
     }
 
-    // hello world
     function helloWorld() public pure returns (string memory) {
         return "Hello World";
     }
-
-
-
 }

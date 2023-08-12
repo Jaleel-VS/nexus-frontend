@@ -18,9 +18,9 @@ contract Escrow is Ownable {
     Voucher public voucherContract;
     ZARToken public zarToken;
 
-    // events
     event Deposited(uint256 indexed voucherId, address indexed depositor, uint256 amount);
     event Withdrawn(uint256 indexed voucherId, address indexed to, uint256 amount);
+    event Refunded(uint256 indexed voucherId, address indexed to, uint256 amount);
 
     constructor(address _voucherContract, address _tokenAddress) {
         voucherContract = Voucher(_voucherContract);
@@ -28,10 +28,12 @@ contract Escrow is Ownable {
     }
 
     function deposit(uint256 voucherId, uint256 amount) external {
-        require(msg.sender == address(voucherContract), "Only the Voucher contract can deposit");
         require(amount > 0, "Amount should be greater than 0");
-
+        
         Voucher.VoucherData memory voucherData = voucherContract.getVoucher(voucherId);
+        // require(voucherData.expiryDate >= block.timestamp, "Voucher has expired");
+        require(!voucherData.redeemed, "Voucher already redeemed");
+        require(voucherContract.ownerOf(voucherId) == msg.sender, "Only the voucher owner can deposit");
 
         payments[voucherId] = Payment({
             depositor: msg.sender,
@@ -49,8 +51,7 @@ contract Escrow is Ownable {
         require(payments[voucherId].amount > 0, "No funds to withdraw");
 
         uint256 amount = payments[voucherId].amount;
-
-        payments[voucherId].amount = 0; // Reset the payment amount to prevent reentrancy
+        payments[voucherId].amount = 0;
 
         zarToken.transfer(to, amount);
 
@@ -59,15 +60,14 @@ contract Escrow is Ownable {
 
     function refund(uint256 voucherId) external {
         require(payments[voucherId].depositor == msg.sender, "Only the depositor can refund");
-        require(payments[voucherId].expiryDate <= block.timestamp, "Cannot refund before expiry");
+        // require(payments[voucherId].expiryDate <= block.timestamp, "Cannot refund before expiry");
         require(payments[voucherId].amount > 0, "No funds to refund");
 
         uint256 amount = payments[voucherId].amount;
-
-        payments[voucherId].amount = 0; // Reset the payment amount to prevent reentrancy
+        payments[voucherId].amount = 0;
 
         zarToken.transfer(msg.sender, amount);
 
-        emit Withdrawn(voucherId, msg.sender, amount);
+        emit Refunded(voucherId, msg.sender, amount);
     }
 }
