@@ -6,7 +6,7 @@ async function main() {
 
   console.log(
       "Deploying contracts with the account:",
-      contractOwner.address
+      contractOwner[0].address
   );
   
   // Deploy token contract
