@@ -1,3 +1,12 @@
+/*
+ Voucher is a non-fungible token (ERC721) that represents a voucher that can be redeemed for a product.
+ The Voucher contract is owned by the Nexus team and is used to mint vouchers.
+ Brands can create vouchers by calling the mintVoucher function.
+ Suppliers can redeem vouchers by calling the redeem function.
+ The Voucher contract is also used by the Escrow contract to withdraw funds.
+*/
+
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.18;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
@@ -26,18 +35,17 @@ contract Voucher is ERC721URIStorage, Ownable {
 
     Escrow private escrowContract;
 
-    constructor() ERC721("NexusVoucher", "NXV") {
-    }
+    constructor() ERC721("NexusVoucher", "NXV") {}
 
     function setEscrowContract(address _escrowContract) public onlyOwner {
         escrowContract = Escrow(_escrowContract);
     }
 
-    function mintVoucher(address recipient, string memory tokenURI, VoucherData memory data)
-        public
-        onlyOwner
-        returns (uint256)
-    {
+    function mintVoucher(
+        address recipient,
+        string memory tokenURI,
+        VoucherData memory data
+    ) public onlyOwner returns (uint256) {
         _voucherIds.increment();
 
         uint256 newVoucherId = _voucherIds.current();
@@ -46,29 +54,33 @@ contract Voucher is ERC721URIStorage, Ownable {
 
         _vouchers[newVoucherId] = data;
 
+        emit VoucherMinted(newVoucherId, recipient);
+
         return newVoucherId;
     }
 
     function _isRedeemable(uint256 voucherId) internal view {
         require(_exists(voucherId), "Voucher does not exist");
         require(!_vouchers[voucherId].redeemed, "Voucher already redeemed");
-        require(_vouchers[voucherId].expiryDate >= block.timestamp, "Voucher has expired");
+        require(
+            _vouchers[voucherId].expiryDate >= block.timestamp,
+            "Voucher has expired"
+        );
     }
 
     function redeem(uint256 voucherId, address supplierAddress) public {
         _isRedeemable(voucherId);
-        require(ownerOf(voucherId) == msg.sender, "Only the owner can redeem the voucher");
 
         _vouchers[voucherId].redeemed = true;
 
         escrowContract.withdraw(voucherId, payable(supplierAddress));
 
         emit VoucherRedeemed(voucherId, supplierAddress);
-
-        _burn(voucherId);
     }
 
-    function getVoucher(uint256 voucherId) public view returns (VoucherData memory) {
+    function getVoucher(
+        uint256 voucherId
+    ) public view returns (VoucherData memory) {
         return _vouchers[voucherId];
     }
 

@@ -1,3 +1,9 @@
+/*
+ Escrow contract for ZAR token and Nexus Voucher
+Brand creates voucher and deposits ZAR token into escrow
+Supplier redeems voucher and receives ZAR token from escrow
+*/
+
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.18;
 
@@ -31,9 +37,7 @@ contract Escrow is Ownable {
         require(amount > 0, "Amount should be greater than 0");
         
         Voucher.VoucherData memory voucherData = voucherContract.getVoucher(voucherId);
-        // require(voucherData.expiryDate >= block.timestamp, "Voucher has expired");
         require(!voucherData.redeemed, "Voucher already redeemed");
-        require(voucherContract.ownerOf(voucherId) == msg.sender, "Only the voucher owner can deposit");
 
         payments[voucherId] = Payment({
             depositor: msg.sender,

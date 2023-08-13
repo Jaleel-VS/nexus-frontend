@@ -92,15 +92,6 @@ describe("Voucher and Escrow System", function () {
             const voucherInfo = await voucher.getVoucher(1);
             expect(voucherInfo.redeemed).to.equal(true);
         });
-    
-        it("Should not allow non-owners to redeem the voucher", async function () {
-            
-    
-            await voucher.mintVoucher(addr1.address, "ipfs://tokenURI", voucherData);
-    
-            // Attempt to redeem by addr2 (who is not the owner)
-            await expect(voucher.connect(addr2).redeem(1, addr2.address)).to.be.revertedWith("Only the owner can redeem the voucher");
-        });
     });
     
     describe("Refund", function () {
@@ -172,5 +163,72 @@ describe("Voucher and Escrow System", function () {
             await expect(escrow.connect(addr1).deposit(1, ethers.utils.parseEther("500"))).to.be.revertedWith("Voucher already redeemed");
         });
     });
+
+    describe("Ownership", function () {
+        it("Should mint 5 vouchers and test if addr1 is the owner of all 5", async function () {
+            await voucher.mintVoucher(addr1.address, "ipfs://tokenURI", voucherData);
+            await voucher.mintVoucher(addr1.address, "ipfs://tokenURI", voucherData);
+            await voucher.mintVoucher(addr1.address, "ipfs://tokenURI", voucherData);
+            await voucher.mintVoucher(addr1.address, "ipfs://tokenURI", voucherData);
+            await voucher.mintVoucher(addr1.address, "ipfs://tokenURI", voucherData);
+
+            const balance = await voucher.balanceOf(addr1.address);
+            expect(balance.toString()).to.equal("5");
+        });
+    });
+
+    describe("Voucher Retrieval", function () {
+        it("Should return the correct voucher data", async function () {
+            const voucherData = {
+                brandID: "brand123",
+                influencerID: "influencer123",
+                supplierID: "supplier123",
+                productID: "product123",
+                productDescription: "A cool product",
+                redeemed: false,
+                expiryDate: Math.floor(Date.now() / 1000) + 60 * 60 * 24 // 1 day from now
+            };
+    
+            // Mint a voucher
+            await voucher.mintVoucher(addr1.address, "ipfs://tokenURI", voucherData);
+    
+            // Retrieve the voucher data
+            const retrievedVoucher = await voucher.getVoucher(1);
+    
+            // Compare the retrieved data with the expected data
+            expect(retrievedVoucher.brandID).to.equal(voucherData.brandID);
+            expect(retrievedVoucher.influencerID).to.equal(voucherData.influencerID);
+            expect(retrievedVoucher.supplierID).to.equal(voucherData.supplierID);
+            expect(retrievedVoucher.productID).to.equal(voucherData.productID);
+            expect(retrievedVoucher.productDescription).to.equal(voucherData.productDescription);
+            expect(retrievedVoucher.redeemed).to.equal(voucherData.redeemed);
+            expect(retrievedVoucher.expiryDate.toString()).to.equal(voucherData.expiryDate.toString());
+        });
+    });
+
+
+
+
+    describe("Emits", function () {
+        it("Should emit the VoucherMinted event", async function () {
+              
+            // Mint a voucher and get the transaction object
+            const tx = await voucher.mintVoucher(addr1.address, "ipfs://tokenURI", voucherData);
+    
+            // Wait for the transaction to be mined
+            const receipt = await tx.wait();
+    
+            // Find the VoucherMinted event in the receipt
+            const event = receipt.events?.find(e => e.event === "VoucherMinted");
+            console.log(event);
+    
+            // Assert that the event was emitted with the expected values
+            expect(event).to.not.be.undefined;
+            expect(event.args[0].toString()).to.equal("1");  // newVoucherId
+            expect(event.args[1]).to.equal(addr1.address);  // recipient
+        });
+    });
+    
+
     
 });
