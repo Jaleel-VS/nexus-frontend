@@ -18,6 +18,10 @@ contracts.forEach(contractName => {
 
     // Save bytecode to a separate file
     fs.writeFileSync(path.join(exportDir, `${contractName}.bin`), artifact.bytecode);
+
+    // Save abi as json to a separate file
+    fs.writeFileSync(path.join(exportDir, `${contractName}.json`), JSON.stringify(artifact.abi, null, 2));
+
 })
 
 // const contractName = 'Voucher';  // Replace with your contract's name

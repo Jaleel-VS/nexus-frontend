@@ -1,6 +1,8 @@
 // scripts/deploy.js
 const { ethers } = require("hardhat");
 
+const TOKEN_ADDR = "0xBCb82c10C4e7F6d5c4bd7cD78FB664C65E1534c0";
+
 async function main() {
   const contractOwner = await ethers.getSigners();
 
@@ -8,12 +10,7 @@ async function main() {
       "Deploying contracts with the account:",
       contractOwner[0].address
   );
-  
-  // Deploy token contract
-  const Token = await ethers.getContractFactory("ZARToken");
-  const token = await Token.deploy();
-  await token.deployed();
-  console.log("Token address:", token.address);
+
 
     // Deploy voucher contract
   const Voucher = await ethers.getContractFactory("Voucher");
@@ -23,7 +20,7 @@ async function main() {
 
   // Deploy escrow contract
   const Escrow = await ethers.getContractFactory("Escrow");
-  const escrow = await Escrow.deploy(voucher.address, token.address);
+  const escrow = await Escrow.deploy(voucher.address, TOKEN_ADDR);
   await escrow.deployed();
   console.log("Escrow address:", escrow.address);
 

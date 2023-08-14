@@ -16,4 +16,9 @@ public class Brand extends User {
     private String brandName;
     private String brandCategory;
     private String brandDescription;
+
+    @Override
+    public String getUserType() {
+        return "BRAND";
+    }
 }

@@ -16,4 +16,9 @@ public class Supplier extends User {
     private String supplierName;
     private String supplierCategory;
     private String supplierDescription;
+
+    @Override
+    public String getUserType() {
+        return "SUPPLIER";
+    }
 }

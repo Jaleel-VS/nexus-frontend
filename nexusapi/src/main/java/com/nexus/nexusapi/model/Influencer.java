@@ -15,4 +15,11 @@ public class Influencer extends User {
     private String firstName;
     private String lastName;
     private String instagramHandle;
+
+    @Override
+    public String getUserType() {
+        return "Influencer";
+    }
+
+    
 }

@@ -9,6 +9,9 @@ export const useUserStore = defineStore({
     actions: {
         setUserDetails(details) {
             this.details = details
+        },
+        clearUserDetails() {
+            this.details = null
         }
     }
 })

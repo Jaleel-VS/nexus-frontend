@@ -27,7 +27,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="voucherRequest in voucherRequests" :key="voucherRequest._id" :class="{ 'disabled-row': voucherRequest.disabled }">
+                    <tr v-for="voucherRequest in voucherRequests" :key="voucherRequest._id"
+                        :class="{ 'disabled-row': voucherRequest.disabled }">
                         <td>{{ voucherRequest._id }}</td>
                         <td>{{ voucherRequest.requestDate }}</td>
                         <td>{{ voucherRequest.influencerName }}</td>
@@ -35,11 +36,13 @@
                         <td>{{ voucherRequest.productId }}</td>
                         <td>{{ voucherRequest.productName }}</td>
                         <td>
-            <button :disabled="voucherRequest.disabled" @click="updateStatus(voucherRequest._id, 'APPROVED')">Approve</button>
-        </td>
-        <td>
-            <button :disabled="voucherRequest.disabled" @click="updateStatus(voucherRequest._id, 'DENIED')">Deny</button>
-        </td>
+                            <button :disabled="voucherRequest.disabled"
+                                @click="updateStatus(voucherRequest._id, 'APPROVED')">Approve</button>
+                        </td>
+                        <td>
+                            <button :disabled="voucherRequest.disabled"
+                                @click="updateStatus(voucherRequest._id, 'DENIED')">Deny</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -62,12 +65,12 @@ export default {
         }
 
         const updateStatus = async (id, status) => {
-      await axios.put(`http://localhost:8080/voucher-requests/${id}?new_status=${status}`);
+            await axios.put(`http://localhost:8080/voucher-requests/${id}?new_status=${status}`);
 
-      const voucher = voucherRequests.value.find(voucher => voucher._id === id);
-      voucher.status = status;
-      voucher.disabled = true;
-    }
+            const voucher = voucherRequests.value.find(voucher => voucher._id === id);
+            voucher.status = status;
+            voucher.disabled = true;
+        }
 
         const fetchData = async () => {
             const voucherRequestsData = await axios.get('http://localhost:8080/voucher-requests');
@@ -90,9 +93,9 @@ export default {
         }
 
         onMounted(() => {
-      loading.value = true;  // Add this line
-      fetchData().then(() => loading.value = false);  // Add this line
-    });
+            loading.value = true;  // Add this line
+            fetchData().then(() => loading.value = false);  // Add this line
+        });
 
         return {
             voucherRequests,
@@ -189,6 +192,7 @@ button:hover {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -202,6 +206,4 @@ button:hover {
 .disabled-row button {
     cursor: not-allowed;
     opacity: 0.5;
-}
-
-</style>
+}</style>

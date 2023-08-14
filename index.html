@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Landing Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 50px;
+            background-color: #6a1b9a;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .hero-section {
+            display: flex;
+            height: 80vh;
+            align-items: center;
+            justify-content: space-between;
+            padding: 50px;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding: 20px;
+            color: #6a1b9a;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5em;
+        }
+
+        .hero-content p {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        .hero-content button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background-color: #6a1b9a;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .hero-content button:hover {
+            background-color: #8e24aa;
+        }
+
+        .hero-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 75%;
+            height: 75%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s;
+            transform-style: preserve-3d;
+        }
+
+        
+
+        .hero-image::before {
+            content: "";
+            position: absolute;
+            inset: -50px;
+            background: conic-gradient(from 90deg at 40% -25%, #ffd700, #f79d03, #ee6907, #e6390a, #de0d0d, #d61039, #cf1261, #c71585, #cf1261, #d61039, #de0d0d, #ee6907, #f79d03, #ffd700, #ffd700, #ffd700);
+            filter: blur(50px);
+            transform: translate3d(34px, 8px, -1px);
+            clip-path: polygon(-100vmax -100vmax, 100vmax -100vmax, 100vmax 100vmax, -100vmax 100vmax, -100vmax -100vmax, calc(50px - 34px) calc(50px - 8px), calc(50px - 34px) calc(100% - 8px - 50px), calc(100% - 34px - 50px) calc(100% - 8px - 50px), calc(100% - 34px - 50px) calc(50px - 8px), calc(50px - 34px) calc(50px - 8px));
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <img src="./proj_logo copy.png" alt="Nexus Logo">
+        <div>
+            <a href="#about-us">About Us</a>
+            <a href="#contact-us">Contact Us</a>
+            <a href="#tutorial">Tutorial</a>
+        </div>
+    </div>
+
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>Nexus: Three-way blockchain contract</h1>
+            <p>Experience the future of decentralized contracts with Nexus. Our three-way blockchain contract system
+                ensures security, transparency, and efficiency like never before.</p>
+            <button>Login</button>
+            <button>Apply</button>
+        </div>
+        <div class="hero-image">
+            <img src="./rhombus.png" alt="Nexus Image">
+        </div>
+    </div>
+</body>
+
+</html>

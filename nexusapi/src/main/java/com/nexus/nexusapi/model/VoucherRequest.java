@@ -31,10 +31,6 @@ public class VoucherRequest {
     private Brand brand;
 
     @ManyToOne
-    @JoinColumn(name = "supplier_id")
-    private Supplier supplier;
-
-    @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
 
