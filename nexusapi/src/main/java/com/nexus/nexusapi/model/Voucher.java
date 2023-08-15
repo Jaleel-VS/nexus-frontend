@@ -29,8 +29,16 @@ public class Voucher {
     @JoinColumn(name = "supplier_id")
     private Supplier supplier;
 
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
     private LocalDate createdDate;
     private LocalDate expiryDate;
+
+    private String voucherPin;
+
+    private boolean redeemed;
 
     private String blockchainUrl;
 }

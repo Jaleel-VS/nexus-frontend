@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export const voucherRequestStore = defineStore({
+export const useVoucherRequestStore = defineStore({
     id: 'voucherRequest',
     state: () => ({
         details: null

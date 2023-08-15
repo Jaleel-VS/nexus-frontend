@@ -36,7 +36,7 @@
                         <td>
                             <button @click="denyRequest(request.id)">Deny</button>
                         </td>
-                        
+
                     </tr>
                 </tbody>
             </table>
@@ -53,6 +53,7 @@ import { useRouter } from 'vue-router'
 
 // pinia
 import { useUserStore } from '@/store/user'
+import { useVoucherRequestStore } from '@/store/voucher_request'
 
 import { ref, onMounted, watch } from 'vue'
 
@@ -103,11 +104,24 @@ export default {
 
         const approveRequest = async (requestId) => {
             try {
-                const response = await axios.post('/api/brand/approve-request', {
-                    requestId: requestId
-                })
-                console.log(response.data)
-                getVoucherRequests()
+                const thisVoucherRequest = voucherRequests.value.find(request => request.id === requestId)
+
+
+                // approve request using endpoint
+                // /{requestId}/approve
+                const response = await axios.post(`${API_ENDPOINT}/voucher-requests/${requestId}/approve`)
+
+                // if 200
+                if (response.status === 200) {
+                    // set voucher request details in store
+                    useVoucherRequestStore().setVoucherRequestDetails(thisVoucherRequest)
+                    // redirect to create voucher page
+                    router.push('/brand/create-voucher')
+                } else {
+                    alert('Something went wrong')
+                    console.log(response)
+                }
+
             } catch (error) {
                 console.log(error)
             }
@@ -115,11 +129,21 @@ export default {
 
         const denyRequest = async (requestId) => {
             try {
-                const response = await axios.post('/api/brand/deny-request', {
-                    requestId: requestId
-                })
-                console.log(response.data)
-                getVoucherRequests()
+                // deny request using endpoint
+                // /{requestId}/deny
+                const response = await axios.post(`${API_ENDPOINT}/voucher-requests/${requestId}/deny`)
+
+                // if 200
+                if (response.status === 200) {
+                    // remove request from voucherRequests
+                    const index = voucherRequests.value.findIndex(request => request.id === requestId)
+                    voucherRequests.value.splice(index, 1)
+
+
+                } else {
+                    alert('Something went wrong')
+                    console.log(response)
+                }
             } catch (error) {
                 console.log(error)
             }
@@ -226,5 +250,4 @@ button {
 button:hover {
     background-color: #0056b3;
 }
-
 </style>

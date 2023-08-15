@@ -4,6 +4,7 @@ import Login from '../views/login.vue';
 // Brand Routes
 import brandDashboard from '../views/brand/brand_dashboard.vue';
 import brandRequests from '../views/brand/brand_requests.vue';
+import brandCreateVoucher from '../views/brand/brand_create_voucher.vue';
 
 // Supplier Routes
 import supplierDashboard from '../views/supplier/supplier_dashboard.vue';
@@ -53,6 +54,11 @@ const routes = [
     path: '/brand/requests',
     name: 'brandRequests',
     component: brandRequests
+  },
+  {
+    path: '/brand/create-voucher',
+    name: 'brandCreateVoucher',
+    component: brandCreateVoucher
   },
 
 
