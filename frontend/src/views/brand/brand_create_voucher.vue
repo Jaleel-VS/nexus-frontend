@@ -172,7 +172,6 @@ export default {
                 if (response.status === 200) {
                     console.log("Voucher minted successfully")
                     router.push('/brand/dashboard')
-
                 }
 
                 console.log(response)

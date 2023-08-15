@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nexus.nexusapi.dto.request.VoucherDTO;
+import com.nexus.nexusapi.dto.response.VoucherResponseDTO;
 import com.nexus.nexusapi.exceptions.NotFoundException;
 import com.nexus.nexusapi.model.Brand;
 import com.nexus.nexusapi.model.Influencer;
@@ -81,5 +82,52 @@ public class VoucherService {
     private String mintVoucher(Influencer influencer, Brand brand, Supplier supplier, Product product, LocalDate expiryDate) {
         return "";
     }
+
+    // get voucher by id
+    public VoucherResponseDTO getVoucherById(Long id) {
+        Voucher voucher = voucherRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Voucher not found"));
+        VoucherResponseDTO voucherResponseDTO = new VoucherResponseDTO();
+        voucherResponseDTO.setBrandId(voucher.getBrand().getId());
+        voucherResponseDTO.setInfluencerId(voucher.getInfluencer().getId());
+        voucherResponseDTO.setSupplierId(voucher.getSupplier().getId());
+        voucherResponseDTO.setProductId(voucher.getProduct().getId());
+        voucherResponseDTO.setCreationDate(voucher.getCreatedDate());
+        voucherResponseDTO.setExpiryDate(voucher.getExpiryDate());
+        voucherResponseDTO.setRedeemed(voucher.isRedeemed());
+        return voucherResponseDTO;
+    }
+
+    // update voucher status
+    public VoucherResponseDTO updateVoucherStatus(Long id, boolean status) {
+        Voucher voucher = voucherRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Voucher not found"));
+        voucher.setRedeemed(status);
+        voucherRepository.save(voucher);
+        VoucherResponseDTO voucherResponseDTO = new VoucherResponseDTO();
+        voucherResponseDTO.setBrandId(voucher.getBrand().getId());
+        voucherResponseDTO.setInfluencerId(voucher.getInfluencer().getId());
+        voucherResponseDTO.setSupplierId(voucher.getSupplier().getId());
+        voucherResponseDTO.setProductId(voucher.getProduct().getId());
+        voucherResponseDTO.setCreationDate(voucher.getCreatedDate());
+        voucherResponseDTO.setExpiryDate(voucher.getExpiryDate());
+        voucherResponseDTO.setRedeemed(voucher.isRedeemed());
+        return voucherResponseDTO;
+    }
+
+    // check if voucher is redeemed
+    public boolean isRedeemed(Long id) {
+        Voucher voucher = voucherRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Voucher not found"));
+        return voucher.isRedeemed();
+    }
+
+    // check if pin matches
+    public boolean isPinMatch(Long id, String pin) {
+        Voucher voucher = voucherRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Voucher not found"));
+        return voucher.getVoucherPin().equals(pin);
+    }
+    
     
 }
