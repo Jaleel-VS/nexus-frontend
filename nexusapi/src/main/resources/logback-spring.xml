@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- Define the file appender for request logs -->
+    <appender name="REQUEST_LOG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>request.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>request.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Define logger for CommonsRequestLoggingFilter, sending only its logs to the above appender -->
+    <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="DEBUG" additivity="false">
+        <appender-ref ref="REQUEST_LOG_FILE" />
+    </logger>
+
+    <!-- Standard Spring Boot logger setup (assuming you want other logs to console) -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+</configuration>

@@ -108,13 +108,14 @@ export default {
 
 
                 // approve request using endpoint
-                // /{requestId}/approve
-                const response = await axios.post(`${API_ENDPOINT}/voucher-requests/${requestId}/approve`)
+                // put /{requestId}/approve
+                const response = await axios.put(`${API_ENDPOINT}/voucher-requests/${requestId}/approve`)
 
                 // if 200
                 if (response.status === 200) {
                     // set voucher request details in store
                     useVoucherRequestStore().setVoucherRequestDetails(thisVoucherRequest)
+                    console.log(useVoucherRequestStore().details)
                     // redirect to create voucher page
                     router.push('/brand/create-voucher')
                 } else {
@@ -131,7 +132,7 @@ export default {
             try {
                 // deny request using endpoint
                 // /{requestId}/deny
-                const response = await axios.post(`${API_ENDPOINT}/voucher-requests/${requestId}/deny`)
+                const response = await axios.put(`${API_ENDPOINT}/voucher-requests/${requestId}/deny`)
 
                 // if 200
                 if (response.status === 200) {

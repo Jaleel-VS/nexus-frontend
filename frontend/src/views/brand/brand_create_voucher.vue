@@ -8,7 +8,9 @@
 
         <div class="create-voucher-wrapper">
 
+            <p class="result-box" v-if="resultMessage" v-html="resultMessage"></p>
 
+            <div v-else>
 
             <h2> Voucher details </h2>
 
@@ -17,39 +19,46 @@
             </div>
 
 
-            <div v-else>
-                <p>Influencer:</p>
+            <div v-else class="details-wrapper">
+                <h3>Influencer:</h3>
                 <p> {{ voucherRequestDetails.influencerName }} </p>
 
-                <p>Influencer wallet address:</p>
+                <h3>Influencer wallet address:</h3>
                 <p> {{ voucherRequestDetails.influencerWalletAddress }} </p>
 
-                <p>Product:</p>
+                <h3>Product:</h3>
                 <p> {{ voucherRequestDetails.productName }} </p>
 
-                <p>Product amount:</p>
+                <h3>Product amount:</h3>
                 <p> {{ voucherRequestDetails.productAmount }} </p>
 
-                <p>Supplier:</p>
-                <p> {{ voucherRequestDetails.suppliers[0] }} </p>
+                <h3>Supplier:</h3>
+                <p v-if="voucherRequestDetails.suppliers && voucherRequestDetails.suppliers.length > 0">
+                    {{ voucherRequestDetails.suppliers[0] }}
+                </p>
 
                 <!-- select expiry date -->
-                <p>Set Voucher Expiry date:</p>
-                <!-- min tomorrow, max 14 days from now -->
-                <input type="date" id="voucher-expiry-date" name="voucher-expiry-date" min="2023-08-16" max="2023-08-30">
+                <h3>Days until expiry</h3>
+                <!-- input type slider, number -->
+                <input type="number" id="voucher-expiry-date" name="voucher-expiry-date" min="1" max="30" value="14">
 
 
-                <p>Voucher Pin (Automatically generated)</p>
-                <p> {{ voucherPin }} </p>
+                <h3>Voucher QR Code (Automatically generated)</h3>
+                <!-- show qr code -->
 
                 <!-- connect to metamask -->
-                <p>Connect to metamask</p>
+                <h3>Connect to metamask</h3>
                 <button @click="connectMetamask">Connect</button>
 
                 <!-- mint voucher -->
-                <button @click="mintVoucher">Fund and Mint Voucher</button>
+                <h3>Mint voucher</h3>
+                <button @click="mintVoucher">Mint Voucher</button>
+
+                <!-- <p v-html="resultMessage"></p> -->
+
 
             </div>
+        </div>
 
 
 
@@ -61,7 +70,7 @@
 
 <script>
 
-import Navbar from '@/components/Navbar.vue'
+import Navbar from '../components/navbar.vue';
 
 import { useUserStore } from '@/store/user'
 import { useVoucherRequestStore } from "@/store/voucher_request";
@@ -85,15 +94,15 @@ export default {
 
         const voucherRequestDetails = ref({})
 
-        const voucherDetails = ref({})
-
         const voucherPin = ref('')
 
-        const username = userStore.username;
-
-        const router = useRouter()
+        const username = userStore.details.username;
 
         const loading = ref(false);
+
+        const publicAddress = ref('')
+
+        const resultMessage = ref('')
 
 
         onMounted(() => {
@@ -111,23 +120,36 @@ export default {
             loading.value = true
 
             try {
-                const response = await axios.get(`${API_ENDPOINT}/users/influencers/${voucherRequestStore.influencerId}`)
+                let infID = voucherRequestStore.details.influencerId
+                let prodID = voucherRequestStore.details.productId
 
-                voucherRequestDetails.influencerName = response.data.username
-                voucherRequestDetails.influencerWalletAddress = voucherRequestDetails.walletAddress
+                const endpoint = `${API_ENDPOINT}/users/influencers/${infID}`
+                const response = await axios.get(endpoint)
 
-                const response2 = await axios.get(`${API_ENDPOINT}/products/${voucherRequestStore.productId}`)
+                console.log(response)
 
-                voucherRequestDetails.productName = response2.data.productName
-                voucherRequestDetails.productAmount = response2.data.productAmount
+                voucherRequestDetails.value.influencerName = response.data.username;
+                voucherRequestDetails.value.influencerWalletAddress = voucherRequestStore.details.walletAddress;
+
+                const response2 = await axios.get(`${API_ENDPOINT}/products/${prodID}`)
+
+                console.log(response2)
+
+                voucherRequestDetails.value.productId = response2.data.productId
+                voucherRequestDetails.value.productName = response2.data.productName
+                voucherRequestDetails.value.productAmount = response2.data.productPrice
 
                 const suppliers = response2.data.supplierIds
 
-                voucherRequestDetails.suppliers = []
+                voucherRequestDetails.value.suppliers = []
+                voucherRequestDetails.value.supplierIds = suppliers
+
+
+                console.log(suppliers)
 
                 suppliers.map(async (supplierId) => {
                     const response = await axios.get(`${API_ENDPOINT}/users/suppliers/${supplierId}`)
-                    voucherRequestDetails.suppliers.push(response.data.supplierName)
+                    voucherRequestDetails.value.suppliers.push(response.data.supplierName)
                 })
 
             } catch (error) {
@@ -146,37 +168,30 @@ export default {
             loading.value = true
 
             try {
-                //             struct VoucherData {
-                //     string brandID;
-                //     string influencerID;
-                //     string supplierID;
-                //     string productID;
-                //     uint256 expiryDate;
-                // }
 
-                // get expiry date
-                const expiryDate = document.getElementById("voucher-expiry-date").value
-                const future = Math.floor((new Date(expiryDate).getTime() - Date.now()) / 1000)
+                
+
 
                 const voucherData = {
-                    brandID: userStore.userId,
-                    influencerID: voucherRequestStore.influencerId,
-                    supplierID: voucherRequestDetails.suppliers[0],
-                    productID: voucherRequestStore.productId,
-                    // integer representing the expiry date
-                    expiryDate: Math.floor(Date.now() / 1000) + future
+                    supplierID: voucherRequestDetails.value.supplierIds[0],
+                    voucherRequestID: voucherRequestStore.details.id,
+                    expiryDate:  Math.floor(Date.now() / 1000) + parseInt(document.getElementById("voucher-expiry-date").value) * 24 * 60 * 60,
                 }
+
+                console.log(voucherData)
 
                 const response = await axios.post(`${API_ENDPOINT}/vouchers`, voucherData)
 
+
+
                 if (response.status === 200) {
                     console.log("Voucher minted successfully")
-                    router.push('/brand/dashboard')
+                    resultMessage.value = "Voucher minted successfully and sent to influencers wallet ✨. <br>View the blockchain transaction here ⛓: <a target=\"_blank\" href='https://sepolia.etherscan.io/tx/" + response.data.blockchainURL + "'>" + "etherscan" + "</a>"
+                    // alert("Voucher minted successfully!")
+                    // router.push('/brand/dashboard')
                 }
 
                 console.log(response)
-
-                // redirect to brand dashboard
 
             } catch (error) {
                 console.log(error)
@@ -186,9 +201,30 @@ export default {
 
         }
 
+        // function for connecting metamask
+        async function connectMetamask() {
+            // connect metamask by calling the endpoint
+
+            loading.value = true
+
+            if (window.ethereum) {
+                try {
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
+                    publicAddress.value = accounts[0]
+                } catch (error) {
+                    console.error(error)
+                }
+            } else {
+                alert("Please install metamask")
+            }
+
+            loading.value = false
+
+        }
+
 
         return {
-            username, voucherRequestDetails, voucherPin, loading
+            username, voucherRequestDetails, voucherPin, loading, mintVoucher, connectMetamask, getRequestDetails, resultMessage
         }
     }
 }
@@ -196,11 +232,43 @@ export default {
 </script>
 
 <style scoped>
+.create-voucher-page {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    flex-direction: column;
+}
+
+.details-wrapper {
+    /* width: 30%; */
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+h2 {
+    margin-top: 20px;
+    text-align: center;
+}
+
+
 .loading {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 60vh;
+
 }
 
 .spinner {
@@ -222,5 +290,27 @@ export default {
     100% {
         transform: rotate(360deg);
     }
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.result-box {
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 </style>

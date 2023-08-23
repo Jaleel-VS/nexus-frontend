@@ -8,11 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class VoucherDTO {
-    private String brandID;
-    private String influencerID;
+    private String voucherRequestID;
     private String supplierID;
-    private String productID;
-    private boolean redeemed;
     private Long expiryDate;
-    private String voucherPin;
+
 }

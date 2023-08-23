@@ -33,10 +33,12 @@ public class Voucher {
     @JoinColumn(name = "product_id")
     private Product product;
 
+    @ManyToOne
+    @JoinColumn(name = "voucher_request_id")
+    private VoucherRequest voucherRequest;
+
     private LocalDate createdDate;
     private LocalDate expiryDate;
-
-    private String voucherPin;
 
     private boolean redeemed;
 

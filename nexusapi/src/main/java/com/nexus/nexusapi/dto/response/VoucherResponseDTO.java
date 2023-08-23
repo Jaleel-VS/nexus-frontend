@@ -17,5 +17,6 @@ public class VoucherResponseDTO {
     private Long supplierId;
     private LocalDate creationDate;
     private LocalDate expiryDate;
-    private boolean redeemed;    
+    private boolean redeemed;   
+    private String blockchainURL; 
 }

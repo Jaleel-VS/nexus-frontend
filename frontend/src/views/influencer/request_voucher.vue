@@ -26,8 +26,13 @@
           </option>
         </select>
 
-        <!-- connect to metamask -->
-        <button v-if="selectedBrand && selectedProduct" @click="connectMetamask">Connect to MetaMask</button>
+        <!-- Connect to MetaMask -->
+        <button v-if="selectedBrand && selectedProduct && !publicAddress" @click="connectMetamask">➕ Connect to
+          MetaMask</button>
+
+        <!-- Switch MetaMask Account -->
+        <button v-if="publicAddress" @click="switchMetamaskAccount">🔃 Switch MetaMask Account</button>
+
 
         <div v-if="publicAddress" style="padding-bottom: 30px; color: black;">
           <p>Requesting with public wallet address: {{ publicAddress }}</p>
@@ -70,15 +75,18 @@ export default {
     const router = useRouter()
     const userStore = useUserStore()
 
-    const username = userStore.details.username
+    let username = ""
 
     // methods
-    onMounted(
-      async () => {
+    onMounted(() => {
+      if (!userStore.details) {
+        alert("Please login first")
+        router.push('/login')
+      } else {
+        username = userStore.details.username
         fetchBrands()
       }
-    )
-
+    })
 
 
     const fetchBrands = async () => {
@@ -127,15 +135,25 @@ export default {
       }
     }
 
+    const switchMetamaskAccount = async () => {
+      if (window.ethereum) {
+        try {
+          await window.ethereum.request({ method: 'wallet_requestPermissions', params: [{ eth_accounts: {} }] });
+
+          // Now, request connection which will prompt user
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          publicAddress.value = accounts[0];
+        } catch (error) {
+          console.error(error);
+        }
+      } else {
+        alert("Please install metamask");
+      }
+    }
+
     const submit = async () => {
       loading.value = true
       try {
-        // {
-        //   "influencerId": 0,
-        //   "brandId": 0,
-        //   "productId": 0,
-        //   "walletAddress": "string"
-        // }
         const voucherRequest = {
           influencerId: userStore.details.id,
           brandId: selectedBrand.value.id,
@@ -161,7 +179,7 @@ export default {
     }
 
     return {
-      username, brands, products, selectedBrand, selectedProduct, loading, publicAddress, fetchProducts, fetchBrands, connectMetamask, submit
+      username, brands, products, selectedBrand, selectedProduct, loading, publicAddress, fetchProducts, fetchBrands, connectMetamask, submit, switchMetamaskAccount
     }
   },
 

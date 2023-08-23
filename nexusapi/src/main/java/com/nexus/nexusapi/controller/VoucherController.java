@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 
 import com.nexus.nexusapi.dto.response.VoucherResponseDTO;
 import com.nexus.nexusapi.service.VoucherService;
@@ -22,7 +22,9 @@ public class VoucherController {
 
     // create voucher
     @PostMapping
-    public ResponseEntity<VoucherDTO> createVoucher(VoucherDTO voucherDTO) {
+    public ResponseEntity<VoucherResponseDTO> createVoucher(@RequestBody VoucherDTO voucherDTO) {
+        System.out.println("VoucherDTO: " + voucherDTO.toString());
+
         return ResponseEntity.ok(voucherService.createVoucher(voucherDTO));
     }
 
@@ -32,17 +34,10 @@ public class VoucherController {
         return ResponseEntity.ok(voucherService.getVoucherById(id));
     }
 
-
     // update voucher status
     @PutMapping("/{id}/{status}")
     public ResponseEntity<VoucherResponseDTO> updateVoucherStatus(@PathVariable Long id, @PathVariable boolean status) {
         return ResponseEntity.ok(voucherService.updateVoucherStatus(id, status));
-    }
-
-    // check if pin matches
-    @GetMapping("/{id}/{pin}")
-    public ResponseEntity<Boolean> checkPin(@PathVariable Long id, @PathVariable String pin) {
-        return ResponseEntity.ok(voucherService.isPinMatch(id, pin));
     }
 
     // check if redeemed
@@ -50,9 +45,5 @@ public class VoucherController {
     public ResponseEntity<Boolean> isRedeemed(@PathVariable Long id) {
         return ResponseEntity.ok(voucherService.isRedeemed(id));
     }
-
-
-
-
 
 }

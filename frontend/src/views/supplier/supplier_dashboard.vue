@@ -12,7 +12,7 @@
 <script>
 import Navbar from '../components/navbar.vue';
 // vue3-router
-import { useRoute } from 'vue-router'
+import { useRouter } from 'vue-router'
 // pinia
 import { useUserStore } from '@/store/user'
 
@@ -22,7 +22,7 @@ export default {
     },
 
     setup() {
-        const route = useRoute()
+        const router = useRouter()
         const userStore = useUserStore()
         
         const username = userStore.details.username
