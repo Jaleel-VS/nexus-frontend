@@ -1,5 +1,0 @@
-# gitignore fastapi backend
-
-.env
-venv/
-__pycache__/
