@@ -111,9 +111,31 @@
                 <h1 class="f3 text--accent ttu">Start promoting</h1>
                 <p>Share and promote your brand new product across your social media platforms with your followers.</p>
             </div>
-
             </div>
             </section>
+            <header class="header">
+            <h3>Testimonials</h3>
+            </header>
+        <div class="testimonial-container">
+        <div class="testimonial-card">
+            <div class="text">Hello<i class="fas fa-quote-right quote"></i></div>
+            <div class="footer">
+            <div class="image"><img src="./DP1.jpg" alt="Image 1"></div>
+            <h3 class='person'>Paul</h3></div>
+        </div>
+        <div class="testimonial-card">
+            <div class="text">Hello<i class="fas fa-quote-right quote"></i></div>
+            <div class="footer">
+            <div class="image"><img src="./DP2.jpg" alt="Image 1"></div>
+            <h3 class='person'>Elizabeth</h3></div>
+        </div>
+        <div class="testimonial-card">
+            <div class="text">Hello<i class="fas fa-quote-right quote"></i></div>
+            <div class="footer">
+            <div class="image"><img src="./DP3.jpg" alt="Image 1"></div>
+            <h3 class='person'>Mary</h3></div>
+        </div>
+        </div>    
     </div>
 </template>
   
@@ -312,13 +334,13 @@ button:hover {
     max-width: 100%;
     box-sizing: border-box;
     padding: 5px;
+    margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
     font-size: 40px;
 }
 #timeline {
     display: flex;
-    background-color: #f9f9fa;
   }
   
   #timeline:hover .tl-item {
@@ -435,6 +457,73 @@ button:hover {
     background-position: center center;
     transition: filter 0.5s ease;
     filter: grayscale(100%);
+  }
+  .testimonial-container{
+    margin-top: 20px;
+    height: auto;
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start;
+    flex-wrap: wrap; 
+  }
+  .testimonial-card{
+    height: 300px;
+    width: 200px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.3);
+    display: flex;
+    flex-flow: column;
+    justify-content:space-between;
+    margin-right: 35px;
+  }
+  .text{
+    padding: 2.2em;
+    line-height: 1.7em;
+    position: relative;
+    font-size: 12px;
+  }
+  .image{
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    border: 5px solid white;
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    display:flex;
+    justify-content:center;
+    overflow: hidden;
+  }
+  .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .footer{
+    background: linear-gradient(90deg, rgba(125, 187, 238, 0) 0%, rgb(18, 96, 141) 75%);
+    height: 90px;
+    border-radius: 0 0 10px 10px;
+    position:relative; 
+  }
+  .quote{
+    font-size: 180%;
+    float: right;
+    opacity: .1;
+    transform: rotate(10deg) translate(-10px, -40px);
+    color:#4D3FA3;
+  }
+  .person{
+    color:white;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-align: center;
   }
 </style>
   
