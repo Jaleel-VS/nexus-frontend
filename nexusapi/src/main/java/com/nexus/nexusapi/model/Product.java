@@ -22,6 +22,7 @@ public class Product {
 
     private String productName;
     private String productDescription;
+    private String productImageUrl;
     private Double productPrice;
 
     @ManyToMany
