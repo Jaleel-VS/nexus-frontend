@@ -17,6 +17,6 @@ Nexus is a decentralised application that incorporates blockchain technology to 
 
 - Frontend: VueJS
 - Backend: FastAPI
-- Database: MongoDB
+- Database: PostgreSQL
 - Blockchain: Ethereum
 - Smart Contract: Solidity
