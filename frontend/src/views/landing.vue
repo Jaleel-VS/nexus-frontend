@@ -2,7 +2,7 @@
     <div class="landing-page">
         <div class="content-wrapper">
             <div class="text-section">
-                <h1>Nexus: <br> The three-way blockchain contract</h1>
+                <h1>Nexus: <br> The three-way blockchain contract 📃</h1>
                 <p>
                     Seamless transactions, guaranteed trust, and automated smart contracts—all made possible with our innovative crypto voucher system. Dive into the future of trusted business, where every party's interest is safeguarded.
                 </p>
@@ -22,9 +22,32 @@
 <script>
 import { useRouter } from 'vue-router'
 
+// import on mount
+import { onMounted } from 'vue'
+
+// api
+import { API_ENDPOINT, OTHER_CONST } from '@/config/constants.js';
+
+// import axios
+import axios from 'axios'
+
+
 export default {
     setup() {
         const router = useRouter();
+
+        // call api on mount
+        onMounted(() => {
+            axios.get(API_ENDPOINT)
+                .then(res => {
+                    console.log(res.data)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        })
+
+
 
         const displayLoginPage = () => {
             router.push('/login')
