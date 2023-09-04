@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/landing.vue';
 import Login from '../views/login.vue';
+import Application from "../views/application.vue";
 // Brand Routes
 import brandDashboard from '../views/brand/brand_dashboard.vue';
 import brandRequests from '../views/brand/brand_requests.vue';
@@ -8,6 +9,7 @@ import brandCreateVoucher from '../views/brand/brand_create_voucher.vue';
 
 // Supplier Routes
 import supplierDashboard from '../views/supplier/supplier_dashboard.vue';
+import supplierRegister from '../views/supplier/supplierRegister.vue';
 // Influencer Routes
 import influencerDashboard from '../views/influencer/influencer_dashboard.vue';
 import requestVoucher from '../views/influencer/request_voucher.vue';
@@ -25,15 +27,24 @@ const routes = [
     component: Login
   },
   {
+    path: '/application',
+    name: 'application',
+    component: Application
+  },
+  {
     path: '/brand/dashboard',
     name: 'brandDashboard',
     component: brandDashboard
-  }
-  ,
+  },
   {
     path: '/supplier/dashboard',
     name: 'supplierDashboard',
     component: supplierDashboard
+  },
+  {
+    path: '/supplier/supplierRegister',
+    name: "supplierRegister",
+    component: supplierRegister
   },
   {
     path: '/influencer/dashboard',
@@ -60,7 +71,6 @@ const routes = [
     name: 'brandCreateVoucher',
     component: brandCreateVoucher
   },
-
 
 
 ];
