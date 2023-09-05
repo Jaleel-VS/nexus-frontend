@@ -9,21 +9,35 @@
         <h1>Register as a Brand Manager</h1>
         <form id="influencer-form" action="register.php" method="post"> <!-- Use your preferred server-side language for processing form data -->
             <img src="@/assets/brand.png" />
+            <div class="name-fields">
+                <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
+        </div>    
+            <div class="form-group">
             <label for="surname">Surname:</label>
             <input type="text" id="surname" name="surname" required>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+        </div>
+            </div>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
+            <div class="name">
+                <div class="form">
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
             <span id="password-message"></span>
+        </div>
+        <div class="form">
             <label for="confirm-password">Confirm Password:</label>
             <input type="password" id="confirm-password" name="confirm-password" required>
             <span id="confirm-password-message"></span>
+        </div>
+    </div>
             <div class="button-container">
-                <button id="connect-metamask" onclick="connectMetaMask()">Connect with MetaMask</button>
+                <button id="connect-metamask" onclick="connectMetaMask()">MetaMask</button>
+                <router-link to="/login">
                 <button type="submit">Register</button>
+            </router-link>
                 <router-link to="/application">
                 <button class="join-button">Cancel</button>
             </router-link>
@@ -140,6 +154,25 @@ const passwordInput = document.getElementById('password');
 
 
 <style scoped>
+
+.name-fields {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.form-group {
+    flex: 1;
+    margin-right: 10px;
+}
+.name {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.form {
+    flex: 1;
+    margin-right: 10px;
+}
 h1 {
     font-size: 2em;
     color: #111010;
@@ -156,7 +189,7 @@ h1 {
     
 }
 .registration-form {
-    width: 400px;
+    width: 500px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;

@@ -2,17 +2,18 @@
     <div class="application-page">
         
         <div class="image" style="width: 300px; height: auto; position: absolute; top: 0; left: 0;">
-    <img src="proj_logo.png" style="width: 100%; height: 100%;" />
+    <img src="/proj_logo.png" style="width: 100%; height: 100%;" />
 </div>
 
             <div>
-                <h1>Sign up as an influencer, brand manager or supplier</h1>
+                <h1>Sign up</h1>
             </div>
             <div class="button">
             <router-link to="/login">
                 <button class="sign-in-btn">Login</button>
             </router-link>
         </div>
+
         <body>
         <div class="container">
             <div class="card">
@@ -20,7 +21,7 @@
             <img src="@/assets/influencer.png" />
             <p>You've built your own following on social, and now you're looking to track and monetize your influence. This is the account you want.</p>
             <router-link to="/influencer/influencer_register">
-                <button class="join-button">Join Now</button>
+                <button class="join-button">Register</button>
             </router-link>
         </div>
         <div class="card">
@@ -28,7 +29,7 @@
             <img src="@/assets/brand.png" />
             <p>Are you a brand manager looking to amplify your brand's reach? Join us to connect with influencers and create impactful campaigns that resonate with your target audience.</p>
             <router-link to="/brand/brand_register">
-                <button class="join-button">Join Now</button>
+                <button class="join-button">Register</button>
             </router-link>
             
         </div>
@@ -37,7 +38,7 @@
             <img src="@/assets/supplier.png" />
             <p>Are you a supplier interested in collaborating with brands and influencers? Join us to showcase your products and services, and be a vital part of innovative influencer campaigns.</p>
             <router-link to="/supplier/supplier_register">
-                <button class="join-button">Join Now</button>
+                <button class="join-button">Register</button>
             </router-link>
         </div>
         </div>
@@ -87,11 +88,11 @@ export default {
 
 <style scoped>
 h1 {
-    font-size: 2em;
+    font-size: 4em;
     color: #111010;
-    margin-top: 150px;
-    align-items: center;
-    margin-left: 450px;
+    margin-top: 80px;
+    margin-left: 42%;
+    
 }
 
 .buttons {
@@ -109,7 +110,6 @@ button {
 }
 .image {
     position: absolute;
-    background-color: #fff;
     width: 50px;
     height: auto;
     top: 0;
@@ -154,6 +154,7 @@ body {
     text-align: center;
     border-radius: 8px;
     width: 300px;
+    height: 350px;
     margin: 20px;
     margin-bottom: 400px;
 }
