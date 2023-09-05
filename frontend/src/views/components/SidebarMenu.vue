@@ -1,5 +1,5 @@
 <script setup>
-import { shallowRef, defineProps } from 'vue';
+import { shallowRef} from 'vue';
 import { RouterLink } from 'vue-router';
 import IconAngle from './icons/IconAngle.vue';
 
