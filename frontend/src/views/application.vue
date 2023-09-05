@@ -19,7 +19,7 @@
             <h2>Influencer</h2>
             <img src="@/assets/influencer.png" />
             <p>You've built your own following on social, and now you're looking to track and monetize your influence. This is the account you want.</p>
-            <router-link to="/InfluencerRegister">
+            <router-link to="/influencer/influencer_register">
                 <button class="join-button">Join Now</button>
             </router-link>
         </div>
@@ -27,7 +27,7 @@
             <h2>Brand Manager</h2>
             <img src="@/assets/brand.png" />
             <p>Are you a brand manager looking to amplify your brand's reach? Join us to connect with influencers and create impactful campaigns that resonate with your target audience.</p>
-            <router-link to="/BrandRegister">
+            <router-link to="/brand/brand_register">
                 <button class="join-button">Join Now</button>
             </router-link>
             
