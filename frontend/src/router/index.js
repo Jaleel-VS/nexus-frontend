@@ -72,6 +72,18 @@ const routes = [
     component: brandCreateVoucher
   },
 
+  
+  {
+    path: '/dashy',
+    name: 'dashy',
+    component: dashy,
+    children: [
+      { path: '/red', component: () => import('../views/pages/Red.vue') },
+      { path: '/yellow', component: () => import('../views/pages/Yellow.vue') },
+      { path: '/blue', component: () => import('../views/pages/Blue.vue') },
+    ],
+  },
+
 
 ];
 
