@@ -1,7 +1,13 @@
 <template>
+
+
+
   <div class="login-page">
+    <div class="login-background-image">
+      <img src="@/assets/blockchain.jpg" alt="Background Image" />
+    </div>
     <div class="login-wrapper">
-      <h2>Sign In</h2>
+      <h2>Login</h2>
       <div v-if="error" class="error-message">
         <i class="fas fa-exclamation-circle"></i> {{ error }}
       </div>
@@ -13,14 +19,49 @@
         <i class="fas fa-lock"></i>
         <input v-model="password" type="password" placeholder="Password" />
       </div>
-      <button @click="handleLogin" class="sign-in-btn">
+      <!-- Add Remember Me checkbox and Forgot Password link here -->
+      <div class="remember-forgot">
+        <div class="remember-me">
+          <input type="checkbox" id="remember_me" />
+          <label for="remember_me">Remember me</label>
+        </div>
+        <div class="forget-pw">
+          <a href="#">Forgot password?</a>
+        </div>
+      </div>
+      
+      <button @click="handleLogin" class="login-btn">
         <span v-if="loading" class="spinner"></span>
-        <span v-else>Sign In</span>
+        <span v-else>Login</span>
       </button>
+      
+      <div class="apply-section">
+        <label>Don't have an account?</label>
+        <a href="#">Apply</a>
+      </div>
 
+      
+<div class="centered-login">
+  <div class="login-google">
+    <a href="#" class="login-google-link"> </a>
+      <img src="@/assets/google_logo.png" alt="Google Logo" />
+      Login with Google
+    
+  </div>
+  </div>
+    
     </div>
   </div>
+<div class="footer">
+  <div class="footer-links">
+    <a href="#">Terms of Service</a>
+    <a href="#">Privacy Notice</a>
+    <a href="#">Terms and Conditions</a>
+  </div>
+</div>
+  
 </template>
+
 
 <script>
 import { ref } from 'vue';
@@ -59,7 +100,6 @@ export default {
 
         console.log("User details:")
         console.log(userStore.details);
-      
 
         switch ((role.toLowerCase())) {
           case 'supplier':
@@ -90,6 +130,28 @@ export default {
 </script>
 
 <style scoped>
+.centered-login {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.login-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Place the background image behind the login form */
+  overflow: hidden;
+}
+
+.login-background-image img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
+}
 .login-page {
   display: flex;
   align-items: center;
@@ -98,8 +160,17 @@ export default {
   width: 100vw;
   font-family: 'Arial', sans-serif;
   background-color: #f7f7f7;
-}
+  
 
+}
+.login-google{
+  justify-content: centre;
+  display: display;
+  width: 20px;
+  align-items: center; 
+
+  
+}
 .login-wrapper {
   width: 30%;
   max-width: 400px;
@@ -107,10 +178,14 @@ export default {
   border: 1px solid #ccc;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  opacity: 2;
+  background-color: #f7f7f7;
+  position: relative;
+  z-index: 1; /* Ensure the login form is above the background image */
+  
 }
 
 h2 {
@@ -123,6 +198,36 @@ h2 {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+.remember-forgot {
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  gap: 10px; /* Add spacing between Remember Me and Forgot Password */
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.forget-pw a {
+  color: #007bff;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.apply-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px; /* Add top margin for spacing */
+}
+
+.apply-section a {
+  color: #007bff;
+  text-decoration: none;
+  margin-left: 5px; /* Add left margin for spacing */
 }
 
 .spinner {
@@ -146,7 +251,7 @@ h2 {
   }
 }
 
-.sign-in-btn {
+.login-btn {
   background-color: #007bff;
   color: #fff;
   font-size: 1.2em;
@@ -155,6 +260,8 @@ h2 {
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;
+  justify-content: center;
+  display: flex;
 }
 
 input {
@@ -181,5 +288,25 @@ input {
   h2 {
     font-size: 1.5em;
   }
+}
+
+.footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer-links {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #007bff;
+}
+
+/* Style for the links on hover */
+.footer-links a:hover {
+  text-decoration: underline;
 }
 </style>
