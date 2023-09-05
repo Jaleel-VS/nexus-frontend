@@ -33,17 +33,17 @@
         </header>
         <div class="image-container">
             <div class="image-wrapper">
-                <img src="./catalogue.png" alt="Image 1">
+                <img src="../assets/LandingPage_catalogue.png" alt="Image 1">
                 <b><p>Broad Catalogue</p></b>
                 <p>Extensive merchant network gives you direct access to hundreds of premier global brands across multiple sectors.</p>
             </div>
             <div class="image-wrapper">
-                <img src="./trackandreport.png" alt="Image 2">
+                <img src="../assets/LandingPage_trackandreport.png" alt="Image 2">
                 <b><p>Tracking and Reporting</p></b>
                 <p>Blockchain technology allows you to easily manage and track all your vouchers and progress in one place.</p>
             </div>
             <div class="image-wrapper">
-                <img src="./quickeasy.png" alt="Image 3">
+                <img src="../assets/LandingPage_quickeasy.png" alt="Image 3">
                 <b><p>Quick and Easy</p></b>
                 <p>We would like to help you as fast as we can, in doing so signing up is very easy. </p>
             </div>
@@ -120,19 +120,19 @@
         <div class="testimonial-card">
             <div class="text">Hello<i class="fas fa-quote-right quote"></i></div>
             <div class="footer">
-            <div class="image"><img src="./DP1.jpg" alt="Image 1"></div>
+            <div class="image"><img src="../assets/Testimonial_DP1.jpg" alt="Image 1"></div>
             <h3 class='person'>Paul</h3></div>
         </div>
         <div class="testimonial-card">
             <div class="text">Hello<i class="fas fa-quote-right quote"></i></div>
             <div class="footer">
-            <div class="image"><img src="./DP2.jpg" alt="Image 1"></div>
+            <div class="image"><img src="../assets/Testimonial_DP2.jpg" alt="Image 1"></div>
             <h3 class='person'>Elizabeth</h3></div>
         </div>
         <div class="testimonial-card">
             <div class="text">Hello<i class="fas fa-quote-right quote"></i></div>
             <div class="footer">
-            <div class="image"><img src="./DP3.jpg" alt="Image 1"></div>
+            <div class="image"><img src="../assets/Testimonial_DP3.jpg" alt="Image 1"></div>
             <h3 class='person'>Mary</h3></div>
         </div>
         </div>    

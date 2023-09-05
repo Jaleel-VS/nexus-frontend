@@ -5,7 +5,7 @@
     <img src="proj_logo.png" style="width: 100%; height: 100%;" />
 </div>
 
-            <div class="text-section">
+            <div>
                 <h1>Sign up as an influencer, brand manager or supplier</h1>
             </div>
             <div class="button">
@@ -19,7 +19,7 @@
             <h2>Influencer</h2>
             <img src="@/assets/influencer.png" />
             <p>You've built your own following on social, and now you're looking to track and monetize your influence. This is the account you want.</p>
-            <router-link to="/InfluencerRegister">
+            <router-link to="/influencer/influencer_register">
                 <button class="join-button">Join Now</button>
             </router-link>
         </div>
@@ -27,7 +27,7 @@
             <h2>Brand Manager</h2>
             <img src="@/assets/brand.png" />
             <p>Are you a brand manager looking to amplify your brand's reach? Join us to connect with influencers and create impactful campaigns that resonate with your target audience.</p>
-            <router-link to="/BrandRegister">
+            <router-link to="/brand/brand_register">
                 <button class="join-button">Join Now</button>
             </router-link>
             
@@ -36,7 +36,7 @@
             <h2>Supplier</h2>
             <img src="@/assets/supplier.png" />
             <p>Are you a supplier interested in collaborating with brands and influencers? Join us to showcase your products and services, and be a vital part of innovative influencer campaigns.</p>
-            <router-link to="/supplierRegister">
+            <router-link to="/supplier/supplier_register">
                 <button class="join-button">Join Now</button>
             </router-link>
         </div>
@@ -148,7 +148,7 @@ body {
 
 
 .card {
-    background-color: darkgrey;
+    background-color: rgb(255, 255, 255);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     padding: 20px;
     text-align: center;

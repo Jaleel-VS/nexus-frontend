@@ -2,20 +2,21 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/landing.vue';
 import Login from '../views/login.vue';
 import Application from "../views/application.vue";
+import Dashy from '../views/dashy.vue';
 // Brand Routes
 import brandDashboard from '../views/brand/brand_dashboard.vue';
 import brandRequests from '../views/brand/brand_requests.vue';
 import brandCreateVoucher from '../views/brand/brand_create_voucher.vue';
 import brandT from '../views/brand/brand_dash_test.vue';
-
+import brand_register from '../views/brand/brand_register.vue';
 // Supplier Routes
 import supplierDashboard from '../views/supplier/supplier_dashboard.vue';
-import supplierRegister from '../views/supplier/supplierRegister.vue';
+import supplier_register from '../views/supplier/supplier_register.vue';
 // Influencer Routes
 import influencerDashboard from '../views/influencer/influencer_dashboard.vue';
 import requestVoucher from '../views/influencer/request_voucher.vue';
 import influencerRequests from '../views/influencer/influencer_requests.vue';
-
+import influencer_register from '../views/influencer/influencer_register.vue';
 const routes = [
   {
     path: '/',
@@ -33,6 +34,11 @@ const routes = [
     component: Application
   },
   {
+    path: '/dashy',
+    name: 'dashy',
+    component: Dashy
+  },
+  {
     path: '/brand/dashboard',
     name: 'brandDashboard',
     component: brandDashboard
@@ -43,9 +49,19 @@ const routes = [
     component: supplierDashboard
   },
   {
-    path: '/supplier/supplierRegister',
-    name: "supplierRegister",
-    component: supplierRegister
+    path: '/supplier/supplier_register',
+    name: 'supplier_register',
+    component: supplier_register
+  },
+  {
+    path: '/brand/brand_register',
+    name: 'brand_register',
+    component: brand_register
+  },
+  {
+    path: '/influencer/influencer_register',
+    name: 'influencer_register',
+    component: influencer_register
   },
   {
     path: '/influencer/dashboard',
