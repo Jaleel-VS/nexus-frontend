@@ -1,12 +1,11 @@
 <script setup>
-import { shallowRef } from 'vue';
+import { shallowRef, defineProps } from 'vue';
 import { RouterLink } from 'vue-router';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import IconAngle from './icons/IconAngle.vue';
-import IconEmail from './icons/IconEmail.vue';
-import IconEmployeeGroup from './icons/IconEmployeeGroup.vue';
-import IconExclamation from './icons/IconExclamation.vue';
-import IconHome from './icons/IconHome.vue';
+
+const props = defineProps({
+  menuItems: Array,  // Prop for an array of menu items
+});
 
 const isSidebarOpen = shallowRef(false);
 
@@ -26,8 +25,6 @@ function toggleSidebar() {
         <li>
           <button class="sidebar-toggle" :class="isSidebarOpen ? 'toggle-button' : ''">
             <IconAngle @click="toggleSidebar" />
-            <!-- <i class="fa-solid fa-angle-right"></i> -->
-            <!-- <i class="fa-solid fa-angle-right fa-2x" @click="toggleSidebar"></i> -->
           </button>
         </li>
       </ul>
@@ -35,38 +32,12 @@ function toggleSidebar() {
       <h4 :transparent="!isSidebarOpen">Menu</h4>
 
       <ul>
-        <li>
-          <router-link to="/brandT">
-            <!-- Font awesome home -->
-            <i class="fa fa-home fa-2x"></i>
-
-
+        <!-- Loop through the menuItems array and generate menu items -->
+        <li v-for="(menuItem, index) in menuItems" :key="index">
+          <router-link :to="menuItem.path">
+            <i :class="menuItem.icon"></i>
             <Transition name="fade">
-              <span v-show="isSidebarOpen">Home</span>
-            </Transition>
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/yellow">
-            <i class="fa  fa-camera-retro fa-2x"></i>
-            <Transition name="fade">
-              <span v-show="isSidebarOpen">About</span>
-            </Transition>
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/blue">
-            <i class="fa fa-bell fa-2x"></i>
-            <Transition name="fade">
-              <span v-show="isSidebarOpen">Team</span>
-            </Transition>
-          </router-link>
-        </li>
-        <li>
-          <router-link to="/red">
-            <i class="fa fa-envelope fa-2x"></i>
-            <Transition name="fade">
-              <span v-show="isSidebarOpen">Contact</span>
+              <span v-show="isSidebarOpen">{{ menuItem.name }}</span>
             </Transition>
           </router-link>
         </li>
@@ -74,6 +45,7 @@ function toggleSidebar() {
     </aside>
   </div>
 </template>
+
 
 <style scoped lang="scss">
 @use '@/assets/scss/colors' as clr;
@@ -136,6 +108,7 @@ li {
     background-color: clr.$secondary;
   }
 }
+
 .sidebar-head {
   position: relative;
   // padding-block-end: 4rem;
