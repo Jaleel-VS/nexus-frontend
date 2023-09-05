@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/landing.vue';
 import Login from '../views/login.vue';
 import Application from "../views/application.vue";
+import Dashy from '../views/dashy.vue';
 // Brand Routes
 import brandDashboard from '../views/brand/brand_dashboard.vue';
 import brandRequests from '../views/brand/brand_requests.vue';
@@ -30,6 +31,11 @@ const routes = [
     path: '/application',
     name: 'application',
     component: Application
+  },
+  {
+    path: '/dashy',
+    name: 'dashy',
+    component: Dashy
   },
   {
     path: '/brand/dashboard',
@@ -86,7 +92,7 @@ const routes = [
   {
     path: '/dashy',
     name: 'dashy',
-    component: dashy,
+    component: Dashy,
     children: [
       { path: '/red', component: () => import('../views/pages/Red.vue') },
       { path: '/yellow', component: () => import('../views/pages/Yellow.vue') },
