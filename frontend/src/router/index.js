@@ -6,6 +6,7 @@ import Application from "../views/application.vue";
 import brandDashboard from '../views/brand/brand_dashboard.vue';
 import brandRequests from '../views/brand/brand_requests.vue';
 import brandCreateVoucher from '../views/brand/brand_create_voucher.vue';
+import brandT from '../views/brand/brand_dash_test.vue';
 
 // Supplier Routes
 import supplierDashboard from '../views/supplier/supplier_dashboard.vue';
@@ -74,13 +75,14 @@ const routes = [
 
   
   {
-    path: '/dashy',
-    name: 'dashy',
-    component: dashy,
+    path: '/brandT',
+    name: 'brandT',
+    component: brandT,
     children: [
-      { path: '/red', component: () => import('../views/pages/Red.vue') },
+      { path: '', name: 'dhome', component: () => import('../views/pages/Red.vue') },
       { path: '/yellow', component: () => import('../views/pages/Yellow.vue') },
       { path: '/blue', component: () => import('../views/pages/Blue.vue') },
+      { path: '/red', component: () => import('../views/pages/Red.vue')}
     ],
   },
 
