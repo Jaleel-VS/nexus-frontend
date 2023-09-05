@@ -14,10 +14,35 @@
             <input type="text" id="username" name="username" required>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
-            <button type="submit">Register</button>
+            <div class="button-container">
+                <button id="connect-metamask" onclick="connectMetaMask()">Connect with MetaMask</button>
+                <button type="submit">Register</button>
+            </div>
         </form>
     </div>
 </template>
+
+<script>
+function connectMetaMask() {
+    if (typeof window.ethereum !== 'undefined') {
+        // MetaMask is available
+        ethereum
+            .request({ method: 'eth_requestAccounts' })
+            .then((accounts) => {
+                const userAddress = accounts[0];
+                // You can now use the user's Ethereum address in your registration process
+                alert('Connected to MetaMask. Ethereum Address: ' + userAddress);
+            })
+            .catch((error) => {
+                console.error(error);
+                alert('MetaMask connection failed. Please check your MetaMask setup.');
+            });
+    } else {
+        // MetaMask is not available
+        alert('MetaMask is not installed. Please install MetaMask to continue.');
+    }
+}
+</script>
 
 
 <style scoped>
@@ -58,4 +83,10 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+.button-container button {
+  margin-bottom: 15px; 
+}
+
+
 </style>
