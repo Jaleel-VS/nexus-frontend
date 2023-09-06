@@ -11,6 +11,7 @@ import brand_register from '../views/brand/brand_register.vue';
 // Supplier Routes
 import supplierDashboard from '../views/supplier/supplier_dashboard.vue';
 import supplier_register from '../views/supplier/supplier_register.vue';
+import supplier_redeem from '../views/supplier/supplier_redeem.vue';
 // Influencer Routes
 import influencerDashboard from '../views/influencer/influencer_dashboard.vue';
 import requestVoucher from '../views/influencer/request_voucher.vue';
@@ -52,6 +53,11 @@ const routes = [
     path: '/supplier/supplier_register',
     name: 'supplier_register',
     component: supplier_register
+  },
+  {
+    path: '/supplier/supplier_redeem',
+    name: 'supplier_redeem',
+    component: supplier_redeem
   },
   {
     path: '/brand/brand_register',
