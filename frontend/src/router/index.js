@@ -12,6 +12,7 @@ import brand_register from '../views/brand/brand_register.vue';
 import supplierDashboard from '../views/supplier/supplier_dashboard.vue';
 import supplier_register from '../views/supplier/supplier_register.vue';
 import supplier_redeem from '../views/supplier/supplier_redeem.vue';
+import supplier_metrics from '../views/supplier/supplier_metrics.vue';
 // Influencer Routes
 import influencerDashboard from '../views/influencer/influencer_dashboard.vue';
 import requestVoucher from '../views/influencer/request_voucher.vue';
@@ -44,15 +45,16 @@ const routes = [
     name: 'brandDashboard',
     component: brandDashboard
   },
-  {
-    path: '/supplier/dashboard',
-    name: 'supplierDashboard',
-    component: supplierDashboard
-  },
+  
   {
     path: '/supplier/supplier_register',
     name: 'supplier_register',
     component: supplier_register
+  },
+  {
+    path: '/supplier/supplier_metrics',
+    name: 'supplier_metrics',
+    component: supplier_metrics
   },
   {
     path: '/supplier/supplier_redeem',
@@ -118,6 +120,15 @@ const routes = [
       { path: '/blue', component: () => import('../views/pages/Blue.vue') },
       { path: '/red', component: () => import('../views/pages/Red.vue')}
     ],
+  },
+  {
+    path: '/supplier/dashboard',
+    name: 'supplierDashboard',
+    component: supplierDashboard,
+    children: [
+      {path: '', name: 'supplier_redeem', component: () => import('../views/supplier/supplier_redeem.vue')},
+      {path: '', name: 'supplier_metrics', component: () => import('../views/supplier/supplier_metrics.vue')}
+    ]
   },
 
 

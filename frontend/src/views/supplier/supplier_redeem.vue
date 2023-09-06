@@ -1,7 +1,5 @@
 <template>
-    <div class="image" style="width: 300px; height: auto; position: absolute; top: 0; left: 0;">
-    <img src="/proj_logo.png" style="width: 100%; height: 100%;" />
-</div>
+    
     <h1>Redeem Voucher</h1>
     <div class="button">
             <router-link to="/login">
@@ -55,14 +53,6 @@ h1 {
     align-items: center;
     margin-left: 45%;
     margin-top: 90px;
-}
-.image {
-    position: absolute;
-    width: 50px;
-    height: auto;
-    top: 0;
-    left: 200px;
-    
 }
 .buttons {
     display: flex;
