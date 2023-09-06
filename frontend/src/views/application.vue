@@ -92,7 +92,7 @@ h1 {
     color: #111010;
     margin-top: 80px;
     margin-left: 42%;
-    
+    animation: slideDown 1s ease-in-out forwards;
 }
 
 .buttons {
@@ -157,6 +157,7 @@ body {
     height: 350px;
     margin: 20px;
     margin-bottom: 400px;
+    animation: slideUp 1s ease-in-out forwards;
 }
 
 h2 {
@@ -212,6 +213,26 @@ p {
     .buttons {
         justify-content: center;
     }
+}
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 </style>
 
