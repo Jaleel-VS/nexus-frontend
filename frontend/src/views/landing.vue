@@ -308,10 +308,12 @@ button:hover {
 }
 .image-container {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
+    gap: 20px; 
     align-items: flex-start;
     flex-wrap: wrap; 
     margin-top: 5px; 
+    margin-inline: 40px;
 }
 
 .image-wrapper {
@@ -460,10 +462,15 @@ button:hover {
   }
   .testimonial-container{
     margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
     height: auto;
     display: flex;
-    justify-content: space-between; 
-    align-items: flex-start;
+    flex-direction: row;
+    gap: 20px;
+    justify-content:center; 
+    
+    align-items: center;
     flex-wrap: wrap; 
   }
   .testimonial-card{
