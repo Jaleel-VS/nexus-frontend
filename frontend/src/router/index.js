@@ -16,6 +16,12 @@ import influencerDashboard from '../views/influencer/influencer_dashboard.vue';
 import requestVoucher from '../views/influencer/request_voucher.vue';
 import influencerRequests from '../views/influencer/influencer_requests.vue';
 import influencer_register from '../views/influencer/influencer_register.vue';
+
+// inf dashboard
+import influencerDash from '../views/influencer/influencer_dash2.vue';
+
+
+
 const routes = [
   {
     path: '/',
@@ -82,17 +88,30 @@ const routes = [
     name: 'brandCreateVoucher',
     component: brandCreateVoucher
   },
-
+// testing ⬇
   
+  // {
+  //   path: '/brandT',
+  //   name: 'brandT',
+  //   component: brandT,
+  //   children: [
+  //     { path: '', name: 'dhome', component: () => import('../views/pages/Red.vue') },
+  //     { path: '/yellow', component: () => import('../views/pages/Yellow.vue') },
+  //     { path: '/blue', component: () => import('../views/pages/Blue.vue') },
+  //     { path: '/red', component: () => import('../views/pages/Red.vue')}
+  //   ],
+  // },
+
   {
-    path: '/brandT',
-    name: 'brandT',
-    component: brandT,
+    path: '/influencerDash',
+    name: 'influencerDash',
+    component: influencerDash,
     children: [
-      { path: '', name: 'dhome', component: () => import('../views/pages/Red.vue') },
+      { path: '', name: 'requestVouchers', component: () => import('../views/influencer/influencer_requests.vue')},
       { path: '/yellow', component: () => import('../views/pages/Yellow.vue') },
       { path: '/blue', component: () => import('../views/pages/Blue.vue') },
       { path: '/red', component: () => import('../views/pages/Red.vue')}
+
     ],
   },
 
