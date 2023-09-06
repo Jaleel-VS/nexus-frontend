@@ -61,7 +61,7 @@ h1 {
     width: 50px;
     height: auto;
     top: 0;
-    left: 100px;
+    left: 200px;
     
 }
 .buttons {
