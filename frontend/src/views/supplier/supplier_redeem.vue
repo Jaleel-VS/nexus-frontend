@@ -6,6 +6,7 @@
                 <button class="sign-in-btn">Logout</button>
             </router-link>
         </div>
+        <button class="Scan-QR-code">Scan QR code</button>
 
 </template>
 <script>
@@ -80,5 +81,14 @@ button {
 }
 button:hover {
     opacity: 0.8;
+}
+.Scan-QR-code {
+    position: absolute;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 50%;
 }
 </style>
