@@ -111,7 +111,6 @@ const routes = [
       { path: '/yellow', component: () => import('../views/pages/Yellow.vue') },
       { path: '/blue', component: () => import('../views/pages/Blue.vue') },
       { path: '/red', component: () => import('../views/pages/Red.vue')}
-
     ],
   },
 
