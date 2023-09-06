@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/landing.vue';
 import Login from '../views/login.vue';
 import Application from "../views/application.vue";
+import ChangePassword from '../views/change_password.vue';
+import Contact from '../views/contact.vue';
 // Brand Routes
 import brandDashboard from '../views/brand/brand_dashboard.vue';
 import brandRequests from '../views/brand/brand_requests.vue';
@@ -9,7 +11,7 @@ import brandCreateVoucher from '../views/brand/brand_create_voucher.vue';
 import brandT from '../views/brand/brand_dash_test.vue';
 import brand_register from '../views/brand/brand_register.vue';
 // Supplier Routes
-import supplierDashboard from '../views/supplier/supplier_dashboard.vue';
+import supplier_dashboard from '../views/supplier/supplier_dashboard.vue';
 import supplier_register from '../views/supplier/supplier_register.vue';
 import supplier_redeem from '../views/supplier/supplier_redeem.vue';
 import supplier_metrics from '../views/supplier/supplier_metrics.vue';
@@ -39,6 +41,16 @@ const routes = [
     path: '/application',
     name: 'application',
     component: Application
+  },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: Contact
+  },
+  {
+    path: '/change_password',
+    name: 'change_password',
+    component: ChangePassword
   },
   {
     path: '/brand/dashboard',
@@ -122,14 +134,17 @@ const routes = [
     ],
   },
   {
-    path: '/supplier/dashboard',
-    name: 'supplierDashboard',
-    component: supplierDashboard,
+    path: '/supplier/supplier_dashboard',
+    name: 'supplier_dashboard',
+    component: supplier_dashboard,
     children: [
-      {path: '', name: 'supplier_redeem', component: () => import('../views/supplier/supplier_redeem.vue')},
-      {path: '', name: 'supplier_metrics', component: () => import('../views/supplier/supplier_metrics.vue')}
-    ]
+      { path: '../views/supplier/supplier_redeem.vue', name: 'Redeem Voucher', component: () => import('../views/supplier/supplier_redeem.vue')},
+      { path: '../views/supplier/supplier_metrics.vue', name: 'Performance metrics', component: () => import('../views/supplier/supplier_metrics.vue')},
+      { path: '../views/change_password.vue', name: 'Change Password', component: () => import('../views/change_password.vue') },
+      { path: '../views/contact.vue', name: 'Contact', component: () => import('../views/contact.vue')}
+    ],
   },
+
 
 
 ];
