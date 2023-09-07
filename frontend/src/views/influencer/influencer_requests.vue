@@ -1,108 +1,80 @@
 <template>
-  <div class="q-pa-md">
-    <q-carousel
-      v-model="slide"
-      transition-prev="slide-right"
-      transition-next="slide-left"
-      swipeable
-      animated
-      control-color="amber"
-      navigation
-      padding
-      arrows
-      height="300px"
-      class="bg-grey-9 shadow-2 rounded-borders"
-    >
-      <q-carousel-slide :name="1" class="column no-wrap">
-        <div class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
-          <q-img class="rounded-borders col-6 full-height" src="https://cdn.quasar.dev/img/mountains.jpg" />
-          <q-img class="rounded-borders col-6 full-height" src="https://cdn.quasar.dev/img/parallax1.jpg" />
-        </div>
-      </q-carousel-slide>
-      <q-carousel-slide :name="2" class="column no-wrap">
-        <div class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
-          <q-img class="rounded-borders col-6 full-height" src="https://cdn.quasar.dev/img/parallax2.jpg" />
-          <q-img class="rounded-borders col-6 full-height" src="https://cdn.quasar.dev/img/quasar.jpg" />
-        </div>
-      </q-carousel-slide>
-      <q-carousel-slide :name="3" class="column no-wrap">
-        <div class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
-          <q-img class="rounded-borders col-6 full-height" src="https://cdn.quasar.dev/img/cat.jpg" />
-          <q-img class="rounded-borders col-6 full-height" src="https://cdn.quasar.dev/img/linux-avatar.png" />
-        </div>
-      </q-carousel-slide>
-      <q-carousel-slide :name="4" class="column no-wrap">
-        <div class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
-          <q-img class="rounded-borders col-6 full-height" src="https://cdn.quasar.dev/img/material.png" />
-          <q-img class="rounded-borders col-6 full-height" src="https://cdn.quasar.dev/img/donuts.png" />
-        </div>
-      </q-carousel-slide>
-    </q-carousel>
+  <div class="carousel">
+    <button @click="moveCarousel(-1)" :disabled="isLeftDisabled">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <div class="carousel-container">
+      <div
+        v-for="(item, index) in visibleItems"
+        :key="index"
+        :class="{ 'carousel-item-selected': selectedIndex === index }"
+        @click="selectItem(index)"
+      >
+        {{ item }}
+      </div>
+    </div>
+    <button @click="moveCarousel(1)" :disabled="isRightDisabled">
+      <i class="fas fa-chevron-right"></i>
+    </button>
   </div>
 </template>
 
-<script>
-import { ref } from 'vue'
+<script setup>
+import { ref, computed } from 'vue';
 
-export default {
-  setup () {
-    return {
-      slide: ref(1)
-    }
-  }
-}
+const items = ref(['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6']);
+const selectedIndex = ref(0);
+
+const itemsPerPage = 3;
+const currentPage = ref(0);
+
+const visibleItems = computed(() => {
+  const start = currentPage.value * itemsPerPage;
+  return items.value.slice(start, start + itemsPerPage);
+});
+
+const isLeftDisabled = computed(() => currentPage.value === 0);
+const isRightDisabled = computed(() => currentPage.value === Math.ceil(items.value.length / itemsPerPage) - 1);
+
+const moveCarousel = (step) => {
+  currentPage.value += step;
+};
+
+const selectItem = (index) => {
+  selectedIndex.value = index;
+};
 </script>
 
-
-<style scoped lang="scss">
-.main {
-    background-color: #e6fcff;
-    background-color: pink;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #0b2c5c;
-    // justify-content: center;
+<style scoped>
+.carousel {
+  display: flex;
+  align-items: center;
 }
 
-.subtitle {
-    // color: white;
-    font-size: 1.5em;
-    margin: 10px 0;
+.carousel-container {
+  display: flex;
+  overflow: hidden;
+  transition: transform 0.3s;
 }
 
-input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.carousel-container > div {
+  flex: 0 0 33.33%;
 }
 
-header {
-    // color: white;
-    font-size: 2em;
-    margin: 10px 0;
+.carousel-item-selected {
+  background-color: lightblue;
 }
 
-
-
-.submit-btn {
-    background-color: #007bff;
-    // color: #fff;
-    font-size: 1.2em;
-    border-radius: 5px;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    justify-content: center;
-    display: flex;
+button {
+  margin: 0 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
 }
 
-.submit-btn:hover {
-    background-color: #0069d9;
+button:disabled {
+  color: #ccc;
+  cursor: not-allowed;
 }
-
 </style>
-
-
