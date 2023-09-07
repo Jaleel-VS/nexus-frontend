@@ -1,5 +1,7 @@
 <template>
-    
+    <div class="image" style="width: 300px; height: auto; position: absolute; top: 0; left: 0;">
+    <img src="/proj_logo.png" style="width: 100%; height: 100%;" />
+</div>
     <h1>Redeem Voucher</h1>
     <div class="button">
             <router-link to="/login">
@@ -52,7 +54,7 @@ h1 {
     font-size: 2em;
     color: #111010;
     align-items: center;
-    margin-left: 45%;
+    margin-left: 40%;
     margin-top: 90px;
 }
 .buttons {
@@ -89,6 +91,15 @@ button:hover {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-left: 50%;
+    margin-left: 42%;
+    margin-top: 100px;
+}
+.image {
+    position: absolute;
+    width: 50px;
+    height: auto;
+    top: 0;
+    margin-left: 200px;
+    
 }
 </style>

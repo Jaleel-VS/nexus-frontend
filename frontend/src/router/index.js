@@ -10,11 +10,13 @@ import brandRequests from '../views/brand/brand_requests.vue';
 import brandCreateVoucher from '../views/brand/brand_create_voucher.vue';
 import brandT from '../views/brand/brand_dash_test.vue';
 import brand_register from '../views/brand/brand_register.vue';
+import brand_viewvoucher from '../views/brand/brand_viewvoucher.vue';
 // Supplier Routes
 import supplier_dashboard from '../views/supplier/supplier_dashboard.vue';
 import supplier_register from '../views/supplier/supplier_register.vue';
 import supplier_redeem from '../views/supplier/supplier_redeem.vue';
 import supplier_metrics from '../views/supplier/supplier_metrics.vue';
+import supplier_viewvoucher from '../views/supplier/supplier_viewvoucher.vue';
 // Influencer Routes
 import influencerDashboard from '../views/influencer/influencer_dashboard.vue';
 import requestVoucher from '../views/influencer/request_voucher.vue';
@@ -57,7 +59,6 @@ const routes = [
     name: 'brandDashboard',
     component: brandDashboard
   },
-  
   {
     path: '/supplier/supplier_register',
     name: 'supplier_register',
@@ -69,6 +70,11 @@ const routes = [
     component: supplier_metrics
   },
   {
+    path: '/supplier/supplier_viewvoucher',
+    name: 'supplier_viewvoucher',
+    component: supplier_viewvoucher
+  },
+  {
     path: '/supplier/supplier_redeem',
     name: 'supplier_redeem',
     component: supplier_redeem
@@ -77,6 +83,11 @@ const routes = [
     path: '/brand/brand_register',
     name: 'brand_register',
     component: brand_register
+  },
+  {
+    path: '/brand/brand_viewvoucher',
+    name: 'brand_viewvoucher',
+    component: brand_viewvoucher
   },
   {
     path: '/influencer/influencer_register',
@@ -138,10 +149,11 @@ const routes = [
     name: 'supplier_dashboard',
     component: supplier_dashboard,
     children: [
-      { path: '../views/supplier/supplier_redeem.vue', name: 'Redeem Voucher', component: () => import('../views/supplier/supplier_redeem.vue')},
-      { path: '../views/supplier/supplier_metrics.vue', name: 'Performance metrics', component: () => import('../views/supplier/supplier_metrics.vue')},
-      { path: '../views/change_password.vue', name: 'Change Password', component: () => import('../views/change_password.vue') },
-      { path: '../views/contact.vue', name: 'Contact', component: () => import('../views/contact.vue')}
+      { path: '', name: 'Redeem Voucher', component: () => import('../views/supplier/supplier_redeem.vue')},
+      { path: '', name: 'Performance metrics', component: () => import('../views/supplier/supplier_metrics.vue')},
+      { path: '', name: 'Change Password', component: () => import('../views/change_password.vue') },
+      { path: '', name: 'Contact', component: () => import('../views/contact.vue')},
+      { path: '', name: 'View Vouchers', component: () => import('../views/supplier/supplier_viewvoucher.vue')}
     ],
   },
 
