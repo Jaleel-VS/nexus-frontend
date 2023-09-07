@@ -48,10 +48,13 @@ h2 {
 .brand-cards {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  // align-items: center;
+  // justify-content: center;
+  align-items: baseline;
+  justify-content: flex-start;
   gap: 1rem;
   flex-wrap: wrap;
-  width: 100%;
+  width: 50%;
 }
 
 // add light shadow to cards

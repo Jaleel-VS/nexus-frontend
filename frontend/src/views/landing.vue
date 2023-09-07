@@ -3,11 +3,11 @@
         <nav class="nav-bar">
             <div class="container">
             <ul>
-                <li><a href="#"><b>About</b></a></li>
-                <li><a href="#"><b>Security and Privacy</b></a></li>
-                <li><a href="#"><b>Testimonials</b></a></li>
-                <li><a href="#"><b>FAQ Section</b></a></li>
-                <li><a href="#"><b>Contact</b></a></li>
+                <li><a href="#"><h3>About</h3></a></li>
+                <li><a href="#"><h3>Security and Privacy</h3></a></li>
+                <li><a href="#"><h3>Testimonials</h3></a></li>
+                <li><a href="#"><h3>FAQ Section</h3></a></li>
+                <li><a href="#"><h3>Contact</h3></a></li>
             </ul>
             </div>
         </nav>
@@ -34,17 +34,17 @@
         <div class="image-container">
             <div class="image-wrapper">
                 <img src="../assets/LandingPage_catalogue.png" alt="Image 1">
-                <b><p>Broad Catalogue</p></b>
+                <h3><p>Broad Catalogue</p></h3>
                 <p>Extensive merchant network gives you direct access to hundreds of premier global brands across multiple sectors.</p>
             </div>
             <div class="image-wrapper">
                 <img src="../assets/LandingPage_trackandreport.png" alt="Image 2">
-                <b><p>Tracking and Reporting</p></b>
+                <h3><p>Tracking and Reporting</p></h3>
                 <p>Blockchain technology allows you to easily manage and track all your vouchers and progress in one place.</p>
             </div>
             <div class="image-wrapper">
                 <img src="../assets/LandingPage_quickeasy.png" alt="Image 3">
-                <b><p>Quick and Easy</p></b>
+                <h3><p>Quick and Easy</p></h3>
                 <p>We would like to help you as fast as we can, in doing so signing up is very easy. </p>
             </div>
             
