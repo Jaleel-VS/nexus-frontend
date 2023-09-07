@@ -7,8 +7,8 @@
             <p>Influencer: {{ voucher.influencer.name }}</p>
             <p>Brand: {{ voucher.brand.name }}</p>
             <p>Supplier: {{ voucher.supplier.name }}</p>
-            <button @click="toggleVoucherDetails(index)">Click here to see Voucher details</button>
-            <div v-if="voucherDetailsVisible[index]">
+            <button @click="toggleVoucherDetails(index)">Click here to see Voucher details</button> 
+            <div v-if="voucherDetailsVisible[index]"> 
             <p>Product: {{ voucher.product.name }}</p>
             <p>Created Date: {{ voucher.createdDate }}</p>
             <p>Expiry Date: {{ voucher.expiryDate }}</p>
