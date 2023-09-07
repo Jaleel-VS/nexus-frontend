@@ -92,7 +92,7 @@ button:hover {
     border-radius: 5px;
     cursor: pointer;
     margin-left: 42%;
-    margin-top: 100px;
+    margin-top: 200px;
 }
 .image {
     position: absolute;
