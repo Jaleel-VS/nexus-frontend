@@ -1,6 +1,10 @@
-import './assets/main.css'
+
 
 import 'the-new-css-reset/css/reset.css'
+
+import 'vue3-carousel/dist/carousel.css'
+
+import './assets/main.css'
 
 
 import { createApp } from 'vue'
