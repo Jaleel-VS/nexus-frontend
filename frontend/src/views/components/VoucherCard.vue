@@ -18,7 +18,7 @@
               <label for="label1">Supplier ID:</label>
             </div>
             <div class="textbox">
-              <input type="text" v-model="supplierId">
+              <p> {{ voucherdetails.supplierId }}</p>
             </div>
           </div>
   
@@ -27,7 +27,7 @@
               <label for="label2">Product:</label>
             </div>
             <div class="textbox">
-              <input type="text" v-model="product">
+              <p> {{ voucherdetails.product }}</p>
             </div>
           </div>
   
@@ -36,7 +36,7 @@
               <label for="label3">Expiry Date:</label>
             </div>
             <div class="textbox">
-              <input type="text" v-model="expiryDate">
+              <p> {{ voucherdetails.expiryDate }}</p>
             </div>
           </div>
   
@@ -45,7 +45,7 @@
               <label for="label4">Amount:</label>
             </div>
             <div class="textbox">
-              <input type="text" v-model="amount">
+              <p> {{ voucherdetails.amount }}</p>
             </div>
           </div>
         </div>
@@ -53,23 +53,16 @@
     </div>
   </template>
   
-  <script>
-  export default {
-    data() {
-      return {
-        isFlipped: false,
-        supplierId: '',
-        product: '',
-        expiryDate: '',
-        amount: '',
-      };
-    },
-    methods: {
-      flipCard() {
-        this.isFlipped = !this.isFlipped;
-      },
-    },
-  };
+  <script setup>
+      import { shallowRef } from 'vue';
+        const isFlipped =  shallowRef(false);
+        const props = defineProps({
+          voucherdetails: Array, 
+        })
+        
+      function flipCard() {
+        isFlipped.value = !isFlipped.value;
+      }
   </script>
   
   <style scoped>
@@ -81,7 +74,7 @@
   border-radius: 10px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
   perspective: 1000px;
-  display: flex; /* Remove this if you don't want the 3D effect */
+  display: flex; 
 }
 
 /* .flip-card-inner styles */
@@ -100,13 +93,13 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
 /* .flip-card-front styles */
 .flip-card-front {
-  background-image: url(../assets/VoucherCardBackground);
+  background-image: url(../../assets/VoucherCardBackground.png);
   background-size: cover;
   color: #f9f9f9;
 }
@@ -125,6 +118,7 @@
 
 /* .flip-card-back styles */
 .flip-card-back {
+  background-color: grey;
   transform: rotateY(180deg);
 }
 
@@ -155,23 +149,23 @@
 /* .label-and-textbox styles */
 .label-and-textbox {
   display: flex;
+  margin-top: 5px;
   margin-bottom: 8px;
+  align-items: center;
 }
-
 /* .label styles */
 .label {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 0.8rem;
-  margin-left: 5px;
-  margin-right: 10px;
+  margin-left: 20px;
+  margin-right: 15px;
   white-space: nowrap;
 }
-
 /* .textbox styles */
 .textbox {
   display: inline-block;
-  text-align: right;
-  margin-right: 5px;
+  font-size: 0.8rem;
+  text-align: center;
   max-width: 100%;
   width: 100%;
 }

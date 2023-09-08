@@ -6,11 +6,14 @@ import Application from "../views/application.vue";
 import brandDashboard from '../views/brand/brand_dashboard.vue';
 import brandRequests from '../views/brand/brand_requests.vue';
 import brandCreateVoucher from '../views/brand/brand_create_voucher.vue';
-import brandT from '../views/brand/brand_dash_test.vue';
+import brandDash from '../views/brand/brand_dash2.vue';
 import brand_register from '../views/brand/brand_register.vue';
+import brand_viewvoucher from '../views/brand/brand_viewvoucher.vue';
 // Supplier Routes
 import supplierDashboard from '../views/supplier/supplier_dashboard.vue';
 import supplier_register from '../views/supplier/supplier_register.vue';
+import supplier_redeem from '../views/supplier/supplier_redeem.vue';
+import supplier_metrics from '../views/supplier/supplier_metrics.vue';
 // Influencer Routes
 import influencerDashboard from '../views/influencer/influencer_dashboard.vue';
 import requestVoucher from '../views/influencer/request_voucher.vue';
@@ -51,20 +54,36 @@ const routes = [
     name: 'brandDashboard',
     component: brandDashboard
   },
-  {
-    path: '/supplier/dashboard',
-    name: 'supplierDashboard',
-    component: supplierDashboard
-  },
+  
   {
     path: '/supplier/supplier_register',
     name: 'supplier_register',
     component: supplier_register
   },
   {
+    path: '/supplier/supplier_metrics',
+    name: 'supplier_metrics',
+    component: supplier_metrics
+  },
+  {
+    path: '/supplier/supplier_viewvoucher',
+    name: 'supplier_viewvoucher',
+    component: supplier_viewvoucher
+  },
+  {
+    path: '/supplier/supplier_redeem',
+    name: 'supplier_redeem',
+    component: supplier_redeem
+  },
+  {
     path: '/brand/brand_register',
     name: 'brand_register',
     component: brand_register
+  },
+  {
+    path: '/brand/brand_viewvoucher',
+    name: 'brand_viewvoucher',
+    component: brand_viewvoucher
   },
   {
     path: '/influencer/influencer_register',
@@ -122,6 +141,32 @@ const routes = [
       { path: '/red', component: () => import('../views/pages/Red.vue')}
     ],
   },
+  {
+    path: '/brandDash',
+    name: 'brandDash',
+    component: brandDash,
+    children: [
+      { path: '', name: 'brand_requests', component: () => import('../views/brand/brand_requests2.vue')},
+      { path: '/yellow', component: () => import('../views/pages/Yellow.vue') },
+      { path: '/blue', component: () => import('../views/pages/Blue.vue') },
+      { path: '/red', component: () => import('../views/pages/Red.vue')}
+    ],
+  },
+
+  
+  // {
+  //   path: '/supplier/supplier_dashboard',
+  //   name: 'supplier_dashboard',
+  //   component: supplier_dashboard,
+  //   children: [
+  //     { path: '', name: 'Redeem Voucher', component: () => import('../views/supplier/supplier_redeem.vue')},
+  //     { path: '', name: 'Performance metrics', component: () => import('../views/supplier/supplier_metrics.vue')},
+  //     { path: '', name: 'Change Password', component: () => import('../views/change_password.vue') },
+  //     { path: '', name: 'Contact', component: () => import('../views/contact.vue')},
+  //     { path: '', name: 'View Vouchers', component: () => import('../views/supplier/supplier_viewvoucher.vue')}
+  //   ],
+  // },
+
 
 
 ];
