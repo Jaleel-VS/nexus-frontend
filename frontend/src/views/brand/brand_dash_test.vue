@@ -7,10 +7,10 @@ const menuItems = ref([
   { icon: 'fa fa-home fa-2x', name: 'Home', path: '/brandT' },
   { icon: 'fa fa-camera-retro fa-2x', name: 'About', path: '/yellow' },
   { icon: 'fa fa-bell fa-2x', name: 'Team', path: '/blue' },
-  { icon: 'fa fa-envelope fa-2x', name: 'Contact', path: '/red' },
+  { icon: 'fa fa-envelope fa-2x', name: 'Contact', path: '/yellow' },
   // Add more menu items as needed
 ]);
-</script>
+</script> 
 
 <template>
   <div id="root">

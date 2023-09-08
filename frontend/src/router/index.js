@@ -2,8 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/landing.vue';
 import Login from '../views/login.vue';
 import Application from "../views/application.vue";
-import ChangePassword from '../views/change_password.vue';
-import Contact from '../views/contact.vue';
 // Brand Routes
 import brandDashboard from '../views/brand/brand_dashboard.vue';
 import brandRequests from '../views/brand/brand_requests.vue';
@@ -12,11 +10,10 @@ import brandDash from '../views/brand/brand_dash2.vue';
 import brand_register from '../views/brand/brand_register.vue';
 import brand_viewvoucher from '../views/brand/brand_viewvoucher.vue';
 // Supplier Routes
-import supplier_dashboard from '../views/supplier/supplier_dashboard.vue';
+import supplierDashboard from '../views/supplier/supplier_dashboard.vue';
 import supplier_register from '../views/supplier/supplier_register.vue';
 import supplier_redeem from '../views/supplier/supplier_redeem.vue';
 import supplier_metrics from '../views/supplier/supplier_metrics.vue';
-import supplier_viewvoucher from '../views/supplier/supplier_viewvoucher.vue';
 // Influencer Routes
 import influencerDashboard from '../views/influencer/influencer_dashboard.vue';
 import requestVoucher from '../views/influencer/request_voucher.vue';
@@ -25,7 +22,8 @@ import influencer_register from '../views/influencer/influencer_register.vue';
 
 // inf dashboard
 import influencerDash from '../views/influencer/influencer_dash2.vue';
-
+//brand dash test
+import popUp from '../views/pages/popup.vue'
 
 
 const routes = [
@@ -34,6 +32,13 @@ const routes = [
     name: 'home',
     component: Home
   },
+
+  {
+   path: '/popUp',
+  name: 'popUp',
+  component: popUp
+  }, 
+
   {
     path: '/login',
     name: 'login',
@@ -45,20 +50,11 @@ const routes = [
     component: Application
   },
   {
-    path: '/contact',
-    name: 'contact',
-    component: Contact
-  },
-  {
-    path: '/change_password',
-    name: 'change_password',
-    component: ChangePassword
-  },
-  {
     path: '/brand/dashboard',
     name: 'brandDashboard',
     component: brandDashboard
   },
+  
   {
     path: '/supplier/supplier_register',
     name: 'supplier_register',
@@ -119,19 +115,20 @@ const routes = [
     name: 'brandCreateVoucher',
     component: brandCreateVoucher
   },
+
 // testing ⬇
   
-  // {
-  //   path: '/brandT',
-  //   name: 'brandT',
-  //   component: brandT,
-  //   children: [
-  //     { path: '', name: 'dhome', component: () => import('../views/pages/Red.vue') },
-  //     { path: '/yellow', component: () => import('../views/pages/Yellow.vue') },
-  //     { path: '/blue', component: () => import('../views/pages/Blue.vue') },
-  //     { path: '/red', component: () => import('../views/pages/Red.vue')}
-  //   ],
-  // },
+  {
+  path: '/brandT',
+  name: 'brandT',
+  component: brandT,
+  children: [
+  { path: '', name: 'dhome', component: () => import('../views/pages/Red.vue') },
+  { path: '/yellow', component: () => import('../views/pages/Yellow.vue') },
+  { path: '/blue', component: () => import('../views/pages/Blue.vue') },
+  { path: '/red', component: () => import('../views/pages/Yellow.vue')}
+  ],
+  },
 
   {
     path: '/influencerDash',
