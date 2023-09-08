@@ -40,16 +40,6 @@
         <a href="#">Apply</a>
       </div>
 
-      
-<div class="centered-login">
-  <div class="login-google">
-    <a href="#" class="login-google-link"> </a>
-      <img src="@/assets/google_logo.png" alt="Google Logo" />
-      Login with Google
-    
-  </div>
-  </div>
-    
     </div>
   </div>
 <div class="footer">
@@ -159,17 +149,9 @@ export default {
   height: 100vh;
   width: 100vw;
   font-family: 'Arial', sans-serif;
-  background-color: #f7f7f7;
+  background-color: white;
   
 
-}
-.login-google{
-  justify-content: centre;
-  display: display;
-  width: 20px;
-  align-items: center; 
-
-  
 }
 .login-wrapper {
   width: 30%;
@@ -191,18 +173,20 @@ export default {
 h2 {
   font-size: 2em;
   text-align: center;
-  color: #111010;
+  color: black;
 }
 
 .input-wrapper {
   display: flex;
   align-items: center;
   gap: 10px;
+  color:#0b2c5c; 
 }
 .remember-forgot {
   display: flex;
   justify-content: center; /* Center content horizontally */
   gap: 10px; /* Add spacing between Remember Me and Forgot Password */
+  color: black;
 }
 
 .remember-me {
@@ -212,7 +196,7 @@ h2 {
 }
 
 .forget-pw a {
-  color: #007bff;
+  color:  #0b2c5c;
   text-decoration: none;
   margin-left: 20px;
 }
@@ -222,10 +206,10 @@ h2 {
   align-items: center;
   justify-content: center;
   margin-top: 10px; /* Add top margin for spacing */
+  color: black;
 }
-
 .apply-section a {
-  color: #007bff;
+  color: #0b2c5c;
   text-decoration: none;
   margin-left: 5px; /* Add left margin for spacing */
 }
@@ -252,7 +236,7 @@ h2 {
 }
 
 .login-btn {
-  background-color: #007bff;
+  background-color: #0b2c5c;
   color: #fff;
   font-size: 1.2em;
   border-radius: 5px;
@@ -269,6 +253,7 @@ input {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  color: #0b2c5c;
 }
 
 .error-message {
@@ -302,7 +287,7 @@ input {
 .footer-links a {
   margin: 0 10px;
   text-decoration: none;
-  color: #007bff;
+  color: #0b2c5c;
 }
 
 /* Style for the links on hover */
