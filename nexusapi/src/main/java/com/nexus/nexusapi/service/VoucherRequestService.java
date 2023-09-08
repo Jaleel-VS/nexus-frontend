@@ -13,7 +13,6 @@ import com.nexus.nexusapi.model.VoucherRequest;
 import com.nexus.nexusapi.repository.BrandRepository;
 import com.nexus.nexusapi.repository.InfluencerRepository;
 import com.nexus.nexusapi.repository.ProductRepository;
-import com.nexus.nexusapi.repository.SupplierRepository;
 import com.nexus.nexusapi.repository.VoucherRequestRepository;
 
 import java.time.LocalDate;
