@@ -19,7 +19,8 @@ import influencer_register from '../views/influencer/influencer_register.vue';
 
 // inf dashboard
 import influencerDash from '../views/influencer/influencer_dash2.vue';
-
+//brand dash test
+import popUp from '../views/pages/popup.vue'
 
 
 const routes = [
@@ -28,6 +29,13 @@ const routes = [
     name: 'home',
     component: Home
   },
+
+  {
+   path: '/popUp',
+  name: 'popUp',
+  component: popUp
+  }, 
+
   {
     path: '/login',
     name: 'login',
@@ -99,7 +107,7 @@ const routes = [
   { path: '', name: 'dhome', component: () => import('../views/pages/Red.vue') },
   { path: '/yellow', component: () => import('../views/pages/Yellow.vue') },
   { path: '/blue', component: () => import('../views/pages/Blue.vue') },
-  { path: '/red', component: () => import('../views/pages/Red.vue')}
+  { path: '/red', component: () => import('../views/pages/Yellow.vue')}
   ],
   },
 
