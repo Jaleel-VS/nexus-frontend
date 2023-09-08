@@ -20,7 +20,10 @@
                 </p>
                 <div class="buttons">
                     <button @click="displayLoginPage" class="sign-in-btn">Sign In</button>
-                    <button class="apply-btn">Apply</button>
+                    <router-link to="/application">
+                        <button class="apply-btn">Apply</button>
+                    </router-link>
+                    
                 </div>
             </div>
             <div class="image-section">
@@ -174,6 +177,8 @@ export default {
         }
 
         return { displayLoginPage }
+
+        
     }
 };
 </script>

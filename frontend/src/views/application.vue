@@ -154,7 +154,7 @@ body {
     text-align: center;
     border-radius: 8px;
     width: 300px;
-    height: 350px;
+    height: 400px;
     margin: 20px;
     margin-bottom: 400px;
     animation: slideUp 1s ease-in-out forwards;
