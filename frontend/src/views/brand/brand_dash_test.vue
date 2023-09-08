@@ -1,5 +1,6 @@
 <script setup>
 import { RouterView } from 'vue-router'
+// test
 import SidebarMenu from '@/views/components/SidebarMenu.vue';
 import { ref } from 'vue'
 
