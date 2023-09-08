@@ -68,7 +68,7 @@
 
 
   <transition name="fade">
-    <div v-if="selectedProduct">
+    <div v-if="selectedProduct && selectedBrand">
       <v-card class="mx-auto product-card" min-width="200">
         <v-img class="align-end text-white" height="200" :src="selectedProduct.image" cover>
         </v-img>

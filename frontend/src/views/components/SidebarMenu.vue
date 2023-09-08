@@ -59,8 +59,8 @@ aside {
   background: clr.$bg-dark;
   display: flex;
   flex-direction: column;
+  height: 100%;
   min-height: 100vh;
-  // max-height: 100vh;
   padding-block: 1rem;
   transition: all $toggle-duration;
   width: $sidebar-width;
