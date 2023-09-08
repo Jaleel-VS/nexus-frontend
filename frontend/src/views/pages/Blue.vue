@@ -47,7 +47,7 @@ const voucherData = ref([
 
 <style scoped lang="scss">
 .blue {
-  background-color: blue;
+  background-color:  #e6fcff;
 }
 
 /* Style for the voucher grid */
