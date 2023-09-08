@@ -182,6 +182,7 @@ function selectBrand(brand) {
 
 function deselectBrand() {
   selectedBrand.value = null;
+  selectedProduct.value = null;
 }
 
 function selectProduct(product) {
