@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <h1>Welcome, Chris</h1>
-    <h2 v-if="!selectedBrand">What brand would you like to work with?</h2>
+    <h2>What brand would you like to work with?</h2>
     <transition name="fade">
     <div v-if="!selectedBrand" class="brand-cards">
       <v-card v-for="brand in brands" class="mx-auto brand-card" min-width="200">
@@ -197,6 +197,9 @@ function deselectProduct() {
 </script>
 
 <style scoped lang="scss">
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100;400&family=DM+Serif+Display&family=Trocchi&family=Vesper+Libre&display=swap');
+
 .main {
   display: flex;
   flex-direction: column;
@@ -206,11 +209,15 @@ function deselectProduct() {
 h1 {
   font-size: 3rem;
   margin: 2rem 0;
+//  use Trocchi
+  font-family: 'Trocchi', serif;
 }
 
 h2 {
   font-size: 2rem;
   margin: 1rem 0;
+  // Trocchi
+  font-family: 'Trocchi', serif;
 }
 
 .brand-cards {
