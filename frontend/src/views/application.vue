@@ -1,4 +1,5 @@
 <template>
+    <div class="register-page">
     <div class="application-page">
         
         <div class="image" style="width: 300px; height: auto; position: absolute; top: 0; left: 0;">
@@ -17,33 +18,46 @@
         <body>
         <div class="container">
             <div class="card">
+                <div class="card-content">
             <h2>Influencer</h2>
-            <img src="@/assets/influencer.png" />
+            <div class="images" >
+                <img src="@/assets/influencer_image.png" />
+            </div>
             <p>You've built your own following on social, and now you're looking to track and monetize your influence. This is the account you want.</p>
             <router-link to="/influencer/influencer_register">
                 <button class="join-button">Register</button>
             </router-link>
         </div>
+        </div>
         <div class="card">
+            <div class="card-content">
             <h2>Brand Manager</h2>
-            <img src="@/assets/brand.png" />
+            <div class="images">
+                <img src="@/assets/brand_manager.png" />
+            </div>
             <p>Are you a brand manager looking to amplify your brand's reach? Join us to connect with influencers and create impactful campaigns that resonate with your target audience.</p>
             <router-link to="/brand/brand_register">
                 <button class="join-button">Register</button>
             </router-link>
+            </div>
             
         </div>
         <div class="card">
+            <div class="card-content">
             <h2>Supplier</h2>
-            <img src="@/assets/supplier.png" />
+            <div class="images">
+                <img src="@/assets/supplier_image.png" />
+            </div>
             <p>Are you a supplier interested in collaborating with brands and influencers? Join us to showcase your products and services, and be a vital part of innovative influencer campaigns.</p>
             <router-link to="/supplier/supplier_register">
                 <button class="join-button">Register</button>
             </router-link>
+            </div>
         </div>
         </div>
         </body>
     </div>
+</div>
 </template>
 
 <script>
@@ -87,17 +101,20 @@ export default {
 
 
 <style scoped>
+
 h1 {
     font-size: 4em;
     color: #111010;
     margin-top: 80px;
     margin-left: 42%;
     animation: slideDown 1s ease-in-out forwards;
+    
 }
 
 .buttons {
     display: flex;
     gap: 20px;
+    justify-content: center;
 }
 
 button {
@@ -110,7 +127,7 @@ button {
 }
 .image {
     position: absolute;
-    width: 50px;
+    width: 40px;
     height: auto;
     top: 0;
     left: 100px;
@@ -119,8 +136,8 @@ button {
 
 .sign-in-btn {
     position: absolute;
-    top: 20px; /* Adjust this value for desired vertical position */
-    right: 20px; /* Adjust this value for desired horizontal position */
+    top: 50px; /* Adjust this value for desired vertical position */
+    right: 50px; /* Adjust this value for desired horizontal position */
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
@@ -134,7 +151,7 @@ button:hover {
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: white;
     margin: 0;
     padding: 0;
 }
@@ -144,8 +161,16 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    
 }
 
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    height: 100%; /* Ensure the content takes full height */
+  }
 
 .card {
     background-color: rgb(255, 255, 255);
@@ -153,7 +178,7 @@ body {
     padding: 20px;
     text-align: center;
     border-radius: 8px;
-    width: 300px;
+    width: 350px;
     height: 400px;
     margin: 20px;
     margin-bottom: 400px;
@@ -187,14 +212,13 @@ p {
     background-color: #0056b3;
 }
 
-.img{
-    position: absolute;
-    top: 0;
-    left: 100px;
-    transform: translateX(-50%);
-    width: 100px;
+.images {
+    position: relative; /* Change to relative positioning */
+    margin-top: 20px; 
+    width: 90px;
     height: auto;
-  } 
+    max-width: 100%;
+  }
 
 
 @media (max-width: 768px) {
