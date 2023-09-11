@@ -161,6 +161,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    flex-wrap: wrap;
     
 }
 
@@ -169,7 +170,8 @@ body {
     flex-direction: column;
     justify-content: center; /* Center vertically */
     align-items: center; /* Center horizontally */
-    height: 100%; /* Ensure the content takes full height */
+    height: 100%;
+     /* Ensure the content takes full height */
   }
 
 .card {
@@ -183,6 +185,14 @@ body {
     margin: 20px;
     margin-bottom: 400px;
     animation: slideUp 1s ease-in-out forwards;
+    flex: 1;
+    max-width: calc(33.33% - 20px);
+}
+
+@media (max-width: 768px) {
+    .card {
+        max-width: calc(50% - 20px);
+    }
 }
 
 h2 {
