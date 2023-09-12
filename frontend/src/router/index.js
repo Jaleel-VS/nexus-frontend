@@ -6,7 +6,7 @@ import Application from "../views/application.vue";
 import brandDashboard from '../views/brand/brand_dashboard.vue';
 import brandRequests from '../views/brand/brand_requests.vue';
 import brandCreateVoucher from '../views/brand/brand_create_voucher.vue';
-import brandDash from '../views/brand/brand_dash2.vue';
+// import brandDash from '../views/brand/brand_dash2.vue';
 import brand_register from '../views/brand/brand_register.vue';
 import brand_viewvoucher from '../views/brand/brand_viewvoucher.vue';
 // Supplier Routes
@@ -65,11 +65,11 @@ const routes = [
     name: 'supplier_metrics',
     component: supplier_metrics
   },
-  {
-    path: '/supplier/supplier_viewvoucher',
-    name: 'supplier_viewvoucher',
-    component: supplier_viewvoucher
-  },
+  // {
+  //   path: '/supplier/supplier_viewvoucher',
+  //   name: 'supplier_viewvoucher',
+  //   component: supplier_viewvoucher
+  // },
   {
     path: '/supplier/supplier_redeem',
     name: 'supplier_redeem',
@@ -118,17 +118,17 @@ const routes = [
 
 // testing ⬇
   
-  {
-  path: '/brandT',
-  name: 'brandT',
-  component: brandT,
-  children: [
-  { path: '', name: 'dhome', component: () => import('../views/pages/Red.vue') },
-  { path: '/yellow', component: () => import('../views/pages/Yellow.vue') },
-  { path: '/blue', component: () => import('../views/pages/Blue.vue') },
-  { path: '/red', component: () => import('../views/pages/Yellow.vue')}
-  ],
-  },
+  // {
+  // path: '/brandT',
+  // name: 'brandT',
+  // component: brandT,
+  // children: [
+  // { path: '', name: 'dhome', component: () => import('../views/pages/Red.vue') },
+  // { path: '/yellow', component: () => import('../views/pages/Yellow.vue') },
+  // { path: '/blue', component: () => import('../views/pages/Blue.vue') },
+  // { path: '/red', component: () => import('../views/pages/Yellow.vue')}
+  // ],
+  // },
 
   {
     path: '/influencerDash',
@@ -141,17 +141,17 @@ const routes = [
       { path: '/red', component: () => import('../views/pages/Red.vue')}
     ],
   },
-  {
-    path: '/brandDash',
-    name: 'brandDash',
-    component: brandDash,
-    children: [
-      { path: '', name: 'brand_requests', component: () => import('../views/brand/brand_requests2.vue')},
-      { path: '/yellow', component: () => import('../views/pages/Yellow.vue') },
-      { path: '/blue', component: () => import('../views/pages/Blue.vue') },
-      { path: '/red', component: () => import('../views/pages/Red.vue')}
-    ],
-  },
+  // {
+  //   path: '/brandDash',
+  //   name: 'brandDash',
+  //   component: brandDash,
+  //   children: [
+  //     { path: '', name: 'brand_requests', component: () => import('../views/brand/brand_requests2.vue')},
+  //     { path: '/yellow', component: () => import('../views/pages/Yellow.vue') },
+  //     { path: '/blue', component: () => import('../views/pages/Blue.vue') },
+  //     { path: '/red', component: () => import('../views/pages/Red.vue')}
+  //   ],
+  // },
 
   
   // {
