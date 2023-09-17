@@ -50,7 +50,6 @@ public class VoucherRequestService {
         voucherRequest.setProduct(product);
         voucherRequest.setRequestDate(LocalDate.now());
         voucherRequest.setRequestStatus(VoucherRequest.RequestStatus.REQUESTED);
-        voucherRequest.setWalletAddress(requestDTO.getWalletAddress());
         return voucherRequestRepository.save(voucherRequest);
     }
 

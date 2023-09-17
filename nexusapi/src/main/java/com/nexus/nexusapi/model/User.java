@@ -29,6 +29,7 @@ public abstract class User {
     private String password;
     private String email;
     private String address;
+    private String metamaskAddress;
     private String profilePictureUrl;
 
     public abstract String getUserType(); // Abstract method to be implemented by subclasses

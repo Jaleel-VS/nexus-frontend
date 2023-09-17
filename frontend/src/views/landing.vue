@@ -200,7 +200,7 @@ export default {
     justify-content: space-evenly;
     flex-direction: row;
     align-items: center;
-    gap: 5rem;
+    gap: 2.5rem;
     
 
 }

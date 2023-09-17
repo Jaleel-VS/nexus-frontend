@@ -39,8 +39,6 @@ public class VoucherRequest {
     @Enumerated(EnumType.STRING)
     private RequestStatus requestStatus;
 
-    private String walletAddress;
-
     public enum RequestStatus {
         REQUESTED, APPROVED, DENIED
     }

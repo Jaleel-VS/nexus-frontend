@@ -83,9 +83,11 @@ public class VoucherService {
                         voucher.setExpiryDate(LocalDate.ofEpochDay(0));
                 }
 
+                String recipientAddress = influencer.getMetamaskAddress();
+
                 voucher.setRedeemed(false);
                 String blockchainUrl = mintVoucher(influencer, brand, supplier, product,
-                                voucher.getExpiryDate(), voucherRequest.getWalletAddress());
+                                voucher.getExpiryDate(), recipientAddress);
 
                 voucher.setBlockchainUrl(blockchainUrl);
 
