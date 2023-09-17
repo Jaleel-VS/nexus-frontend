@@ -1,15 +1,11 @@
 <template>
     <div class="landing-page">
         <nav class="nav-bar">
-            <div class="container">
             <ul>
                 <li><a href="#"><h3>About</h3></a></li>
-                <li><a href="#"><h3>Security and Privacy</h3></a></li>
-                <li><a href="#"><h3>Testimonials</h3></a></li>
                 <li><a href="#"><h3>FAQ Section</h3></a></li>
                 <li><a href="#"><h3>Contact</h3></a></li>
             </ul>
-            </div>
         </nav>
         
         <div class="content-wrapper">
@@ -184,7 +180,9 @@ export default {
 </script>
 
   
-<style scoped>
+<style scoped lang="scss">
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Eczar&family=Gentium+Plus&family=Libre+Baskerville&family=Libre+Franklin&family=Proza+Libre&family=Rubik&family=Taviraj&family=Trirong&family=Work+Sans&display=swap');
 .landing-page {
     display: flex;
     flex-direction: column;
@@ -195,21 +193,20 @@ export default {
     background-color: #f7f7f7;
     padding-top: 20px;
 }
-.nav-bar {
+.nav-bar ul {
     padding-top: 20px 0;
     margin-bottom: 50px;
-}
-.container {
     display: flex;
-    flex-direction: column;
+    justify-content: space-evenly;
+    flex-direction: row;
     align-items: center;
-    max-width: 100%;
-    text-align: center;
+    gap: 5rem;
+    
+
 }
 
 .nav-bar li {
     list-style: none;
-    margin-right: 50px;
     display: inline-block;
 }
 .nav-bar a {
@@ -221,8 +218,8 @@ export default {
 .content-wrapper {
     display: flex;
     width: 80%;
-    max-width: 1200px;
-    justify-content: space-between;
+    max-width: 100vw;
+    justify-content: center;
     flex-wrap: wrap;
     margin-bottom: 30px;
 }
@@ -238,12 +235,20 @@ h1 {
     font-size: 3.5em;
     color: #111010;
     margin-bottom: 20px;
+    font-family: 'Eczar', serif;
+}
+
+h3 {
+    font-family: 'Eczar', serif;
+    font-size: 1.25em;
 }
 
 p {
     color: #302e2e;
     line-height: 1.5;
-    font-size: 1.2em;
+    font-size: 1.4em;
+    font-family: 'Gentium Plus', serif;
+    
 }
 
 .buttons {
@@ -345,6 +350,7 @@ button:hover {
     margin-bottom: 20px;
     text-align: center;
     font-size: 40px;
+    font-family: 'Cormorant Garamond', serif;
 }
 #timeline {
     display: flex;
