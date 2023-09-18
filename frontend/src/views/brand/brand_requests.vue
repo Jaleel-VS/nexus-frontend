@@ -194,6 +194,20 @@ endpoint: /api/vouchers
 
   const expiryDate = futureDate.getTime();
 
+  // /api/voucher-requests/{requestId}/approve (PUT)
+
+  const response2 = await fetch(
+    `${API_ENDPOINT}/voucher-requests/${selectedRequest.value.id}/approve`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+
+
+
   const body = {
     voucherRequestID: selectedRequest.value.id,
     expiryDate: expiryDate,
@@ -217,7 +231,7 @@ endpoint: /api/vouchers
 
   alert("Voucher approved and minted on the blockchain");
 
-  latestMint.value =
+  
 
   deselectRequest();
 
