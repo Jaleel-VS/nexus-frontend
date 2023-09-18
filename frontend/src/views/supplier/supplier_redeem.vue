@@ -8,7 +8,10 @@
                 <button class="sign-in-btn">Logout</button>
             </router-link>
         </div>
-        <button class="Scan-QR-code">Scan QR code</button>
+<div class="voucher-input">
+  <input type="text" placeholder="Enter voucher code">
+  <button class="Redeem-voucher">Redeem voucher</button>
+</div>
 
 </template>
 <script>
@@ -84,7 +87,7 @@ button {
 button:hover {
     opacity: 0.8;
 }
-.Scan-QR-code {
+.Redeem-voucher {
     position: absolute;
     background-color: #007bff;
     color: #fff;
@@ -101,5 +104,12 @@ button:hover {
     top: 0;
     margin-left: 200px;
     
+}
+.voucher-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #0b2c5c;
 }
 </style>
