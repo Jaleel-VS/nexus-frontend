@@ -11,12 +11,12 @@
     <div v-else>
         <div v-if="voucherRequests && !selectedRequest" class="main-container">
         <!-- <transition name="fade"> -->
-        <v-card
+        <!-- <v-card
           v-for="request in voucherRequests"
           class="mx-auto -card"
           min-width="200"
-        >
-
+        > -->
+        </div>
 
     </div>
   </div>
