@@ -51,67 +51,32 @@
         <header class="header">
             <h3>Let's get you started...</h3>
         </header>
-        <section id="timeline">
-  
-            <div class="tl-item">
-            
-            <div class="tl-bg" style="background-image: url(https://placeimg.com/802/802/nature)"></div>
-            
-            <div class="tl-steps">
-                <p class="f2 heading--sanSerif">1</p>
-            </div>
-
-            <div class="tl-content">
-                <h1>Apply</h1>
-                <p>Create your profile and connect your social platforms</p>
-            </div>
-
-            </div>
-
-            <div class="tl-item">
-            
-            <div class="tl-bg" style="background-image: url(https://placeimg.com/802/802/nature)"></div>
-            
-            <div class="tl-steps">
-                <p class="f2 heading--sanSerif">2</p>
-            </div>
-
-            <div class="tl-content">
-                <h1 class="f3 text--accent ttu">Browse through all the brands</h1>
-                <p>Browse through many brands and see which ones stand out to you.</p>
-            </div>
-
-            </div>
-
-            <div class="tl-item">
-            
-            <div class="tl-bg" style="background-image: url(https://placeimg.com/803/803/nature)"></div>
-            
-            <div class="tl-steps">
-                <p class="f2 heading--sanSerif">3</p>
-            </div>
-
-            <div class="tl-content">
-                <h1 class="f3 text--accent ttu">Request a voucher</h1>
-                <p>Enter the information required to request a voucher and wait for an approval by the brand.</p>
-            </div>
-
-            </div>
-
-            <div class="tl-item">
-            
-            <div class="tl-bg" style="background-image: url(https://placeimg.com/800/800/nature)"></div>
-            
-            <div class="tl-steps">
-                <p class="f2 heading--sanSerif">4</p>
-            </div>
-
-            <div class="tl-content">
-                <h1 class="f3 text--accent ttu">Start promoting</h1>
-                <p>Share and promote your brand new product across your social media platforms with your followers.</p>
-            </div>
-            </div>
-            </section>
+    <div class="container">
+      <div id="timeline">
+        <ol>
+          <li class="active">
+            <span class="point"></span>
+            <h5 class="diplome"><b>Step 1</b></h5>
+            <p class="timestamp">APPLY<br><br>Create your profile and connect your social platforms</p>
+          </li>
+          <li class="active">
+            <span class="point"></span>
+            <h5 class="diplome"><b>Step 2</b></h5>
+            <p class="timestamp">BROWSE THROUGH ALL THE BRANDS<br><br>Browse through many brands and see which brands stand out to you</p>
+          </li>
+          <li class="active">
+            <span class="point"></span>
+            <h5 class="diplome"><b>Step 3</b></h5>
+            <p class="timestamp">REQUEST A VOUCHER<br><br>Enter the information required to request a voucher and wait for an approval by the brand</p>
+          </li>
+          <li class="active">
+            <span class="point"></span>
+            <h5 class="diplome"><b>Step 4</b></h5>
+            <p class="timestamp">START PROMOTING<br><br>Share and promote your brand new product across your social media platforms</p>
+          </li>
+        </ol>
+      </div>
+    </div>
             <header class="header">
             <h3>Testimonials</h3>
             </header>
@@ -352,125 +317,66 @@ button:hover {
     font-size: 40px;
     font-family: 'Cormorant Garamond', serif;
 }
-#timeline {
-    display: flex;
-  }
-  
-  #timeline:hover .tl-item {
-    width: 23.3333%;
-  }
-  
-  .tl-item {
-    transform: translate3d(0, 0, 0);
-    position: relative;
-    width: 25%;
-    height: 100vh;
-    min-height: 600px;
-    color: #f9f9fa;
-    overflow: hidden;
-    transition: width 0.5s ease;
-  }
-  
-  .tl-item:before,
-  .tl-item:after {
-    transform: translate3d(0, 0, 0);
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .tl-item:after {
-    background: rgb(254, 255, 255);
-    opacity: 1;
-    transition: opacity 0.5s ease;
-  }
-  
-  .tl-item:before {
-    background: linear-gradient(to bottom, rgba(125, 187, 238, 0) 0%, rgb(18, 96, 141) 75%);
-    z-index: 1;
-    opacity: 0;
-    transform: translate3d(0, 0, 0) translateY(50%);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-  
-  .tl-item:hover {
-    width: 30% !important;
-  }
-  
-  .tl-item:hover:after {
-    opacity: 0;
-  }
-  
-  .tl-item:hover:before {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) translateY(0);
-    transition: opacity 1s ease, transform 1s ease 0.25s;
-  }
-  
-  .tl-item:hover .tl-content {
-    opacity: 1;
-    transform: translateY(0);
-    transition: all 0.75s ease 0.5s;
-  }
-  
-  .tl-item:hover .tl-bg {
-    filter: grayscale(0);
-  }
-  
-  .tl-content {
-    transform: translate3d(0, 0, 0) translateY(25px);
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    margin: 0 1.618em;
-    top: 55%;
-    opacity: 0;
-  }
-  
-  .tl-content h1 {
-    font: sans-serif;
-    text-transform: uppercase;
-    color: #050505;
-    font-size: 1.44rem;
-    font-weight: normal;
-  }
-  .tl-content p {
-    font: sans-serif;
-    color: #f9f9fa;
-    font-size: 1.10rem;
-    font-weight: normal;
-  }
-  
-  .tl-steps {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    z-index: 1;
-  }
-  
-  .tl-steps p {
-    font: sans-serif;
-    font-size: 1.728rem;
-    line-height: 0;
-    color: #050505;
-  }
-  
-  .tl-bg {
-    transform: translate3d(0, 0, 0);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-size: cover;
-    background-position: center center;
-    transition: filter 0.5s ease;
-    filter: grayscale(100%);
-  }
+.container {
+  display: flex; 
+  padding: 20px; 
+  margin-bottom: 30px;
+}
+
+#timeline ol {
+  position: relative;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 100px;
+  height: 1px;
+  padding-inline-start: 0;
+}
+
+#timeline li {
+  position: relative;
+  display: inline-block;
+  float: left;
+  width: calc(25%); 
+  height: 1px;
+  background: transparent; 
+  color: #999;  
+}
+
+#timeline li .diplome {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px; 
+  font-size: 20px;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+#timeline li .point {
+  content: "";
+  display: block;
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%;
+  border: 1px solid #0b2c5c; 
+  background: #fff;
+  position: absolute;
+  top: -5px; 
+  left: calc(50% - 5px); 
+}
+
+#timeline li .timestamp {
+  font-size: 14px;
+  font-family: 'Cormorant Garamond', serif;
+  text-align: center;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+#timeline li.active .point {
+  border: 5px solid #0b2c5c; 
+}
+#timeline li.active .timestamp {
+  color: black; 
+}
   .testimonial-container{
     margin-top: 20px;
     margin-bottom: 20px;
