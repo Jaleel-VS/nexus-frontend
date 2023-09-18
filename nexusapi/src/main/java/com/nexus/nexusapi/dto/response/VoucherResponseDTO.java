@@ -14,7 +14,7 @@ public class VoucherResponseDTO {
     private Long influencerId;
     private Long brandId;
     private Long productId;
-    private Long supplierId;
+    // private Long supplierId;
     private LocalDate creationDate;
     private LocalDate expiryDate;
     private boolean redeemed;   

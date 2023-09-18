@@ -26,7 +26,7 @@ public class UserDTO {
         dto.setAddress(user.getAddress());
         dto.setMetamaskAddress(user.getMetamaskAddress());
         dto.setProfilePictureUrl(user.getProfilePictureUrl());
-        dto.setUserType(user.getUserType()); // Set user type from entity
+        dto.setUserType(user.getUserType());
         return dto;
     }
 }

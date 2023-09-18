@@ -1,6 +1,8 @@
 <template>
   <div class="main">
-    <h1>Welcome, Chris</h1>
+    <h1 v-if="userDetails">
+      Welcome, {{ userDetails.username }}
+    </h1>
     <h2>What brand would you like to work with?</h2>
 
     <div v-if="loading" class="loading">
@@ -116,10 +118,14 @@
 
       <!--    display request button if selected producted and selected brand-->
 
-        <v-btn v-if="selectedProduct && selectedBrand" color="orange" @click="request"
-         class="request-btn">
-          Request
-        </v-btn>
+      <v-btn
+        v-if="selectedProduct && selectedBrand"
+        color="orange"
+        @click="request"
+        class="request-btn"
+      >
+        Request
+      </v-btn>
     </div>
   </div>
 </template>
@@ -127,13 +133,20 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { API_ENDPOINT } from "@/config/constants.js";
+import { useUserStore } from "@/store/user";
 
 const brands = ref([]);
 const products = ref([]);
 const loading = ref(false);
+const userDetails = ref(null);
 
 onMounted(async () => {
   loading.value = true;
+
+  const userStore = useUserStore();
+  userDetails.value = userStore.details;
+
+  console.log(userDetails.value);
 
   const response = await fetch(`${API_ENDPOINT}/users/brands`);
   const data = await response.json();
@@ -179,39 +192,40 @@ function deselectProduct() {
   selectedProduct.value = null;
 }
 
-
 const request = async () => {
-            loading.value = true
-            try {
-                const voucherRequest = {
-                    influencer_id: userStore.details.id,
-                    brand_id: selectedBrand.value.id,
-                    product_id: selectedProduct.value.id,
-                }
+  loading.value = true;
+  try {
+    const voucherRequest = {
+      influencerId: userDetails.value.id,
+      brandId: selectedBrand.value.id,
+      productId: selectedProduct.value.id,
+    };
 
-                const response = await fetch(`${API_ENDPOINT}/voucher-requests`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(voucherRequest)
-                })
+    const response = await fetch(`${API_ENDPOINT}/voucher-requests`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(voucherRequest),
+    });
 
-                if (response.data) {
-                    alert("Voucher Request Sent!")
-                    // router.push('/influencer_portal')
-                }
+    console.log(response);
 
-                console.log(voucherRequest)
+    if (response.status === 200) {
+      alert("Voucher Request Sent!");
+      // refresh the page
+      deselectProduct();
+      deselectBrand();
+    }
 
-
-            } catch (error) {
-                console.error(error)
-                // You should handle this error, maybe showing an error message to the user
-            } finally {
-                loading.value = false
-            }
-        }
+    console.log(voucherRequest);
+  } catch (error) {
+    console.error(error);
+    // You should handle this error, maybe showing an error message to the user
+  } finally {
+    loading.value = false;
+  }
+};
 </script>
 
 <style scoped lang="scss">

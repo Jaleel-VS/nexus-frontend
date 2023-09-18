@@ -12,7 +12,6 @@ pragma solidity ^0.8.18;
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "./Escrow.sol";
 
 contract Voucher is ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
@@ -21,9 +20,8 @@ contract Voucher is ERC721URIStorage, Ownable {
     struct VoucherData {
         string brandID;
         string influencerID;
-        string supplierID;
+        string supplierIDs;
         string productID;
-        string productDescription;
         bool redeemed;
         uint256 expiryDate;
     }
@@ -33,13 +31,8 @@ contract Voucher is ERC721URIStorage, Ownable {
     event VoucherMinted(uint256 indexed voucherId, address indexed to);
     event VoucherRedeemed(uint256 indexed voucherId, address indexed to);
 
-    Escrow private escrowContract;
-
     constructor() ERC721("NexusVoucher", "NXV") {}
 
-    function setEscrowContract(address _escrowContract) public onlyOwner {
-        escrowContract = Escrow(_escrowContract);
-    }
 
     function mintVoucher(
         address recipient,
@@ -72,8 +65,6 @@ contract Voucher is ERC721URIStorage, Ownable {
         _isRedeemable(voucherId);
 
         _vouchers[voucherId].redeemed = true;
-
-        escrowContract.withdraw(voucherId, payable(supplierAddress));
 
         emit VoucherRedeemed(voucherId, supplierAddress);
     }

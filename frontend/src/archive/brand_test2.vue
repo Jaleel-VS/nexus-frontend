@@ -1,4 +1,4 @@
-template>
+<template>
     <div>
       <button @click="showToast">Show Toast</button>
       <toast-notification :message="notificationMessage" ref="toast"></toast-notification>

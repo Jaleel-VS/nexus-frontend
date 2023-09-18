@@ -11,7 +11,6 @@ import com.nexus.nexusapi.exceptions.NotFoundException;
 import com.nexus.nexusapi.model.Brand;
 import com.nexus.nexusapi.model.Influencer;
 import com.nexus.nexusapi.model.Product;
-import com.nexus.nexusapi.model.Supplier;
 import com.nexus.nexusapi.model.Voucher;
 import com.nexus.nexusapi.model.VoucherRequest;
 import com.nexus.nexusapi.repository.BrandRepository;
@@ -50,9 +49,6 @@ public class VoucherService {
         public VoucherResponseDTO createVoucher(VoucherDTO voucherDTO) {
                 Voucher voucher = new Voucher();
 
-                Supplier supplier = supplierRepository.findById(Long.parseLong(voucherDTO.getSupplierID()))
-                                .orElseThrow(() -> new NotFoundException("Supplier not found"));
-
                 VoucherRequest voucherRequest = voucherRequestRepository
                                 .findById(Long.parseLong(voucherDTO.getVoucherRequestID()))
                                 .orElseThrow(() -> new NotFoundException("Voucher Request not found"));
@@ -70,7 +66,6 @@ public class VoucherService {
 
                 voucher.setBrand(brand);
                 voucher.setInfluencer(influencer);
-                voucher.setSupplier(supplier);
                 voucher.setProduct(product);
 
                 voucher.setCreatedDate(java.time.LocalDate.now());
@@ -86,7 +81,7 @@ public class VoucherService {
                 String recipientAddress = influencer.getMetamaskAddress();
 
                 voucher.setRedeemed(false);
-                String blockchainUrl = mintVoucher(influencer, brand, supplier, product,
+                String blockchainUrl = mintVoucher(influencer, brand, product,
                                 voucher.getExpiryDate(), recipientAddress);
 
                 voucher.setBlockchainUrl(blockchainUrl);
@@ -97,7 +92,6 @@ public class VoucherService {
                 voucherResponseDTO.setId(voucher.getId());
                 voucherResponseDTO.setBrandId(voucher.getBrand().getId());
                 voucherResponseDTO.setInfluencerId(voucher.getInfluencer().getId());
-                voucherResponseDTO.setSupplierId(voucher.getSupplier().getId());
                 voucherResponseDTO.setProductId(voucher.getProduct().getId());
                 voucherResponseDTO.setCreationDate(voucher.getCreatedDate());
                 voucherResponseDTO.setExpiryDate(voucher.getExpiryDate());
@@ -106,18 +100,21 @@ public class VoucherService {
                 return voucherResponseDTO;
         }
 
-        private String mintVoucher(Influencer influencer, Brand brand, Supplier supplier, Product product,
+        private String mintVoucher(Influencer influencer, Brand brand, Product product,
                         LocalDate expiryDate, String requestAddress) {
                 String influencerID = influencer.getId().toString();
                 String brandID = brand.getId().toString();
-                String supplierID = supplier.getId().toString();
                 String productID = product.getId().toString();
-                String productDescription = product.getProductDescription();
+                // use streams, with a map function to convert the list of suppliers to a string, and have a comma
+                String supplierIDs = product.getSuppliers().stream().map(supplier -> supplier.getId().toString())
+                                .reduce("", (a, b) -> a + "," + b);
                 Long expiryDateLong = expiryDate.toEpochDay();
 
-                String blockchainUrl = web3Manager.mintVoucher(influencerID, brandID, supplierID, productID,
-                                productDescription,
+                String blockchainUrl = web3Manager.mintVoucher(influencerID, brandID, supplierIDs,
+                                productID,
                                 expiryDateLong, requestAddress);
+
+                // System.out.println(supplierIDs);
 
                 return blockchainUrl;
         }
@@ -129,7 +126,6 @@ public class VoucherService {
                 VoucherResponseDTO voucherResponseDTO = new VoucherResponseDTO();
                 voucherResponseDTO.setBrandId(voucher.getBrand().getId());
                 voucherResponseDTO.setInfluencerId(voucher.getInfluencer().getId());
-                voucherResponseDTO.setSupplierId(voucher.getSupplier().getId());
                 voucherResponseDTO.setProductId(voucher.getProduct().getId());
                 voucherResponseDTO.setCreationDate(voucher.getCreatedDate());
                 voucherResponseDTO.setExpiryDate(voucher.getExpiryDate());
@@ -146,7 +142,6 @@ public class VoucherService {
                 VoucherResponseDTO voucherResponseDTO = new VoucherResponseDTO();
                 voucherResponseDTO.setBrandId(voucher.getBrand().getId());
                 voucherResponseDTO.setInfluencerId(voucher.getInfluencer().getId());
-                voucherResponseDTO.setSupplierId(voucher.getSupplier().getId());
                 voucherResponseDTO.setProductId(voucher.getProduct().getId());
                 voucherResponseDTO.setCreationDate(voucher.getCreatedDate());
                 voucherResponseDTO.setExpiryDate(voucher.getExpiryDate());

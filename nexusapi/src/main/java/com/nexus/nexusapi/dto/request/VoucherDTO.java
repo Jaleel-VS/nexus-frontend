@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class VoucherDTO {
     private String voucherRequestID;
-    private String supplierID;
     private Long expiryDate;
 
 }

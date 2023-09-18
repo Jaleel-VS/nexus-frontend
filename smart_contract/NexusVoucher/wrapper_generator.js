@@ -3,8 +3,6 @@ const path = require('path');
 
 const contracts = [
     'Voucher',
-    'Escrow',
-    'ZARToken',
 ]
 
 const exportDir = path.join(__dirname, 'export');

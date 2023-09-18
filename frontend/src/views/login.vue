@@ -20,7 +20,7 @@
         <input v-model="password" type="password" placeholder="Password" />
       </div>
       <!-- Add Remember Me checkbox and Forgot Password link here -->
-      <div class="remember-forgot">
+      <!-- <div class="remember-forgot">
         <div class="remember-me">
           <input type="checkbox" id="remember_me" />
           <label for="remember_me">Remember me</label>
@@ -28,7 +28,7 @@
         <div class="forget-pw">
           <a href="#">Forgot password?</a>
         </div>
-      </div>
+      </div> -->
       
       <button @click="handleLogin" class="login-btn">
         <span v-if="loading" class="spinner"></span>
@@ -96,10 +96,10 @@ export default {
             router.push('/supplier/dashboard');
             break;
           case 'influencer':
-            router.push('/influencer/dashboard');
+            router.push('/influencerDash');
             break;
           case 'brand':
-            router.push('/brand/dashboard');
+            router.push('/brandT');
             break;
           default:
             router.push('/login');

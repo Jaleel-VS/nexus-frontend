@@ -248,17 +248,12 @@
           },
           {
             "internalType": "string",
-            "name": "supplierID",
+            "name": "supplierIDs",
             "type": "string"
           },
           {
             "internalType": "string",
             "name": "productID",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "productDescription",
             "type": "string"
           },
           {
@@ -343,17 +338,12 @@
           },
           {
             "internalType": "string",
-            "name": "supplierID",
+            "name": "supplierIDs",
             "type": "string"
           },
           {
             "internalType": "string",
             "name": "productID",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "productDescription",
             "type": "string"
           },
           {
@@ -518,19 +508,6 @@
       }
     ],
     "name": "setApprovalForAll",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_escrowContract",
-        "type": "address"
-      }
-    ],
-    "name": "setEscrowContract",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
