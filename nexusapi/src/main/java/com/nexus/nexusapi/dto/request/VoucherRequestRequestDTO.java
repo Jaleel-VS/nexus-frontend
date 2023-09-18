@@ -11,6 +11,4 @@ public class VoucherRequestRequestDTO {
     private Long influencerId;
     private Long brandId;
     private Long productId;
-    private String walletAddress;
-    
 }

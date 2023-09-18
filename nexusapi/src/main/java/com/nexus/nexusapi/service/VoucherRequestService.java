@@ -125,7 +125,7 @@ public class VoucherRequestService {
         dto.setProductId(voucherRequest.getProduct().getId());
         dto.setRequestDate(voucherRequest.getRequestDate());
         dto.setRequestStatus(voucherRequest.getRequestStatus().toString());
-        dto.setWalletAddress(voucherRequest.getWalletAddress());
+        // dto.setWalletAddress(voucherRequest.getWalletAddress());
 
 
         return dto;

@@ -22,6 +22,8 @@ public class SupplierDTO extends UserDTO {
         dto.setUsername(supplier.getUsername());
         dto.setEmail(supplier.getEmail());
         dto.setAddress(supplier.getAddress());
+        dto.setMetamaskAddress(supplier.getMetamaskAddress());
+        dto.setProfilePictureUrl(supplier.getProfilePictureUrl());
         dto.setUserType(supplier.getUserType());
         dto.setSupplierName(supplier.getSupplierName());
         dto.setSupplierCategory(supplier.getSupplierCategory());

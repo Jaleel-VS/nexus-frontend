@@ -51,6 +51,7 @@ public class ProductService {
         dto.setProductPrice(product.getProductPrice());
         dto.setBrandId(product.getBrand().getId());
         dto.setSupplierIds(new HashSet<>(product.getSuppliers().stream().map(supplier -> supplier.getId()).collect(Collectors.toList())));
+        dto.setProductImage(product.getProductImageUrl());
 
         return dto;
     }

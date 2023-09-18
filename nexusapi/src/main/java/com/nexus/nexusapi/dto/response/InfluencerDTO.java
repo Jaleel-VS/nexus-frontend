@@ -24,6 +24,8 @@ public class InfluencerDTO extends UserDTO {
         dto.setUsername(influencer.getUsername());
         dto.setEmail(influencer.getEmail());
         dto.setAddress(influencer.getAddress());
+        dto.setMetamaskAddress(influencer.getMetamaskAddress());
+        dto.setProfilePictureUrl(influencer.getProfilePictureUrl());
         dto.setUserType(influencer.getUserType());
         dto.setFirstName(influencer.getFirstName());
         dto.setLastName(influencer.getLastName());

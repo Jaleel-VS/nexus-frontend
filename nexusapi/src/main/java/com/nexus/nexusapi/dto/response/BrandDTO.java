@@ -24,6 +24,8 @@ public class BrandDTO extends UserDTO {
         dto.setUsername(brand.getUsername());
         dto.setEmail(brand.getEmail());
         dto.setAddress(brand.getAddress());
+        dto.setMetamaskAddress(brand.getMetamaskAddress());
+        dto.setProfilePictureUrl(brand.getProfilePictureUrl());
         dto.setUserType(brand.getUserType());
         dto.setBrandName(brand.getBrandName());
         dto.setBrandCategory(brand.getBrandCategory());

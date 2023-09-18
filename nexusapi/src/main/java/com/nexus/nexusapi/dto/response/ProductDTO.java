@@ -27,4 +27,5 @@ public class ProductDTO {
     private Double productPrice;
     private Long brandId;
     private Set<Long> supplierIds = new HashSet<>();   
+    private String productImage;
 }

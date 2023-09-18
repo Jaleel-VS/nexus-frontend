@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @SpringBootApplication
 public class NexusRestApiApplication {
 // name search
-// key down on trust, us blockchain social grants, focus on voucher fraud. 
+// key down on trust, blockchain social grants, focus on voucher fraud. 
 	public static void main(String[] args) {
 		SpringApplication.run(NexusRestApiApplication.class, args);
 	}

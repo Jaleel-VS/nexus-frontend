@@ -14,6 +14,8 @@ public class UserDTO {
     private String username;
     private String email;
     private String address;
+    private String metamaskAddress;
+    private String profilePictureUrl;
     private String userType; // New field for user type
 
     public static UserDTO fromEntity(User user) {
@@ -22,9 +24,9 @@ public class UserDTO {
         dto.setUsername(user.getUsername());
         dto.setEmail(user.getEmail());
         dto.setAddress(user.getAddress());
+        dto.setMetamaskAddress(user.getMetamaskAddress());
+        dto.setProfilePictureUrl(user.getProfilePictureUrl());
         dto.setUserType(user.getUserType()); // Set user type from entity
         return dto;
     }
-
-    // ... getters, setters, etc. ...
 }

@@ -18,5 +18,4 @@ public class VoucherRequestResponseDTO {
     private Long productId;
     private LocalDate requestDate;
     private String requestStatus;
-    private String walletAddress;
 }
