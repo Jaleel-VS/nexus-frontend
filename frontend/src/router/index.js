@@ -22,6 +22,7 @@ import influencer_register from "../views/influencer/influencer_register.vue";
 import influencerDash from "../views/influencer/influencer_dash2.vue";
 //sup dash test
 import brandT from "../views/brand/brand_dash_test.vue";
+import supplierT from "../views/supplier/supplier_dashboard.vue";
 
 const routes = [
   {
@@ -90,17 +91,30 @@ const routes = [
 
   {
     path: "/brandT",
-    name: "brandT",
+    name: "brandT", //
     component: brandT,
     children: [
       {
         path: "",
         name: "viewVoucherRequests",
-        component: () => import("../views/brand/brand_requests.vue"),
+        component: () => import("../views/brand/brand_requests.vue"), 
       },
       // { path: "/yellow", component: () => import("../views/pages/Yellow.vue") },
       // { path: "/blue", component: () => import("../views/pages/Blue.vue") },
       // { path: "/red", component: () => import("../views/pages/Yellow.vue") },
+    ],
+  },
+  {
+    path: "/supplierT",
+    name: "supplierT", 
+    component: supplierT,
+    children: [
+      {
+        path: "",
+        name: "viewSupplierRedeem",
+        component: () => import("../views/supplier/supplier_redeem.vue"), 
+      },
+      
     ],
   },
 
