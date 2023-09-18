@@ -334,7 +334,6 @@ button:hover {
 
 #timeline li {
   position: relative;
-  display: inline-block;
   float: left;
   width: calc(25%); 
   height: 1px;
