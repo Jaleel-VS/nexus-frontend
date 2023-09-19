@@ -1,113 +1,64 @@
 <template>
-    <div class="image" style="width: 300px; height: auto; position: absolute; top: 0; left: 0;">
-    <img src="/proj_logo.png" style="width: 100%; height: 100%;" />
-</div>
+  <div class="main-container">
     <h1>Redeem Voucher</h1>
-    <div class="button">
-            <router-link to="/login">
-                <button class="sign-in-btn">Logout</button>
-            </router-link>
-        </div>
-<div class="voucher-input">
-  <input type="text" placeholder="Enter voucher code">
-  <button class="Redeem-voucher">Redeem voucher</button>
-</div>
-
+    <input type="text" id="fname" name="fname" />
+    <button class="Redeem-voucher" @click="redeemVoucher">Redeem voucher</button> 
+  </div>
 </template>
 <script>
-import { useRouter } from 'vue-router'
+import { useRouter } from "vue-router";
 
 // import on mount
-import { onMounted } from 'vue'
+import { onMounted } from "vue";
 
 // api
-import { API_ENDPOINT, OTHER_CONST } from '@/config/constants.js';
-
-// import axios
-import axios from 'axios'
+import { API_ENDPOINT, OTHER_CONST } from "@/config/constants.js";
 
 
 export default {
-    setup() {
-        const router = useRouter();
+  setup() {
 
-        // call api on mount
-        onMounted(() => {
-            axios.get(API_ENDPOINT)
-                .then(res => {
-                    console.log(res.data)
-                })
-                .catch(err => {
-                    console.log(err)
-                })
-        })
+    const redeemVoucher = () => {
+      alert("Voucher succesfully redeemed! Please give client the product.");
+    };
 
-
-
-        const displayLoginPage = () => {
-            router.push('/login')
-        }
-
-        return { displayLoginPage }
-    }
+    return {  redeemVoucher };
+  },
 };
 </script>
 <style scoped>
 h1 {
-    font-size: 2em;
-    color: #111010;
-    align-items: center;
-    margin-left: 40%;
-    margin-top: 90px;
+  font-size: 3rem;
+  margin: 2rem 0;
+  font-family: "Trocchi", serif;
 }
-.buttons {
-    display: flex;
-    gap: 20px;
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
 button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s;
+  background-color: #0b2c5c;
+  color: #fff;
+  font-size: 1.2em;
+  border-radius: 5px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  justify-content: center;
+  display: flex;
 }
-.sign-in-btn {
-    position: absolute;
-    top: 20px; /* Adjust this value for desired vertical position */
-    right: 20px; /* Adjust this value for desired horizontal position */
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-button:hover {
-    opacity: 0.8;
-}
-.Redeem-voucher {
-    position: absolute;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 42%;
-    margin-top: 200px;
-}
-.image {
-    position: absolute;
-    width: 50px;
-    height: auto;
-    top: 0;
-    margin-left: 200px;
-    
-}
-.voucher-input {
+
+input {
   flex: 1;
-  padding: 10px;
+  /* padding: 10px; */
   border: 1px solid #ccc;
   border-radius: 5px;
   color: #0b2c5c;

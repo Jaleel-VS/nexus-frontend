@@ -93,7 +93,7 @@ export default {
 
         switch ((role.toLowerCase())) {
           case 'supplier':
-            router.push('/supplier/dashboard');
+            router.push('/supplierT');
             break;
           case 'influencer':
             router.push('/influencerDash');
