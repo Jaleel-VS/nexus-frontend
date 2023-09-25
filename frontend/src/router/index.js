@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/landing.vue";
 import Login from "../views/login.vue";
 import Application from "../views/application.vue";
+import Faq from "../views/faq.vue";
 // Brand Routes
 
 // import brandDash from '../views/brand/brand_dash2.vue';
@@ -40,6 +41,11 @@ const routes = [
     path: "/application",
     name: "application",
     component: Application,
+  },
+  {
+    path: "/faq",
+    name: "faq",
+    component: Faq,
   },
   {
     path: "/supplier/supplier_register",
