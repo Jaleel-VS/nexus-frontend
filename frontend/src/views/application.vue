@@ -2,9 +2,9 @@
     <div class="register-page">
     <div class="application-page">
         
-        <div class="image" style="width: 300px; height: auto; position: absolute; top: 0; left: 0;">
-    <img src="/proj_logo.png" style="width: 100%; height: 100%;" />
-</div>
+        <div class="logo">
+            <img src="../assets/project_logo.png" class ="top-left" alt="logo">       
+        </div>
 
             <div>
                 <h1>Sign up</h1>
@@ -101,14 +101,26 @@ export default {
 
 
 <style scoped>
+.register-page {
+    background-color: #192734;
+}
+.logo {
+  text-align: center;
+  margin-top: 1rem; /* Adjust the margin as needed */
+  position: relative;
+}
 
+.logo img {
+  max-width: 400px; /* Adjust the max-width of the logo as needed */
+  vertical-align: middle;
+  display: inline-block;
+}
 h1 {
     font-size: 4em;
-    color: #111010;
-    margin-top: 80px;
-    margin-left: 42%;
+    color: white;
+    text-align: center;
     animation: slideDown 1s ease-in-out forwards;
-    
+    font-family: 'Roboto Slab', serif;
 }
 
 .buttons {
@@ -151,7 +163,7 @@ button:hover {
 
 body {
     font-family: Arial, sans-serif;
-    background-color: white;
+    background-color: #192734;
     margin: 0;
     padding: 0;
 }
