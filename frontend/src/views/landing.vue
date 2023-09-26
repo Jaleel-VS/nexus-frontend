@@ -2,7 +2,7 @@
     <div class="landing-page">
         <nav class="nav-bar">
             <ul>
-                <li><a href="#"><h3>About</h3></a></li>
+                <li><router-link to="/about"><h3>About</h3></router-link></li>
                 <li><router-link to="/faq"><h3>FAQ Section</h3></router-link></li>
                 <li><a href="#"><h3>Contact</h3></a></li>
             </ul>

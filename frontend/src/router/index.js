@@ -3,6 +3,7 @@ import Home from "../views/landing.vue";
 import Login from "../views/login.vue";
 import Application from "../views/application.vue";
 import Faq from "../views/faq.vue";
+import About from "../views/about.vue";
 // Brand Routes
 
 // import brandDash from '../views/brand/brand_dash2.vue';
@@ -46,6 +47,11 @@ const routes = [
     path: "/faq",
     name: "faq",
     component: Faq,
+  },
+  {
+    path: "/about",
+    name: "about",
+    component: About,
   },
   {
     path: "/supplier/supplier_register",
