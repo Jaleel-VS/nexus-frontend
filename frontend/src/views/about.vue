@@ -18,6 +18,10 @@
             We believe in the power of meaningful collaborations and are committed to fostering an environment where every member of our 
             community can thrive.</p>
             <h2>Meet our team</h2>
+            <div class="team">
+            <img src="../assets/team_pic.jpeg" alt="Team picture">       
+        </div>
+        <p>Nexus Team: Thaakirah Majiet, Savanna Alexander, JD van Staden and Thaakir Mayet</p>
             <h2>Join us on this journey</h2>
             <p>Join us in shaping the future of influencer marketing. Whether you're an influencer, brand manager, or supplier, 
                 Nexus is here to empower your collaborations. Sign up today and become a part of our vibrant community.</p>
@@ -92,6 +96,15 @@ export default {
   vertical-align: middle;
   display: inline-block;
 }
+.team {
+  text-align: center;
+  margin-top: 1rem; /* Adjust the margin as needed */
+}
+.team img {
+  max-width: 400px; /* Adjust the max-width of the logo as needed */
+  vertical-align: middle;
+  display: inline-block;
+}
 .wrapper > p {
     margin: 1.5rem 0;
   text-align: center;
@@ -134,6 +147,7 @@ export default {
   border-radius: 5px;
   cursor: pointer;
   font-size: 30px;
+  
   
 }
 .apply-btn:hover {
