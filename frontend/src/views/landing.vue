@@ -32,17 +32,17 @@
         </header>
         <div class="image-container">
             <div class="image-wrapper">
-                <img src="../assets/LandingPage_catalogue.png" alt="Image 1">
+                <img src="../assets/landing/catalogue.png" alt="Image 1">
                 <h3><p>Broad Catalogue</p></h3>
                 <p>Extensive merchant network gives you direct access to hundreds of premier global brands across multiple sectors.</p>
             </div>
             <div class="image-wrapper">
-                <img src="../assets/LandingPage_trackandreport.png" alt="Image 2">
+                <img src="../assets/landing/tracking.png" alt="Image 2">
                 <h3><p>Tracking and Reporting</p></h3>
                 <p>Blockchain technology allows you to easily manage and track all your vouchers and progress in one place.</p>
             </div>
             <div class="image-wrapper">
-                <img src="../assets/LandingPage_quickeasy.png" alt="Image 3">
+                <img src="../assets/landing/easy.png" alt="Image 3">
                 <h3><p>Quick and Easy</p></h3>
                 <p>We would like to help you as fast as we can, in doing so signing up is very easy. </p>
             </div>
@@ -299,8 +299,8 @@ button:hover {
 }
 
 .image-wrapper img {
-    width: 12rem; 
-    height: 8rem;
+    width: 8em; 
+    height: 8em;
 }
 
 .image-wrapper p {
