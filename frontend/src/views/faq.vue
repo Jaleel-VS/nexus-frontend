@@ -1,7 +1,8 @@
 <template>
+  <div class="faq-page">
     <div class="wrapper">
         <div class="logo">
-            <img src="../assets/proj_logo.png" alt="logo">       
+            <img src="../assets/project_logo.png" alt="logo">       
         </div>
       <h1>Frequently Asked Questions</h1>
   
@@ -14,6 +15,7 @@
         </div>
       </div>
     </div>
+  </div>
   </template>
   
   <script>
@@ -70,6 +72,9 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+.faq-page {
+  background-color: #192734;
+}
 .wrapper {
   max-width: 75%;
   margin: auto;
@@ -88,6 +93,7 @@
   margin: 1.5rem 0;
   text-align: center;
   font-size: 30px;
+  color: white;
 }
 .wrapper > h1 {
   letter-spacing: 3px;
