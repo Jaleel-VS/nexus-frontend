@@ -102,7 +102,7 @@ export default {
 
 <style scoped>
 .register-page {
-    background-color: #192734;
+    background-color: #001f3f;
 }
 .logo {
   text-align: center;
@@ -117,10 +117,10 @@ export default {
 }
 h1 {
     font-size: 4em;
-    color: white;
+    color: #ff7b00;
     text-align: center;
     animation: slideDown 1s ease-in-out forwards;
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Montserrat', serif;
 }
 
 .buttons {
@@ -151,8 +151,8 @@ button {
     top: 50px; /* Adjust this value for desired vertical position */
     right: 50px; /* Adjust this value for desired horizontal position */
     padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #ff7b00;
+    color: #001f3f;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -162,8 +162,8 @@ button:hover {
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #192734;
+    font-family: 'Lora', serif;
+    background-color: #001f3f;
     margin: 0;
     padding: 0;
 }
@@ -208,31 +208,32 @@ body {
 }
 
 h2 {
-    color: #333;
+    color: #ff7b00;
     font-size: 24px;
     margin-bottom: 10px;
+    font-family: 'Roboto', serif;
 }
 
 p {
-    color: #666;
+    color: #001f3f;
     font-size: 16px;
     margin-bottom: 20px;
+    font-family: 'Lora', serif;
 }
 
 .join-button {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #ff7b00;
+    color: #001f3f;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-family: 'Roboto', serif;
 }
 
-.join-button :hover {
-    background-color: #0056b3;
-}
+
 
 .images {
     position: relative; /* Change to relative positioning */

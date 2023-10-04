@@ -81,7 +81,7 @@ export default {
   font-family: "Roboto", sans-serif;
 }
 .about-page {
-    background-color: #192734;
+    background-color: #001f3f;
 }
 .wrapper {
   max-width: 75%;
@@ -110,14 +110,14 @@ export default {
   text-align: center;
   font-size: 20px;
   color: white;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lora', sans-serif;
 }
 .wrapper > h1 {
   margin: 1.5rem 0;
   text-align: center;
   font-size: 45px;
-  color: white;
-  font-family: 'Roboto Slab', serif;
+  color: #ff7b00;
+  font-family: 'Montserrat', serif;
 }
 .wrapper > h1 {
   letter-spacing: 3px;
@@ -126,8 +126,8 @@ export default {
   margin: 1.5rem 0;
   text-align: center;
   font-size: 30px;
-  color: white;
-  font-family: 'Roboto Slab', serif;
+  color: #ff7b00;
+  font-family: 'Roboto', serif;
 }
 .wrapper > h2 {
   letter-spacing: 3px;
@@ -141,13 +141,13 @@ export default {
 }
 .apply-btn {
     padding: 10px 20px;
-  background-color: #ccc;
-  color: #333;
+  background-color: #ff7b00;
+  color: #001f3f;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 30px;
-  
+  font-family: 'Roboto', serif;
   
 }
 .apply-btn:hover {
