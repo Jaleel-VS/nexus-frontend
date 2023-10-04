@@ -33,17 +33,17 @@
         <div class="image-container">
             <div class="image-wrapper">
                 <img src="../assets/landing/catalogue.png" alt="Image 1">
-                <h3><p>Broad Catalogue</p></h3>
+                <h3><p class="broadheader">Broad Catalogue</p></h3>
                 <p class="broad">Extensive merchant network gives you direct access to hundreds of premier global brands across multiple sectors.</p>
             </div>
             <div class="image-wrapper">
                 <img src="../assets/landing/tracking.png" alt="Image 2">
-                <h3><p>Tracking and Reporting</p></h3>
+                <h3><p class="broadheader">Tracking and Reporting</p></h3>
                 <p class="broad">Blockchain technology allows you to easily manage and track all your vouchers and progress in one place.</p>
             </div>
             <div class="image-wrapper">
                 <img src="../assets/landing/easy.png" alt="Image 3">
-                <h3><p>Quick and Easy</p></h3>
+                <h3><p class="broadheader">Quick and Easy</p></h3>
                 <p class="broad">We would like to help you as fast as we can, in doing so signing up is very easy. </p>
             </div>
             
@@ -209,7 +209,12 @@ export default {
     font-size: 1.4em;
     font-family: 'Roboto', serif;
 }
-
+.broadheader {
+    color: #ff7b00;
+    line-height: 1.5;
+    font-size: 2.4em;
+    font-family: 'Roboto', serif;
+}
 h1 {
     font-size: 3.5em;
     color: #ff7b00;
@@ -218,7 +223,7 @@ h1 {
 }
 
 h3 {
-    font-family: 'Eczar', serif;
+    
     font-size: 1.25em;
     font-family: 'Roboto', serif;
     color: white;
@@ -235,7 +240,7 @@ p {
 .buttons {
     display: flex;
     gap: 20px;
-    font-family: 'Roboto', serif;
+    font-family: 'Lora', serif;
 }
 
 button {
@@ -245,7 +250,7 @@ button {
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.3s;
-    
+    font-family: 'Lora', serif;
 }
 
 .sign-in-btn {
@@ -301,6 +306,7 @@ button:hover {
     text-align: center;
     font-size: 40px;
     color: #ff7b00;
+    font-family: 'Montserrat', serif ;
 }
 .image-container {
     display: flex;
@@ -336,7 +342,8 @@ button:hover {
     margin-bottom: 20px;
     text-align: center;
     font-size: 40px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Montserrat', serif;
+    color: #ff7b00;
 }
 .container {
   display: flex; 
@@ -368,6 +375,7 @@ button:hover {
   margin-bottom: 10px; 
   font-size: 20px;
   font-family: 'Cormorant Garamond', serif;
+  color: #ff7b00;
 }
 
 #timeline li .point {
@@ -395,7 +403,7 @@ button:hover {
   border: 5px solid #0b2c5c; 
 }
 #timeline li.active .timestamp {
-  color: black; 
+  color: white; 
 }
   .testimonial-container{
     margin-top: 20px;

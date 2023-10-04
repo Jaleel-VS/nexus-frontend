@@ -73,7 +73,7 @@
   font-family: "Roboto", sans-serif;
 }
 .faq-page {
-  background-color: #192734;
+  background-color: #001f3f;
 }
 .wrapper {
   max-width: 75%;
@@ -92,8 +92,9 @@
 .wrapper > h1 {
   margin: 1.5rem 0;
   text-align: center;
-  font-size: 30px;
-  color: white;
+  font-size: 40px;
+  color: #ff7b00;
+  font-family: 'Montserrat', serif;
 }
 .wrapper > h1 {
   letter-spacing: 3px;
