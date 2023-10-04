@@ -11,7 +11,7 @@
         <div class="content-wrapper">
             <div class="text-section">
                 <h1>Nexus: <br> The three-way blockchain contract</h1>
-                <p>
+                <p class="intro">
                     Seamless transactions, guaranteed trust, and automated smart contracts—all made possible with our innovative crypto voucher system. Dive into the future of trusted business, where every party's interest is safeguarded.
                 </p>
                 <div class="buttons">
@@ -34,17 +34,17 @@
             <div class="image-wrapper">
                 <img src="../assets/landing/catalogue.png" alt="Image 1">
                 <h3><p>Broad Catalogue</p></h3>
-                <p>Extensive merchant network gives you direct access to hundreds of premier global brands across multiple sectors.</p>
+                <p class="broad">Extensive merchant network gives you direct access to hundreds of premier global brands across multiple sectors.</p>
             </div>
             <div class="image-wrapper">
                 <img src="../assets/landing/tracking.png" alt="Image 2">
                 <h3><p>Tracking and Reporting</p></h3>
-                <p>Blockchain technology allows you to easily manage and track all your vouchers and progress in one place.</p>
+                <p class="broad">Blockchain technology allows you to easily manage and track all your vouchers and progress in one place.</p>
             </div>
             <div class="image-wrapper">
                 <img src="../assets/landing/easy.png" alt="Image 3">
                 <h3><p>Quick and Easy</p></h3>
-                <p>We would like to help you as fast as we can, in doing so signing up is very easy. </p>
+                <p class="broad">We would like to help you as fast as we can, in doing so signing up is very easy. </p>
             </div>
             
         </div>
@@ -155,8 +155,9 @@ export default {
     justify-content: center;
     width: 100vw;
     font-family: 'Arial', sans-serif;
-    background-color: #f7f7f7;
+    background-color: #001f3f;
     padding-top: 20px;
+    
 }
 .nav-bar ul {
     padding-top: 20px 0;
@@ -173,6 +174,7 @@ export default {
 .nav-bar li {
     list-style: none;
     display: inline-block;
+    
 }
 .nav-bar a {
    
@@ -195,21 +197,35 @@ export default {
     flex-direction: column;
     gap: 20px;
 }
+.intro {
+    color: white;
+    line-height: 1.5;
+    font-size: 1.4em;
+    font-family: 'Roboto', serif;
+}
+.broad {
+    color: white;
+    line-height: 1.5;
+    font-size: 1.4em;
+    font-family: 'Roboto', serif;
+}
 
 h1 {
     font-size: 3.5em;
-    color: #111010;
+    color: #ff7b00;
     margin-bottom: 20px;
-    font-family: 'Eczar', serif;
+    font-family: 'Montserrat', serif;
 }
 
 h3 {
     font-family: 'Eczar', serif;
     font-size: 1.25em;
+    font-family: 'Roboto', serif;
+    color: white;
 }
 
 p {
-    color: #302e2e;
+    color: #ff7b00;
     line-height: 1.5;
     font-size: 1.4em;
     font-family: 'Gentium Plus', serif;
@@ -219,6 +235,7 @@ p {
 .buttons {
     display: flex;
     gap: 20px;
+    font-family: 'Roboto', serif;
 }
 
 button {
@@ -228,16 +245,19 @@ button {
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.3s;
+    
 }
 
 .sign-in-btn {
-    background-color: #007bff;
-    color: white;
+    background-color: #ff7b00;
+    color: #001f3f;
+    font-family: 'Roboto', serif;
 }
 
 .apply-btn {
     background-color: #ccc;
     color: #333;
+    font-family: 'Roboto', serif;
 }
 
 button:hover {
@@ -280,6 +300,7 @@ button:hover {
     margin-bottom: 20px;
     text-align: center;
     font-size: 40px;
+    color: #ff7b00;
 }
 .image-container {
     display: flex;
