@@ -74,6 +74,7 @@ export default {
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 * {
   padding: 0;
   margin: 0;
@@ -117,7 +118,7 @@ export default {
   text-align: center;
   font-size: 45px;
   color: #ff7b00;
-  font-family: 'Montserrat', serif;
+  font-family: 'Poppins';
 }
 .wrapper > h1 {
   letter-spacing: 3px;

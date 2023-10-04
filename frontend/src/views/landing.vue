@@ -148,6 +148,7 @@ export default {
 <style scoped lang="scss">
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Eczar&family=Gentium+Plus&family=Libre+Baskerville&family=Libre+Franklin&family=Proza+Libre&family=Rubik&family=Taviraj&family=Trirong&family=Work+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 .landing-page {
     display: flex;
     flex-direction: column;
@@ -210,16 +211,16 @@ export default {
     font-family: 'Roboto', serif;
 }
 .broadheader {
-    color: #ff7b00;
+    color: #E040FB;
     line-height: 1.5;
     font-size: 2.4em;
     font-family: 'Roboto', serif;
 }
 h1 {
     font-size: 3.5em;
-    color: #ff7b00;
+    color: #E040FB;
     margin-bottom: 20px;
-    font-family: 'Montserrat', serif;
+    font-family: 'Poppins';
 }
 
 h3 {
@@ -230,7 +231,7 @@ h3 {
 }
 
 p {
-    color: #ff7b00;
+    color: #E040FB;
     line-height: 1.5;
     font-size: 1.4em;
     font-family: 'Gentium Plus', serif;
@@ -254,7 +255,7 @@ button {
 }
 
 .sign-in-btn {
-    background-color: #ff7b00;
+    background-color: #E040FB;
     color: #001f3f;
     font-family: 'Roboto', serif;
 }
@@ -305,8 +306,8 @@ button:hover {
     margin-bottom: 20px;
     text-align: center;
     font-size: 40px;
-    color: #ff7b00;
-    font-family: 'Montserrat', serif ;
+    color: #E040FB;
+    font-family: 'Poppins' ;
 }
 .image-container {
     display: flex;
@@ -342,8 +343,8 @@ button:hover {
     margin-bottom: 20px;
     text-align: center;
     font-size: 40px;
-    font-family: 'Montserrat', serif;
-    color: #ff7b00;
+    font-family: 'Poppins';
+    color: #E040FB;
 }
 .container {
   display: flex; 
@@ -375,7 +376,7 @@ button:hover {
   margin-bottom: 10px; 
   font-size: 20px;
   font-family: 'Cormorant Garamond', serif;
-  color: #ff7b00;
+  color: #E040FB;
 }
 
 #timeline li .point {
