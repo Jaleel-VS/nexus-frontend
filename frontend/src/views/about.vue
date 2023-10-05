@@ -117,7 +117,7 @@ export default {
   margin: 1.5rem 0;
   text-align: center;
   font-size: 45px;
-  color: #ff7b00;
+  color: #E040FB;
   font-family: 'Poppins';
 }
 .wrapper > h1 {
@@ -127,7 +127,7 @@ export default {
   margin: 1.5rem 0;
   text-align: center;
   font-size: 30px;
-  color: #ff7b00;
+  color: #E040FB;
   font-family: 'Roboto', serif;
 }
 .wrapper > h2 {
@@ -142,13 +142,14 @@ export default {
 }
 .apply-btn {
     padding: 10px 20px;
-  background-color: #ff7b00;
+  background-color: #E040FB;
   color: #001f3f;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 30px;
   font-family: 'Roboto', serif;
+  margin-bottom: 50px;
   
 }
 .apply-btn:hover {

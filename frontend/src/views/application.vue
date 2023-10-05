@@ -21,7 +21,7 @@
                 <div class="card-content">
             <h2>Influencer</h2>
             <div class="images" >
-                <img src="@/assets/influencer_image.png" />
+                <img src="@/assets/influencer.png" />
             </div>
             <p>You've built your own following on social, and now you're looking to track and monetize your influence. This is the account you want.</p>
             <router-link to="/influencer/influencer_register">
@@ -33,7 +33,7 @@
             <div class="card-content">
             <h2>Brand Manager</h2>
             <div class="images">
-                <img src="@/assets/brand_manager.png" />
+                <img src="@/assets/brand.png" />
             </div>
             <p>Are you a brand manager looking to amplify your brand's reach? Join us to connect with influencers and create impactful campaigns that resonate with your target audience.</p>
             <router-link to="/brand/brand_register">
@@ -46,7 +46,7 @@
             <div class="card-content">
             <h2>Supplier</h2>
             <div class="images">
-                <img src="@/assets/supplier_image.png" />
+                <img src="@/assets/supplier.png" />
             </div>
             <p>Are you a supplier interested in collaborating with brands and influencers? Join us to showcase your products and services, and be a vital part of innovative influencer campaigns.</p>
             <router-link to="/supplier/supplier_register">
@@ -101,6 +101,8 @@ export default {
 
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 .register-page {
     background-color: #001f3f;
 }
@@ -117,16 +119,18 @@ export default {
 }
 h1 {
     font-size: 4em;
-    color: #ff7b00;
+    color: #E040FB;
     text-align: center;
     animation: slideDown 1s ease-in-out forwards;
-    font-family: 'Montserrat', serif;
+    font-family: 'Poppins';
+    
 }
 
 .buttons {
     display: flex;
     gap: 20px;
     justify-content: center;
+    font-family: 'Poppins';
 }
 
 button {
@@ -136,6 +140,7 @@ button {
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.3s;
+    font-family: 'Poppins';
 }
 .image {
     position: absolute;
@@ -151,18 +156,19 @@ button {
     top: 50px; /* Adjust this value for desired vertical position */
     right: 50px; /* Adjust this value for desired horizontal position */
     padding: 10px 20px;
-    background-color: #ff7b00;
+    background-color: #E040FB;
     color: #001f3f;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-family: 'Poppins';
 }
 button:hover {
     opacity: 0.8;
 }
 
 body {
-    font-family: 'Lora', serif;
+    font-family: 'Roboto', serif;
     background-color: #001f3f;
     margin: 0;
     padding: 0;
@@ -208,21 +214,21 @@ body {
 }
 
 h2 {
-    color: #ff7b00;
+    color: #001f3f;
     font-size: 24px;
     margin-bottom: 10px;
-    font-family: 'Roboto', serif;
+    font-family: 'Poppins';
 }
 
 p {
     color: #001f3f;
     font-size: 16px;
     margin-bottom: 20px;
-    font-family: 'Lora', serif;
+    font-family: 'Roboto';
 }
 
 .join-button {
-    background-color: #ff7b00;
+    background-color: #E040FB;
     color: #001f3f;
     padding: 10px 20px;
     border: none;
@@ -230,7 +236,7 @@ p {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
-    font-family: 'Roboto', serif;
+    font-family: 'Poppins';
 }
 
 

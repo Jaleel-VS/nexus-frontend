@@ -93,7 +93,7 @@
   margin: 1.5rem 0;
   text-align: center;
   font-size: 40px;
-  color: #ff7b00;
+  color: #E040FB;
   font-family: 'Montserrat', serif;
 }
 .wrapper > h1 {

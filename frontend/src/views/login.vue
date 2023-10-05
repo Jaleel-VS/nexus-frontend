@@ -1,11 +1,8 @@
 <template>
-
-
-
   <div class="login-page">
-    <div class="login-background-image">
+    <!--<div class="login-background-image">
       <img src="@/assets/blockchain.jpg" alt="Background Image" />
-    </div>
+    </div>-->
     <div class="login-wrapper">
       <h2>Login</h2>
       <div v-if="error" class="error-message">
@@ -20,7 +17,7 @@
         <input v-model="password" type="password" placeholder="Password" />
       </div>
       <!-- Add Remember Me checkbox and Forgot Password link here -->
-      <!-- <div class="remember-forgot">
+      <div class="remember-forgot">
         <div class="remember-me">
           <input type="checkbox" id="remember_me" />
           <label for="remember_me">Remember me</label>
@@ -28,7 +25,7 @@
         <div class="forget-pw">
           <a href="#">Forgot password?</a>
         </div>
-      </div> -->
+      </div>
       
       <button @click="handleLogin" class="login-btn">
         <span v-if="loading" class="spinner"></span>
@@ -93,13 +90,13 @@ export default {
 
         switch ((role.toLowerCase())) {
           case 'supplier':
-            router.push('/supplierT');
+            router.push('/supplier/dashboard');
             break;
           case 'influencer':
-            router.push('/influencerDash');
+            router.push('/influencer/dashboard');
             break;
           case 'brand':
-            router.push('/brandT');
+            router.push('/brand/dashboard');
             break;
           default:
             router.push('/login');
@@ -120,28 +117,30 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 .centered-login {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
-.login-background-image {
+/*.login-background-image {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0; /* Place the background image behind the login form */
+  z-index: 0; 
   overflow: hidden;
-}
+}*/
 
-.login-background-image img {
+
+/*.login-background-image img {
   width: 100%;
   height: 300px;
   object-fit: cover;
   object-position: center;
-}
+}*/
 .login-page {
   display: flex;
   align-items: center;
@@ -149,7 +148,7 @@ export default {
   height: 100vh;
   width: 100vw;
   font-family: 'Arial', sans-serif;
-  background-color: white;
+  background-color: #001f3f;
   
 
 }
@@ -173,14 +172,15 @@ export default {
 h2 {
   font-size: 2em;
   text-align: center;
-  color: black;
+  color: #E040FB;
+  font-family: 'Poppins';
 }
 
 .input-wrapper {
   display: flex;
   align-items: center;
   gap: 10px;
-  color:#0b2c5c; 
+  color:#001f3f; 
 }
 .remember-forgot {
   display: flex;
@@ -217,7 +217,7 @@ h2 {
 .spinner {
     border: 6px solid #f3f3f3;
     /* Light grey */
-    border-top: 6px solid #3498db;
+    border-top: 6px solid #E040FB;
     /* Blue */
     border-radius: 50%;
     width: 10px;
@@ -236,7 +236,7 @@ h2 {
 }
 
 .login-btn {
-  background-color: #0b2c5c;
+  background-color: #E040FB;
   color: #fff;
   font-size: 1.2em;
   border-radius: 5px;

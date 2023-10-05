@@ -394,7 +394,7 @@ button:hover {
 
 #timeline li .timestamp {
   font-size: 14px;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Poppins';
   text-align: center;
   margin-right: 20px;
   margin-bottom: 20px;
