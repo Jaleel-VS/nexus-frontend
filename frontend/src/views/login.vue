@@ -33,8 +33,10 @@
       </button>
       
       <div class="apply-section">
-        <label>Don't have an account?</label>
-        <a href="#">Apply</a>
+        <label>Don't have an account?</label><ul>
+        <li><router-link to="/application"><h3>Apply</h3></router-link></li>
+      </ul>
+        
       </div>
 
     </div>
@@ -247,6 +249,9 @@ h2 {
   justify-content: center;
   display: flex;
 }
+button:hover {
+  opacity: 0.8;
+  }
 
 input {
   flex: 1;

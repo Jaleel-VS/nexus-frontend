@@ -157,7 +157,7 @@ button {
     right: 50px; /* Adjust this value for desired horizontal position */
     padding: 10px 20px;
     background-color: #E040FB;
-    color: #001f3f;
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -229,7 +229,7 @@ p {
 
 .join-button {
     background-color: #E040FB;
-    color: #001f3f;
+    color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;

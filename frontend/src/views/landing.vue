@@ -256,18 +256,20 @@ button {
 
 .sign-in-btn {
     background-color: #E040FB;
-    color: #001f3f;
+    color: #fff;
     font-family: 'Roboto', serif;
 }
 
 .apply-btn {
     background-color: #ccc;
-    color: #333;
+    color: #001f3f;
     font-family: 'Roboto', serif;
 }
 
 button:hover {
     opacity: 0.8;
+    
+  
 }
 
 .image-section img {

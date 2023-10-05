@@ -143,7 +143,7 @@ export default {
 .apply-btn {
     padding: 10px 20px;
   background-color: #E040FB;
-  color: #001f3f;
+  color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
