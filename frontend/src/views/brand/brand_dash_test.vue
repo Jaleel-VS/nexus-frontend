@@ -24,6 +24,8 @@ const menuItems = ref([
 
 
 <style scoped lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 #root {
   display: grid;
   grid-template-areas: 'sidebar router-view';

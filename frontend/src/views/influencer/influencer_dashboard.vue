@@ -48,6 +48,8 @@
   </script>
 
   <style scoped>
+  @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
   h1 {
     font-family: 'Arial', sans-serif;

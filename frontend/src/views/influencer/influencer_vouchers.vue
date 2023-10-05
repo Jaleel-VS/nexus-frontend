@@ -125,7 +125,8 @@ const claimVoucher = () => {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Archivo:wght@100;400&family=DM+Serif+Display&family=Trocchi&family=Vesper+Libre&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 .main {
   display: flex;
   flex-direction: column;
