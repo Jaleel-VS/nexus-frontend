@@ -49,14 +49,15 @@ function toggleSidebar() {
 
 <style scoped lang="scss">
 @use '@/assets/scss/colors' as clr;
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 $sidebar-width: 4rem;
 $toggle-duration: 300ms;
 $sidebar-padding-inline-start: 1rem;
 
 aside {
-  color: clr.$primary;
-  background: clr.$bg-dark;
+  color: #001f3f;
+  background: #E040FB;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -64,6 +65,7 @@ aside {
   padding-block: 1rem;
   transition: all $toggle-duration;
   width: $sidebar-width;
+  font-family: 'Poppins';
 }
 
 aside[vue\:is-open=true] {
@@ -75,6 +77,8 @@ ul {
   flex-direction: column;
   gap: 0.5rem;
   padding-block-end: 1rem;
+  color: #fff;
+  background: #E040FB;
 }
 
 img {
@@ -87,8 +91,8 @@ li {
   padding-inline-start: $sidebar-padding-inline-start;
 
   &:hover {
-    color: clr.$secondary;
-    background-color: lighten($color: clr.$bg-dark, $amount: 5);
+    color: #fff;
+  background: #001f3f;
   }
 
   & a {
@@ -106,7 +110,7 @@ li {
     right: 0;
     width: 0.25rem;
     height: 100%;
-    background-color: clr.$secondary;
+    background-color: #E040FB;
   }
 }
 
@@ -129,6 +133,7 @@ h4 {
   font-size: 0.75rem;
   letter-spacing: 0.125ch;
   transition: opacity $toggle-duration;
+  color: #001f3f;
 }
 
 h4[transparent=true] {
@@ -143,6 +148,7 @@ button {
   left: 0;
   top: 1rem;
   transform: translateX(0%) translateY(2rem) rotateZ(0deg);
+  color: #001f3f;
 
   &.toggle-button {
     left: 100%;

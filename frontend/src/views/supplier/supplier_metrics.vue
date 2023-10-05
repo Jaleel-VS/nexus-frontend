@@ -67,7 +67,7 @@ button {
     top: 20px; /* Adjust this value for desired vertical position */
     right: 20px; /* Adjust this value for desired horizontal position */
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #E040FB;
     color: #fff;
     border: none;
     border-radius: 5px;

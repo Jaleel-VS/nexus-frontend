@@ -1,9 +1,11 @@
 <template>
+  <div class="redeem_page">
   <div class="main-container">
     <h1>Redeem Voucher</h1>
     <input type="text" id="fname" name="fname" />
     <button class="Redeem-voucher" @click="redeemVoucher">Redeem voucher</button> 
   </div>
+</div>
 </template>
 <script>
 import { useRouter } from "vue-router";
@@ -29,10 +31,14 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+.redeem_page {
+  background-color: #001f3f;
+}
 h1 {
   font-size: 3rem;
   margin: 2rem 0;
-  font-family: "Trocchi", serif;
+  font-family: 'Poppins';
+  color: #E040FB;
 }
 
 .main-container {
@@ -43,10 +49,11 @@ h1 {
   width: 100%;
   flex-wrap: wrap;
   gap: 2rem;
+  
 }
 
 button {
-  background-color: #0b2c5c;
+  background-color: #E040FB;
   color: #fff;
   font-size: 1.2em;
   border-radius: 5px;
@@ -56,6 +63,9 @@ button {
   transition: background-color 0.3s;
   justify-content: center;
   display: flex;
+}
+button:hover{
+  opacity: 0.8;
 }
 
 input {

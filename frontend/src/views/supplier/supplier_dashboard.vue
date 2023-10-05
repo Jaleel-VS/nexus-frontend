@@ -35,7 +35,7 @@ const menuItems = ref([
 
 .sidebar {
   grid-area: 'sidebar';
-  background-color: #001f3f;
+  background-color: #E040FB;
 }
 
 .router-view {
