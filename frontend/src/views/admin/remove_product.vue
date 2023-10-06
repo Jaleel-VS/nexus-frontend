@@ -1,11 +1,11 @@
 <template>
     <div class="main">
-    <h1 v-if="userDetails">
-      Welcome, {{ userDetails.username }}
-    </h1>
-    <h2>What product would you like to remove?</h2>
-    </div>
+      <h1 v-if="userDetails">Welcome, {{ userDetails.username }}</h1>
+  
+      <h2>What product would you like to remove?</h2>
+      </div>
 </template>
+
 <script setup>
 import { ref, onMounted } from "vue";
 import { API_ENDPOINT } from "@/config/constants.js";
@@ -21,12 +21,9 @@ onMounted(async () => {
 
   console.log(userDetails.value);
 
-  const response = await fetch(`${API_ENDPOINT}/users/brands`);
-  const data = await response.json();
-  brands.value = data;
-  console.log(brands.value);
+  
 
-  loading.value = false;
+
 });
 </script>
 
