@@ -4,6 +4,7 @@ import Login from "../views/login.vue";
 import Application from "../views/application.vue";
 import Faq from "../views/faq.vue";
 import About from "../views/about.vue";
+import Dummy from "../views/dummy.vue";
 
 
 // Brand Routes
@@ -58,6 +59,11 @@ const routes = [
     path: "/about",
     name: "about",
     component: About,
+  },
+  {
+    path: "/dummy",
+    name: "dummy",
+    component: Dummy,
   },
  
   {

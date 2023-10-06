@@ -1,7 +1,5 @@
 <script setup>
 import { shallowRef } from 'vue';
-import { RouterLink } from 'vue-router';
-import IconAngle from './icons/IconAngle.vue';
 
 const props = defineProps({
   menuItems: Array, // Prop for an array of menu items
@@ -12,48 +10,62 @@ const isSidebarOpen = shallowRef(false);
 function toggleSidebar() {
   isSidebarOpen.value = !isSidebarOpen.value;
 }
+
+// Function to handle user logout
+function logout() {
+  // Implement your logout logic here
+}
+
+// Function to navigate to the user's profile
+function viewProfile() {
+  // Implement your navigation logic here
+}
 </script>
 
 <template>
   <div class="topbar">
-    <div class="logo-toggle">
-      <img src="@/assets/logo.svg" alt="logo" width="32" height="32">
-      <button class="sidebar-toggle" :class="isSidebarOpen ? 'toggle-button' : ''" @click="toggleSidebar">
-        <IconAngle />
-      </button>
+    <div class="menu-container">
+      <ul class="menu">
+        <!-- Loop through the menuItems array and generate menu items -->
+        <li v-for="(menuItem, index) in menuItems" :key="index">
+          <router-link :to="menuItem.path">
+            <i :class="menuItem.icon"></i>
+            <transition name="fade">
+              <span v-show="isSidebarOpen">{{ menuItem.name }}</span>
+            </transition>
+          </router-link>
+        </li>
+      </ul>
     </div>
-    <h4 :class="{ 'transparent': !isSidebarOpen }">Menu</h4>
-    <ul class="menu">
-      <!-- Loop through the menuItems array and generate menu items -->
-      <li v-for="(menuItem, index) in menuItems" :key="index">
-        <router-link :to="menuItem.path">
-          <i :class="menuItem.icon"></i>
-          <transition name="fade">
-            <span v-show="isSidebarOpen">{{ menuItem.name }}</span>
-          </transition>
-        </router-link>
-      </li>
-    </ul>
+    <div class="buttons">
+      <!-- Buttons for View Profile and Logout -->
+      <button @click="viewProfile" class="action-button">View Profile</button>
+      <button @click="logout" class="action-button">Logout</button>
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 /* Your existing SCSS styles can remain mostly unchanged */
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 .topbar {
-  background: #E040FB;
+  background-color: #E040FB;
+  color: #fff;
+  padding: 0.1rem 0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 1rem;
-  font-family: 'Poppins';
+  align-items: center;
 }
 
-.logo-toggle {
+.menu-container {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  column-gap: 0.5rem;
-  cursor: pointer;
 }
 
 .menu {
@@ -64,17 +76,25 @@ function toggleSidebar() {
   margin-top: 1rem;
 }
 
-/* Update the media query to adapt to smaller screens */
-@media (max-width: 768px) {
-  .topbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+.buttons {
+  display: flex;
+  gap: 10px;
+}
 
-  .logo-toggle {
-    margin-bottom: 1rem;
-  }
+/* Style for the action buttons */
+.action-button {
+  
+  padding: 10px 20px;
+  background-color: #001f3f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: 'Roboto', serif;
+}
+
+.action-button:hover {
+  opacity: 0.8;
 }
 </style>
-
-  

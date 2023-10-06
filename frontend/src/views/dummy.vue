@@ -8,26 +8,14 @@
 </template>
 
 <script>
-import TopBar from '@/components/TopBar.vue';
+import TopBar from '@/views/components/TopBar.vue';
 import { RouterView } from 'vue-router'
 
 export default {
   components: {
     TopBar,
   },
-  data() {
-    return {
-      menuItems: [
-        // Define your menu items here
-        {
-          path: '/about',
-          name: 'About',
-          icon: 'fa fa-home fa-2x', // Replace with your icon class
-        },
-        // Add more menu items as needed
-      ],
-    };
-  },
+  
   // Other component options
 };
 </script>
@@ -37,7 +25,7 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 #root {
   display: grid;
-  grid-template-areas: 'sidebar router-view';
+  grid-template-areas: 'topbar router-view';
   grid-template-columns: auto 1fr;
   font-family: sans-serif;
 }
