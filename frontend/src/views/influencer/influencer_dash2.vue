@@ -39,14 +39,4 @@ const menuItems = ref([
   padding: 1rem;
 }
 
-// #root {
-//   display: flex;
-//   flex-direction: row;
-// }
-
-// .router-view {
-//   flex: 1;
-// }
-
-
 </style>
