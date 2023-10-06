@@ -230,11 +230,13 @@ const request = async () => {
 
 <style scoped lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Archivo:wght@100;400&family=DM+Serif+Display&family=Trocchi&family=Vesper+Libre&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 .main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #001f3f;
 }
 
 .main-container {
@@ -249,14 +251,16 @@ h1 {
   font-size: 3rem;
   margin: 2rem 0;
   //  use Trocchi
-  font-family: "Trocchi", serif;
+  font-family: 'Poppins';
+  color:#E040FB;
 }
 
 h2 {
   font-size: 2rem;
   margin: 1rem 0;
   // Trocchi
-  font-family: "Trocchi", serif;
+  font-family:'Poppins';
+  color:#E040FB;
 }
 
 .brand-cards {
@@ -304,6 +308,12 @@ h2 {
 
 .request-btn {
   margin-top: 20px;
+  background-color: #E040FB;
+  color: #fff;
+  font-family: 'Poppins';
+}
+.request-btn:hover {
+    opacity: 0.8;
 }
 
 .fade-enter-active,
@@ -325,7 +335,7 @@ h2 {
 .spinner {
   border: 16px solid #f3f3f3;
   /* Light grey */
-  border-top: 16px solid #3498db;
+  border-top: 16px solid #E040FB;
   /* Blue */
   border-radius: 50%;
   width: 120px;

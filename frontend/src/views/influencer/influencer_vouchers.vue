@@ -2,7 +2,7 @@
   <div class="main">
     <h1 v-if="userDetails">Welcome, {{ userDetails.username }}</h1>
 
-    <h2>View and claim your vouchers 🐲</h2>
+    <h2>View and claim your vouchers </h2>
 
     <div v-if="loading" class="loading">
       <div class="spinner"></div>
@@ -125,11 +125,13 @@ const claimVoucher = () => {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Archivo:wght@100;400&family=DM+Serif+Display&family=Trocchi&family=Vesper+Libre&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 .main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #001f3f;
 }
 
 .main-container {
@@ -145,13 +147,14 @@ const claimVoucher = () => {
 h1 {
   font-size: 3rem;
   margin: 2rem 0;
-  font-family: "Trocchi", serif;
+  font-family: "Poppins";
 }
 
 h2 {
   font-size: 2rem;
   margin: 1rem 0;
-  font-family: "Trocchi", serif;
+  font-family: 'Poppins';
+  color: #E040FB;
 }
 
 .loading {
@@ -164,7 +167,7 @@ h2 {
 .spinner {
   border: 16px solid #f3f3f3;
   /* Light grey */
-  border-top: 16px solid #3498db;
+  border-top: 16px solid #E040FB;
   /* Blue */
   border-radius: 50%;
   width: 120px;
@@ -192,7 +195,7 @@ h2 {
 }
 
 button {
-  background-color: #0b2c5c;
+  background-color: #E040FB;
   color: #fff;
   font-size: 1.2em;
   border-radius: 5px;
@@ -202,6 +205,10 @@ button {
   transition: background-color 0.3s;
   justify-content: center;
   display: flex;
+  font-family: 'Poppins';
+}
+button:hover {
+    opacity: 0.8;
 }
 
 </style>

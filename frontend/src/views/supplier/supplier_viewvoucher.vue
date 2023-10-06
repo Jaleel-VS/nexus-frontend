@@ -55,6 +55,7 @@ export default {
     function toggleVoucherDetails(index) {
       voucherDetailsVisible[index] = !voucherDetailsVisible[index];
     }
+    
 
     return {
       vouchers,
@@ -68,6 +69,8 @@ export default {
 
   
   <style scoped lang="scss">
+  @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 .buttons {
     display: flex;

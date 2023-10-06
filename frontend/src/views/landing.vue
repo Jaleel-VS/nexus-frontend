@@ -11,7 +11,7 @@
         <div class="content-wrapper">
             <div class="text-section">
                 <h1>Nexus: <br> The three-way blockchain contract</h1>
-                <p>
+                <p class="intro">
                     Seamless transactions, guaranteed trust, and automated smart contracts—all made possible with our innovative crypto voucher system. Dive into the future of trusted business, where every party's interest is safeguarded.
                 </p>
                 <div class="buttons">
@@ -33,18 +33,18 @@
         <div class="image-container">
             <div class="image-wrapper">
                 <img src="../assets/landing/catalogue.png" alt="Image 1">
-                <h3><p>Broad Catalogue</p></h3>
-                <p>Extensive merchant network gives you direct access to hundreds of premier global brands across multiple sectors.</p>
+                <h3><p class="broadheader">Broad Catalogue</p></h3>
+                <p class="broad">Extensive merchant network gives you direct access to hundreds of premier global brands across multiple sectors.</p>
             </div>
             <div class="image-wrapper">
                 <img src="../assets/landing/tracking.png" alt="Image 2">
-                <h3><p>Tracking and Reporting</p></h3>
-                <p>Blockchain technology allows you to easily manage and track all your vouchers and progress in one place.</p>
+                <h3><p class="broadheader">Tracking and Reporting</p></h3>
+                <p class="broad">Blockchain technology allows you to easily manage and track all your vouchers and progress in one place.</p>
             </div>
             <div class="image-wrapper">
                 <img src="../assets/landing/easy.png" alt="Image 3">
-                <h3><p>Quick and Easy</p></h3>
-                <p>We would like to help you as fast as we can, in doing so signing up is very easy. </p>
+                <h3><p class="broadheader">Quick and Easy</p></h3>
+                <p class="broad">We would like to help you as fast as we can, in doing so signing up is very easy. </p>
             </div>
             
         </div>
@@ -148,6 +148,7 @@ export default {
 <style scoped lang="scss">
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Eczar&family=Gentium+Plus&family=Libre+Baskerville&family=Libre+Franklin&family=Proza+Libre&family=Rubik&family=Taviraj&family=Trirong&family=Work+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 .landing-page {
     display: flex;
     flex-direction: column;
@@ -155,8 +156,9 @@ export default {
     justify-content: center;
     width: 100vw;
     font-family: 'Arial', sans-serif;
-    background-color: #f7f7f7;
+    background-color: #001f3f;
     padding-top: 20px;
+    
 }
 .nav-bar ul {
     padding-top: 20px 0;
@@ -173,6 +175,7 @@ export default {
 .nav-bar li {
     list-style: none;
     display: inline-block;
+    
 }
 .nav-bar a {
    
@@ -195,21 +198,40 @@ export default {
     flex-direction: column;
     gap: 20px;
 }
-
+.intro {
+    color: white;
+    line-height: 1.5;
+    font-size: 1.4em;
+    font-family: 'Roboto', serif;
+}
+.broad {
+    color: white;
+    line-height: 1.5;
+    font-size: 1.4em;
+    font-family: 'Roboto', serif;
+}
+.broadheader {
+    color: #E040FB;
+    line-height: 1.5;
+    font-size: 2.4em;
+    font-family: 'Roboto', serif;
+}
 h1 {
     font-size: 3.5em;
-    color: #111010;
+    color: #E040FB;
     margin-bottom: 20px;
-    font-family: 'Eczar', serif;
+    font-family: 'Poppins';
 }
 
 h3 {
-    font-family: 'Eczar', serif;
+    
     font-size: 1.25em;
+    font-family: 'Roboto', serif;
+    color: white;
 }
 
 p {
-    color: #302e2e;
+    color: #E040FB;
     line-height: 1.5;
     font-size: 1.4em;
     font-family: 'Gentium Plus', serif;
@@ -219,6 +241,7 @@ p {
 .buttons {
     display: flex;
     gap: 20px;
+    font-family: 'Lora', serif;
 }
 
 button {
@@ -228,20 +251,25 @@ button {
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.3s;
+    font-family: 'Lora', serif;
 }
 
 .sign-in-btn {
-    background-color: #007bff;
-    color: white;
+    background-color: #E040FB;
+    color: #fff;
+    font-family: 'Roboto', serif;
 }
 
 .apply-btn {
     background-color: #ccc;
-    color: #333;
+    color: #001f3f;
+    font-family: 'Roboto', serif;
 }
 
 button:hover {
     opacity: 0.8;
+    
+  
 }
 
 .image-section img {
@@ -280,6 +308,8 @@ button:hover {
     margin-bottom: 20px;
     text-align: center;
     font-size: 40px;
+    color: #E040FB;
+    font-family: 'Poppins' ;
 }
 .image-container {
     display: flex;
@@ -315,7 +345,8 @@ button:hover {
     margin-bottom: 20px;
     text-align: center;
     font-size: 40px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Poppins';
+    color: #E040FB;
 }
 .container {
   display: flex; 
@@ -347,6 +378,7 @@ button:hover {
   margin-bottom: 10px; 
   font-size: 20px;
   font-family: 'Cormorant Garamond', serif;
+  color: #E040FB;
 }
 
 #timeline li .point {
@@ -364,7 +396,7 @@ button:hover {
 
 #timeline li .timestamp {
   font-size: 14px;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Poppins';
   text-align: center;
   margin-right: 20px;
   margin-bottom: 20px;
@@ -374,7 +406,7 @@ button:hover {
   border: 5px solid #0b2c5c; 
 }
 #timeline li.active .timestamp {
-  color: black; 
+  color: white; 
 }
   .testimonial-container{
     margin-top: 20px;

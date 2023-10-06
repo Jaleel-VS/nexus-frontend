@@ -1,8 +1,8 @@
 <template>
     <div class="register-page">
-        <div class="login-background-image">
+        <!--<div class="login-background-image">
       <img src="@/assets/blockchain.jpg" alt="Background Image" />
-    </div>
+    </div>-->
       <div class="registration-card">
         <h1>Register as a Brand Manager</h1>
         <form @submit.prevent="register">
@@ -84,6 +84,8 @@
   </script>
   
   <style scoped>
+  @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
   .login-background-image {
   position: absolute;
   top: 0;
@@ -105,7 +107,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: white;
+    background-color: #001f3f;
   }
   
   .registration-card {
@@ -121,6 +123,8 @@
   h1 {
     font-size: 24px;
     margin-bottom: 20px;
+    color: #E040FB;
+    font-family: 'Poppins';
   }
   
   .form-group {
@@ -131,7 +135,7 @@
   label {
     display: block;
     margin-bottom: 5px;
-    color: #0b2c5c;
+    color: #001f3f;
   }
   
   input[type="text"],
@@ -162,7 +166,7 @@
   }
   
   button {
-    background-color: #0b2c5c;
+    background-color: #E040FB;
   color: #fff;
   font-size: 1.2em;
   border-radius: 5px;
@@ -182,7 +186,7 @@
   }
   
   button:hover {
-    background-color: #0056b3;
+    opacity: 0.8;
   }
   /* Adjust the width and margins for the name and surname fields */
 .name-fields {
