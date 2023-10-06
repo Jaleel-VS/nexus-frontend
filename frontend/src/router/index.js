@@ -21,10 +21,9 @@ import requestVoucher from "../views/influencer/request_voucher.vue";
 import influencerRequests from "../views/influencer/influencer_requests.vue";
 import influencer_register from "../views/influencer/influencer_register.vue";
 // Admin Routes
-import generateReports from "../views/admin/generate_reports.vue";
+
 import addProduct from "../views/admin/add_product.vue";
-import removeProduct from "../views/admin/remove_product.vue";
-import removeUser from "../views/admin/remove_user.vue";
+
 // inf dashboard
 import influencerDash from "../views/influencer/influencer_dash2.vue";
 import Admin from "../views/admin/admin.vue";
@@ -84,22 +83,6 @@ const routes = [
     name: "add_product",
     component: addProduct,
   },
-  
-  {
-    path: "/admin/generate_reports",
-    name: "generate_reports",
-    component: generateReports,
-  },
-  {
-    path: "/admin/remove_product",
-    name: "remove_product",
-    component: removeProduct,
-  },
-  {
-    path: "/admin/remove_user",
-    name: "remove_user",
-    component: removeUser,
-  },
   {
     path: "/brand/brand_register",
     name: "brand_register",
@@ -157,8 +140,8 @@ const routes = [
     ],
   },
   {
-    path: "/Admin",
-    name: "Admin",
+    path: "/admin",
+    name: "admin",
     component: Admin,
     children: [
       {
@@ -166,9 +149,9 @@ const routes = [
         name: "addProduct",
         component: () => import("../views/admin/add_product.vue"),
       },
-      { path: "/removeProduct", component: ()=> import("../views/admin/remove_product.vue")},
-      { path: "/removeUser", component: ()=> import("../views/admin/remove_user.vue")},
-      { path: "/generateReports", component: ()=> import("../views/admin/generate_reports.vue")},
+      { path: "/yellow", component: ()=> import("../views/admin/remove_product.vue")},
+      { path: "/blue", component: ()=> import("../views/admin/remove_user.vue")},
+      { path: "/red", component: ()=> import("../views/admin/generate_reports.vue")},
     ],
   },
 
