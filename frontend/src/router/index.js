@@ -149,9 +149,9 @@ const routes = [
         name: "addProduct",
         component: () => import("../views/admin/add_product.vue"),
       },
-      { path: "/yellow", component: ()=> import("../views/admin/remove_product.vue")},
-      { path: "/blue", component: ()=> import("../views/admin/remove_user.vue")},
-      { path: "/red", component: ()=> import("../views/admin/generate_reports.vue")},
+      { path: "/admin/removeProduct", component: ()=> import("../views/admin/remove_product.vue")},
+      { path: "/admin/removeUser", component: ()=> import("../views/admin/remove_user.vue")},
+      { path: "/admin/generateReports", component: ()=> import("../views/admin/generate_reports.vue")},
     ],
   },
 
