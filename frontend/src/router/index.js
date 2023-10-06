@@ -4,6 +4,7 @@ import Login from "../views/login.vue";
 import Application from "../views/application.vue";
 import Faq from "../views/faq.vue";
 import About from "../views/about.vue";
+
 // Brand Routes
 
 // import brandDash from '../views/brand/brand_dash2.vue';
@@ -19,9 +20,14 @@ import influencerDashboard from "../views/influencer/influencer_dashboard.vue";
 import requestVoucher from "../views/influencer/request_voucher.vue";
 import influencerRequests from "../views/influencer/influencer_requests.vue";
 import influencer_register from "../views/influencer/influencer_register.vue";
-
+// Admin Routes
+import generateReports from "../views/admin/generate_reports.vue";
+import addProduct from "../views/admin/add_product.vue";
+import removeProduct from "../views/admin/remove_product.vue";
+import removeUser from "../views/admin/remove_user.vue";
 // inf dashboard
 import influencerDash from "../views/influencer/influencer_dash2.vue";
+import Admin from "../views/admin/admin.vue";
 //sup dash test
 import brandT from "../views/brand/brand_dash_test.vue";
 import supplierT from "../views/supplier/supplier_dashboard.vue";
@@ -72,6 +78,27 @@ const routes = [
     path: "/supplier/supplier_redeem",
     name: "supplier_redeem",
     component: supplier_redeem,
+  },
+  {
+    path: "/admin/add_product",
+    name: "add_product",
+    component: addProduct,
+  },
+  
+  {
+    path: "/admin/generate_reports",
+    name: "generate_reports",
+    component: generateReports,
+  },
+  {
+    path: "/admin/remove_product",
+    name: "remove_product",
+    component: removeProduct,
+  },
+  {
+    path: "/admin/remove_user",
+    name: "remove_user",
+    component: removeUser,
   },
   {
     path: "/brand/brand_register",
@@ -127,6 +154,21 @@ const routes = [
         component: () => import("../views/supplier/supplier_redeem.vue"), 
       },
       
+    ],
+  },
+  {
+    path: "/Admin",
+    name: "Admin",
+    component: Admin,
+    children: [
+      {
+        path: "",
+        name: "addProduct",
+        component: () => import("../views/admin/add_product.vue"),
+      },
+      { path: "/removeProduct", component: ()=> import("../views/admin/remove_product.vue")},
+      { path: "/removeUser", component: ()=> import("../views/admin/remove_user.vue")},
+      { path: "/generateReports", component: ()=> import("../views/admin/generate_reports.vue")},
     ],
   },
 
