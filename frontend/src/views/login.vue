@@ -41,13 +41,8 @@
 
     </div>
   </div>
-<div class="footer">
-  <div class="footer-links">
-    <a href="#">Terms of Service</a>
-    <a href="#">Privacy Notice</a>
-    <a href="#">Terms and Conditions</a>
-  </div>
-</div>
+
+
   
 </template>
 
@@ -184,24 +179,31 @@ h2 {
   gap: 10px;
   color:#001f3f; 
 }
+
 .remember-forgot {
   display: flex;
-  justify-content: center; /* Center content horizontally */
-  gap: 10px; /* Add spacing between Remember Me and Forgot Password */
+  align-items: center;
+  gap: 20px; /* Add spacing between Remember Me and Forgot Password */
   color: black;
 }
 
 .remember-me {
   display: flex;
   align-items: center;
-  margin-right: 30px;
 }
 
 .forget-pw a {
-  color:  #0b2c5c;
+  color: #0b2c5c;
   text-decoration: none;
-  margin-left: 20px;
 }
+
+/* Add space between "Remember Me" and "Forgot Password" */
+.forget-pw {
+  margin-left: auto;
+}
+
+
+
 
 .apply-section {
   display: flex;
@@ -209,11 +211,11 @@ h2 {
   justify-content: center;
   margin-top: 10px; /* Add top margin for spacing */
   color: black;
+  gap: 10px; 
 }
 .apply-section a {
   color: #0b2c5c;
   text-decoration: none;
-  margin-left: 5px; /* Add left margin for spacing */
 }
 
 .spinner {
@@ -280,23 +282,7 @@ input {
   }
 }
 
-.footer {
-  text-align: center;
-  margin-top: 20px;
-}
 
-.footer-links {
-  margin-bottom: 10px;
-}
 
-.footer-links a {
-  margin: 0 10px;
-  text-decoration: none;
-  color: #0b2c5c;
-}
 
-/* Style for the links on hover */
-.footer-links a:hover {
-  text-decoration: underline;
-}
 </style>
