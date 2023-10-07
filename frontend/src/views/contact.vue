@@ -76,6 +76,7 @@ import { API_ENDPOINT, OTHER_CONST } from '@/config/constants.js';
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 .contact-info-section {
     width: 80%;
     max-width: 400px;
@@ -91,12 +92,14 @@ import { API_ENDPOINT, OTHER_CONST } from '@/config/constants.js';
     position: relative;
     z-index: 1;
    /* Adjust the spacing from the contact form */
+   font-family: Poppins;
   }
   
   .contact-info-section h2 {
     font-size: 2em;
     text-align: center;
     color: rgb(13, 13, 72);
+    font-family: Poppins;
   }
   
   
@@ -105,6 +108,7 @@ import { API_ENDPOINT, OTHER_CONST } from '@/config/constants.js';
     align-items: center;
     gap: 10px;
     color: rgb(13, 13, 72); 
+    font-family: Poppins;
     
   }
   
@@ -114,6 +118,7 @@ import { API_ENDPOINT, OTHER_CONST } from '@/config/constants.js';
     border: 1px solid #ccc;
     border-radius: 5px;
     color: #0b2c5c;
+    font-family: Poppins;
   }
   
   .contact-info-section i {
@@ -151,7 +156,7 @@ import { API_ENDPOINT, OTHER_CONST } from '@/config/constants.js';
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  font-family: 'Arial', sans-serif;
+  font-family: Poppins;
   background-color: #001f3f;
   
 
@@ -162,7 +167,7 @@ import { API_ENDPOINT, OTHER_CONST } from '@/config/constants.js';
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  font-family: 'Arial', sans-serif;
+  font-family: Poppins;
   background-color: #001f3f;
   
 
@@ -182,13 +187,14 @@ import { API_ENDPOINT, OTHER_CONST } from '@/config/constants.js';
   background-color: #f7f7f7;
   position: relative;
   z-index: 1; /* Ensure the login form is above the background image */
-  
+  font-family: Poppins;
 }
 
 h2 {
   font-size: 2em;
   text-align: center;
-  color: black;
+  color: #001f3f;
+  font-family: Poppins;
 }
 
 .input-wrapper {
@@ -196,6 +202,7 @@ h2 {
   align-items: center;
   gap: 10px;
   color:#0b2c5c; 
+  font-family: Poppins;
 }
 
 
@@ -217,6 +224,7 @@ h2 {
   transition: background-color 0.3s;
   justify-content: center;
   display: flex;
+  font-family: Poppins;
 }
 
 input {
@@ -225,6 +233,7 @@ input {
   border: 1px solid #ccc;
   border-radius: 5px;
   color: #0b2c5c;
+  font-family: Poppins;
 }
 
 
