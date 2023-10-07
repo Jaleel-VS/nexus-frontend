@@ -47,7 +47,7 @@ export default {
 <style scoped>
 
 h1 {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 2em;
   color: #111010;
   margin: 0;
@@ -56,7 +56,7 @@ h1 {
 }
 
 p {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.2em;
   color: #111010;
   margin: 0;

@@ -4,7 +4,7 @@
             <ul>
                 <li><router-link to="/about"><h3>About</h3></router-link></li>
                 <li><router-link to="/faq"><h3>FAQ Section</h3></router-link></li>
-                <li><a href="#"><h3>Contact</h3></a></li>
+                <li><router-link to="/contact"><h3>Contact</h3></router-link></li>
             </ul>
         </nav>
         
@@ -99,6 +99,12 @@
             <div class="image"><img src="../assets/Testimonial_DP3.jpg" alt="Image 1"></div>
             <h3 class='person'>Mary</h3></div>
         </div>
+        <div class="testimonial-card">
+            <div class="text">Hello<i class="fas fa-quote-right quote"></i></div>
+            <div class="footer">
+            <div class="image"><img src="../assets/Testimonial_DP4.jpg" alt="Image 1"></div>
+            <h3 class='person'>Susan</h3></div>
+        </div>
         </div>    
     </div>
 </template>
@@ -149,17 +155,36 @@ export default {
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Eczar&family=Gentium+Plus&family=Libre+Baskerville&family=Libre+Franklin&family=Proza+Libre&family=Rubik&family=Taviraj&family=Trirong&family=Work+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+
 .landing-page {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100vw;
-    font-family: 'Arial', sans-serif;
-    background-color: #001f3f;
+    font-family: 'Poppins', sans-serif;
     padding-top: 20px;
-    
+    background-image:url(../assets/color-bars.svg);
+    background-size:cover;
+    background-position: center;
+    backdrop-filter: blur(0px);
+    background-color: #001f3f;
 }
+
+.landing-page::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 1, 63, 0.85); /* Adjust the opacity as needed */
+    z-index: -1; /* Ensure the semi-transparent pane is behind other elements */
+}
+
+
 .nav-bar ul {
     padding-top: 20px 0;
     margin-bottom: 50px;
@@ -177,11 +202,11 @@ export default {
     display: inline-block;
     
 }
-.nav-bar a {
-   
-    text-decoration: none;
-    color: #111010;
-}
+.nav-bar ul li a:hover {
+        color: red; /* Set the color you want the links to change to on hover */
+    }
+
+
 
 .content-wrapper {
     display: flex;
@@ -202,19 +227,19 @@ export default {
     color: white;
     line-height: 1.5;
     font-size: 1.4em;
-    font-family: 'Roboto', serif;
+    font-family: 'Poppins', serif;
 }
 .broad {
     color: white;
     line-height: 1.5;
-    font-size: 1.4em;
-    font-family: 'Roboto', serif;
+    font-size: 1.2em;
+    font-family: 'Poppins', serif;
 }
 .broadheader {
     color: #E040FB;
     line-height: 1.5;
-    font-size: 2.4em;
-    font-family: 'Roboto', serif;
+    font-size: 1em;
+    font-family: 'Poppins', serif;
 }
 h1 {
     font-size: 3.5em;
@@ -226,7 +251,7 @@ h1 {
 h3 {
     
     font-size: 1.25em;
-    font-family: 'Roboto', serif;
+    font-family: 'Poppins', serif;
     color: white;
 }
 
@@ -256,18 +281,20 @@ button {
 
 .sign-in-btn {
     background-color: #E040FB;
-    color: #001f3f;
-    font-family: 'Roboto', serif;
+    color: #fff;
+    font-family: 'Poppins', serif;
 }
 
 .apply-btn {
     background-color: #ccc;
-    color: #333;
-    font-family: 'Roboto', serif;
+    color: #001f3f;
+    font-family: 'Poppins', serif;
 }
 
 button:hover {
     opacity: 0.8;
+    
+  
 }
 
 .image-section img {
@@ -333,7 +360,6 @@ button:hover {
 
 .image-wrapper p {
     margin: 5px; 
-    font-size: 14px; 
 }
 .header h3 {
     max-width: 100%;
@@ -374,8 +400,8 @@ button:hover {
   text-align: center;
   margin-top: 20px;
   margin-bottom: 10px; 
-  font-size: 20px;
-  font-family: 'Cormorant Garamond', serif;
+  font-size: 1em;
+  font-family: 'Poppins', serif;
   color: #E040FB;
 }
 
@@ -394,7 +420,7 @@ button:hover {
 
 #timeline li .timestamp {
   font-size: 14px;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Poppins';
   text-align: center;
   margin-right: 20px;
   margin-bottom: 20px;
@@ -435,6 +461,7 @@ button:hover {
     line-height: 1.7em;
     position: relative;
     font-size: 12px;
+    color: black; 
   }
   .image{
     height: 75px;

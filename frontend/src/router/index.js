@@ -4,6 +4,9 @@ import Login from "../views/login.vue";
 import Application from "../views/application.vue";
 import Faq from "../views/faq.vue";
 import About from "../views/about.vue";
+import Dummy from "../views/dummy.vue";
+
+
 import Contact from "../views/contact.vue";
 // Brand Routes
 
@@ -16,13 +19,16 @@ import supplier_register from "../views/supplier/supplier_register.vue";
 import supplier_redeem from "../views/supplier/supplier_redeem.vue";
 import supplier_metrics from "../views/supplier/supplier_metrics.vue";
 // Influencer Routes
-import influencerDashboard from "../views/influencer/influencer_dashboard.vue";
 import requestVoucher from "../views/influencer/request_voucher.vue";
 import influencerRequests from "../views/influencer/influencer_requests.vue";
 import influencer_register from "../views/influencer/influencer_register.vue";
+// Admin Routes
+
+import addProduct from "../views/admin/add_product.vue";
 
 // inf dashboard
 import influencerDash from "../views/influencer/influencer_dash2.vue";
+import Admin from "../views/admin/admin.vue";
 //sup dash test
 import brandT from "../views/brand/brand_dash_test.vue";
 import supplierT from "../views/supplier/supplier_dashboard.vue";
@@ -61,6 +67,12 @@ const routes = [
     component: About,
   },
   {
+    path: "/dummy",
+    name: "dummy",
+    component: Dummy,
+  },
+ 
+  {
     path: "/supplier/supplier_register",
     name: "supplier_register",
     component: supplier_register,
@@ -81,6 +93,11 @@ const routes = [
     component: supplier_redeem,
   },
   {
+    path: "/admin/add_product",
+    name: "add_product",
+    component: addProduct,
+  },
+  {
     path: "/brand/brand_register",
     name: "brand_register",
     component: brand_register,
@@ -89,11 +106,6 @@ const routes = [
     path: "/influencer/influencer_register",
     name: "influencer_register",
     component: influencer_register,
-  },
-  {
-    path: "/influencer/dashboard",
-    name: "influencerDashboard",
-    component: influencerDashboard,
   },
   {
     path: "/influencer/request-voucher",
@@ -134,6 +146,21 @@ const routes = [
         component: () => import("../views/supplier/supplier_redeem.vue"), 
       },
       
+    ],
+  },
+  {
+    path: "/admin",
+    name: "admin",
+    component: Admin,
+    children: [
+      {
+        path: "",
+        name: "addProduct",
+        component: () => import("../views/admin/add_product.vue"),
+      },
+      { path: "/admin/removeProduct", component: ()=> import("../views/admin/remove_product.vue")},
+      { path: "/admin/removeUser", component: ()=> import("../views/admin/remove_user.vue")},
+      { path: "/admin/generateReports", component: ()=> import("../views/admin/generate_reports.vue")},
     ],
   },
 

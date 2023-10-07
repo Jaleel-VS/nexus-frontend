@@ -188,8 +188,10 @@ export default {
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 h1 {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 2em;
   color: #111010;
   margin: 0;
@@ -198,7 +200,7 @@ h1 {
 }
 
 p {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.2em;
   color: #111010;
   margin: 0;

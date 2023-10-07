@@ -1,6 +1,7 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import SidebarMenu from '@/views/components/SidebarMenu.vue';
+import navbar from '@/views/components/navbar.vue';
 import { ref } from 'vue'
 
 const menuItems = ref([
@@ -14,6 +15,7 @@ const menuItems = ref([
 
 <template>
   <div id="root">
+    <!-- <navbar username="John Doe" /> -->
     <SidebarMenu
       :menuItems="menuItems"
      class="sidebar" />
@@ -23,6 +25,8 @@ const menuItems = ref([
 
 
 <style scoped lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 #root {
   display: grid;
   grid-template-areas: 'sidebar router-view';
@@ -38,15 +42,5 @@ const menuItems = ref([
   grid-area: 'router-view';
   padding: 1rem;
 }
-
-// #root {
-//   display: flex;
-//   flex-direction: row;
-// }
-
-// .router-view {
-//   flex: 1;
-// }
-
 
 </style>
