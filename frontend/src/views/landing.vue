@@ -99,6 +99,12 @@
             <div class="image"><img src="../assets/Testimonial_DP3.jpg" alt="Image 1"></div>
             <h3 class='person'>Mary</h3></div>
         </div>
+        <div class="testimonial-card">
+            <div class="text">Hello<i class="fas fa-quote-right quote"></i></div>
+            <div class="footer">
+            <div class="image"><img src="../assets/Testimonial_DP3.jpg" alt="Image 1"></div>
+            <h3 class='person'>Susan</h3></div>
+        </div>
         </div>    
     </div>
 </template>
@@ -455,6 +461,7 @@ button:hover {
     line-height: 1.7em;
     position: relative;
     font-size: 12px;
+    color: black; 
   }
   .image{
     height: 75px;
