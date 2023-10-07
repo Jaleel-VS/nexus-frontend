@@ -110,7 +110,7 @@ li {
     right: 0;
     width: 0.25rem;
     height: 100%;
-    background-color: #E040FB;
+    background-color: white;
   }
 }
 
@@ -130,8 +130,8 @@ h4 {
   pointer-events: none;
   opacity: 0.5;
   text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.125ch;
+  font-size: 1.25em;
+  // letter-spacing: 0.125ch;
   transition: opacity $toggle-duration;
   color: #001f3f;
 }

@@ -18,7 +18,6 @@ import supplier_register from "../views/supplier/supplier_register.vue";
 import supplier_redeem from "../views/supplier/supplier_redeem.vue";
 import supplier_metrics from "../views/supplier/supplier_metrics.vue";
 // Influencer Routes
-import influencerDashboard from "../views/influencer/influencer_dashboard.vue";
 import requestVoucher from "../views/influencer/request_voucher.vue";
 import influencerRequests from "../views/influencer/influencer_requests.vue";
 import influencer_register from "../views/influencer/influencer_register.vue";
@@ -100,11 +99,6 @@ const routes = [
     path: "/influencer/influencer_register",
     name: "influencer_register",
     component: influencer_register,
-  },
-  {
-    path: "/influencer/dashboard",
-    name: "influencerDashboard",
-    component: influencerDashboard,
   },
   {
     path: "/influencer/request-voucher",

@@ -3,7 +3,6 @@
         <div class="logo">
             <i class="fas fa-cube"></i> <!-- Replace with your logo -->
         </div>
-
         <div class="profile-section">
             <div class="username">{{ username }}</div>
             <button @click="handleLogout" class="logout-btn">Logout</button>

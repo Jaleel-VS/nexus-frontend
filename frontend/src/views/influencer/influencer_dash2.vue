@@ -1,6 +1,7 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import SidebarMenu from '@/views/components/SidebarMenu.vue';
+import navbar from '@/views/components/navbar.vue';
 import { ref } from 'vue'
 
 const menuItems = ref([
@@ -14,6 +15,7 @@ const menuItems = ref([
 
 <template>
   <div id="root">
+    <!-- <navbar username="John Doe" /> -->
     <SidebarMenu
       :menuItems="menuItems"
      class="sidebar" />

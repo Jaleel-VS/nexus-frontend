@@ -31,7 +31,7 @@
               <div>{{ brand.brandCategory }}</div>
             </v-card-text>
             <v-card-actions>
-              <v-btn color="orange" @click="selectBrand(brand)"> Select </v-btn>
+              <v-btn color="orange" @click="selectBrand(brand)"> Collaborate </v-btn>
             </v-card-actions>
           </v-card>
         </div>

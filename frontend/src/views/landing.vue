@@ -149,6 +149,9 @@ export default {
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Eczar&family=Gentium+Plus&family=Libre+Baskerville&family=Libre+Franklin&family=Proza+Libre&family=Rubik&family=Taviraj&family=Trirong&family=Work+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+
 .landing-page {
     display: flex;
     flex-direction: column;
@@ -156,10 +159,26 @@ export default {
     justify-content: center;
     width: 100vw;
     font-family: 'Poppins', sans-serif;
-    background-color: #001f3f;
     padding-top: 20px;
-    
+    background-image:url(../assets/color-bars.svg);
+    background-size:cover;
+    background-position: center;
+    backdrop-filter: blur(0px);
+    background-color: #001f3f;
 }
+
+.landing-page::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 1, 63, 0.85); /* Adjust the opacity as needed */
+    z-index: -1; /* Ensure the semi-transparent pane is behind other elements */
+}
+
+
 .nav-bar ul {
     padding-top: 20px 0;
     margin-bottom: 50px;
