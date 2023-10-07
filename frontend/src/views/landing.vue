@@ -102,7 +102,7 @@
         <div class="testimonial-card">
             <div class="text">Hello<i class="fas fa-quote-right quote"></i></div>
             <div class="footer">
-            <div class="image"><img src="../assets/Testimonial_DP3.jpg" alt="Image 1"></div>
+            <div class="image"><img src="../assets/Testimonial_DP4.jpg" alt="Image 1"></div>
             <h3 class='person'>Susan</h3></div>
         </div>
         </div>    
