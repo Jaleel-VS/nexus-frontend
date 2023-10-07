@@ -51,7 +51,7 @@ export default {
     padding: 10px 20px;
     background-color: #111010;
     color: #f7f7f7;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
     position: relative;
     z-index: 1000;
 }

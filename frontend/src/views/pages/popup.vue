@@ -58,7 +58,7 @@
     justify-content: center;
     height: 100vh;
     width: 100vw;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: #f7f7f7;
     
   

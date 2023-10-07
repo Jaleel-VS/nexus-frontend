@@ -149,7 +149,7 @@ export default {
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: #001f3f;
   
 

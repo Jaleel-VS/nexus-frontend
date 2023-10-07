@@ -4,7 +4,7 @@
             <ul>
                 <li><router-link to="/about"><h3>About</h3></router-link></li>
                 <li><router-link to="/faq"><h3>FAQ Section</h3></router-link></li>
-                <li><a href="#"><h3>Contact</h3></a></li>
+                <li><router-link to="/contact"><h3>Contact</h3></router-link></li>
             </ul>
         </nav>
         
@@ -155,7 +155,7 @@ export default {
     align-items: center;
     justify-content: center;
     width: 100vw;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: #001f3f;
     padding-top: 20px;
     
@@ -177,11 +177,11 @@ export default {
     display: inline-block;
     
 }
-.nav-bar a {
-   
-    text-decoration: none;
-    color: #111010;
-}
+.nav-bar ul li a:hover {
+        color: red; /* Set the color you want the links to change to on hover */
+    }
+
+
 
 .content-wrapper {
     display: flex;
@@ -202,19 +202,19 @@ export default {
     color: white;
     line-height: 1.5;
     font-size: 1.4em;
-    font-family: 'Roboto', serif;
+    font-family: 'Poppins', serif;
 }
 .broad {
     color: white;
     line-height: 1.5;
-    font-size: 1.4em;
-    font-family: 'Roboto', serif;
+    font-size: 1.2em;
+    font-family: 'Poppins', serif;
 }
 .broadheader {
     color: #E040FB;
     line-height: 1.5;
-    font-size: 2.4em;
-    font-family: 'Roboto', serif;
+    font-size: 1em;
+    font-family: 'Poppins', serif;
 }
 h1 {
     font-size: 3.5em;
@@ -226,7 +226,7 @@ h1 {
 h3 {
     
     font-size: 1.25em;
-    font-family: 'Roboto', serif;
+    font-family: 'Poppins', serif;
     color: white;
 }
 
@@ -257,13 +257,13 @@ button {
 .sign-in-btn {
     background-color: #E040FB;
     color: #fff;
-    font-family: 'Roboto', serif;
+    font-family: 'Poppins', serif;
 }
 
 .apply-btn {
     background-color: #ccc;
     color: #001f3f;
-    font-family: 'Roboto', serif;
+    font-family: 'Poppins', serif;
 }
 
 button:hover {
@@ -335,7 +335,6 @@ button:hover {
 
 .image-wrapper p {
     margin: 5px; 
-    font-size: 14px; 
 }
 .header h3 {
     max-width: 100%;
@@ -376,8 +375,8 @@ button:hover {
   text-align: center;
   margin-top: 20px;
   margin-bottom: 10px; 
-  font-size: 20px;
-  font-family: 'Cormorant Garamond', serif;
+  font-size: 1em;
+  font-family: 'Poppins', serif;
   color: #E040FB;
 }
 
