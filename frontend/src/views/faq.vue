@@ -45,7 +45,7 @@
           },
           {
             question: 'What brands do you work with?',
-            answer: '',
+            answer: 'Nike, Adidas and Samsung',
             active: false,
           },
         ],
