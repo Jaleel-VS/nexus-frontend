@@ -31,7 +31,7 @@ contract Voucher is ERC721URIStorage, Ownable {
     event VoucherMinted(uint256 indexed voucherId, address indexed to);
     event VoucherRedeemed(uint256 indexed voucherId, address indexed to);
 
-    constructor() ERC721("NexusVoucher", "NXV") {}
+    constructor() ERC721("TheNexusVoucher", "NXVT") {}
 
 
     function mintVoucher(
