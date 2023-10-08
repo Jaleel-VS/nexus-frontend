@@ -1,79 +1,99 @@
-<!-- QR Code Scanner -->
-
 <template>
+  <div>
+    <p class="decode-result">
+      Last result: <b>{{ result }}</b>
+    </p>
 
-<h1> QR Test </h1>
+    <qrcode-stream :paused="paused" @detect="onDetect" @error="onError" @camera-on="resetValidationState">
+      <div v-if="validationSuccess" class="validation-success">This is a URL</div>
 
+      <div v-if="validationFailure" class="validation-failure">This is NOT a URL!</div>
 
-    <div class="qrcode-container">
-      <qrcode-stream @decode="decode" :track="drawOutline"></qrcode-stream>
-    </div>
-
-
+      <div v-if="validationPending" class="validation-pending">Long validation in progress...</div>
+    </qrcode-stream>
+  </div>
 </template>
 
 <script>
-import {QrcodeStream} from 'vue-qrcode-reader'
-
+import { QrcodeStream } from 'vue-qrcode-reader'
 
 export default {
-  name: 'QRCodeScanner',
-  components: {
-    QrcodeStream
+  components: { QrcodeStream },
+
+  data() {
+    return {
+      isValid: undefined,
+      paused: false,
+      result: null
+    }
   },
-  methods: {
-    decode (content) {
-      console.log(content)
+
+  computed: {
+    validationPending() {
+      return this.isValid === undefined && this.paused
     },
 
-    drawOutline(decodedContent, context) {
-      var points = [];
+    validationSuccess() {
+      return this.isValid === true
+    },
 
-      for (var k in decodedContent) {
-        switch(k) {
-          case "topLeftCorner":
-            points[0] = decodedContent[k];
-            break;
+    validationFailure() {
+      return this.isValid === false
+    }
+  },
 
-          case "topRightCorner":
-            points[1] = decodedContent[k];
-            break;
+  methods: {
+    onError: console.error,
 
-            case "bottomRightCorner":
-              points[2] = decodedContent[k];
-              break;
+    resetValidationState() {
+      this.isValid = undefined
+    },
 
-            case "bottomLeftCorner":
-              points[3] = decodedContent[k];
-              break;
-        }
+    async onDetect([ firstDetectedCode ]) {
+      this.result = firstDetectedCode.rawValue
+      this.paused = true
 
-        context.strokeStyle = "green";
+      // pretend it's taking really long
+      await this.timeout(3000)
+      this.isValid = this.result.startsWith('http')
 
-        context.beginPath();
+      // some more delay, so users have time to read the message
+      await this.timeout(2000)
+      this.paused = false
+    },
 
-        context.moveTo(points[0].x, points[0].y);
-
-        for (const {x, y} of points) {
-          context.lineTo(x, y);
-        }
-
-        context.lineTo(points[0].x, points[0].y);
-        context.closePath();
-        context.stroke();
-      }
-      console.log(points);
-      console.log(context);
+    timeout(ms) {
+      return new Promise((resolve) => {
+        window.setTimeout(resolve, ms)
+      })
     }
   }
 }
-
 </script>
 
 <style scoped>
-.qrcode-container {
-  width: 300px; /* Set your desired width */
-  height: 300px; /* Set your desired height */
-  margin: 0 auto; /* Center the component on the page */
+.validation-success,
+.validation-failure,
+.validation-pending {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: black;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+.validation-success {
+  color: green;
+}
+.validation-failure {
+  color: red;
 }
 </style>
