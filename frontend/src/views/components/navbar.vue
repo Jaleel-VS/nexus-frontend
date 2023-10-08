@@ -48,7 +48,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #111010;
+    background-color: #001f3f;
     color: #f7f7f7;
     font-family: 'Poppins', sans-serif;
     position: relative;

@@ -17,15 +17,7 @@
         <input v-model="password" type="password" placeholder="Password" />
       </div>
       <!-- Add Remember Me checkbox and Forgot Password link here -->
-      <div class="remember-forgot">
-        <div class="remember-me">
-          <input type="checkbox" id="remember_me" />
-          <label for="remember_me">Remember me</label>
-        </div>
-        <div class="forget-pw">
-          <a href="#">Forgot password?</a>
-        </div>
-      </div>
+     
       
       <button @click="handleLogin" class="login-btn">
         <span v-if="loading" class="spinner"></span>

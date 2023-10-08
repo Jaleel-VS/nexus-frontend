@@ -1,43 +1,71 @@
+<!-- QR Code Scanner -->
+
 <template>
-  <div id="root">
-    <TopBar :menuItems="menuItems" 
-    class="topbar" />
-    <RouterView class="router-view" />
-    <!-- Other content of your page goes here -->
+
+<h1> QR Test </h1>
+
+  <div>
+    <div>
+      <qrcode-stream @decode="decode" :track="drawOutline"></qrcode-stream>
+    </div>
   </div>
+
 </template>
 
 <script>
-import TopBar from '@/views/components/TopBar.vue';
-import { RouterView } from 'vue-router'
+import {QrcodeStream} from 'vue-qrcode-reader'
+
 
 export default {
+  name: 'QRCodeScanner',
   components: {
-    TopBar,
+    QrcodeStream
   },
-  
-  // Other component options
-};
+  methods: {
+    decode (content) {
+      console.log(content)
+    },
+
+    drawOutline(decodedContent, context) {
+      var points = [];
+
+      for (var k in decodedContent) {
+        switch(k) {
+          case "topLeftCorner":
+            points[0] = decodedContent[k];
+            break;
+
+          case "topRightCorner":
+            points[1] = decodedContent[k];
+            break;
+
+            case "bottomRightCorner":
+              points[2] = decodedContent[k];
+              break;
+
+            case "bottomLeftCorner":
+              points[3] = decodedContent[k];
+              break;
+        }
+
+        context.strokeStyle = "green";
+
+        context.beginPath();
+
+        context.moveTo(points[0].x, points[0].y);
+
+        for (const {x, y} of points) {
+          context.lineTo(x, y);
+        }
+
+        context.lineTo(points[0].x, points[0].y);
+        context.closePath();
+        context.stroke();
+      }
+      console.log(points);
+      console.log(context);
+    }
+  }
+}
+
 </script>
-
-<style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-#root {
-  display: grid;
-  grid-template-areas: 'topbar router-view';
-  grid-template-columns: auto 1fr;
-  font-family: sans-serif;
-}
-
-.topbar {
-  grid-area: 'sidebar';
-}
-
-.router-view {
-  grid-area: 'router-view';
-  padding: 1rem;
-}
-</style>
-
-  

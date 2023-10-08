@@ -1,8 +1,6 @@
 <template>
   <div class="main">
-    <h1 v-if="userDetails">
-      Welcome, {{ userDetails.username }}
-    </h1>
+    <h1 v-if="userDetails">Welcome, {{ userDetails.username }}</h1>
     <h2>What brand would you like to work with?</h2>
 
     <div v-if="loading" class="loading">
@@ -31,7 +29,9 @@
               <div>{{ brand.brandCategory }}</div>
             </v-card-text>
             <v-card-actions>
-              <v-btn color="orange" @click="selectBrand(brand)"> Collaborate </v-btn>
+              <v-btn color="orange" @click="selectBrand(brand)">
+                Collaborate
+              </v-btn>
             </v-card-actions>
           </v-card>
         </div>
@@ -231,13 +231,29 @@ const request = async () => {
 <style scoped lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Archivo:wght@100;400&family=DM+Serif+Display&family=Trocchi&family=Vesper+Libre&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 .main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url(../../assets/color-bars.svg);
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(0px);
   background-color: #001f3f;
 }
+
+.main::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 1, 63, 0.85); /* Adjust the opacity as needed */
+    z-index: -1; /* Ensure the semi-transparent pane is behind other elements */
+}
+
 
 .main-container {
   display: flex;
@@ -251,16 +267,16 @@ h1 {
   font-size: 3rem;
   margin: 2rem 0;
   //  use Trocchi
-  font-family: 'Poppins';
-  color:#E040FB;
+  font-family: "Poppins";
+  color: #e040fb;
 }
 
 h2 {
   font-size: 2rem;
   margin: 1rem 0;
   // Trocchi
-  font-family:'Poppins';
-  color:#E040FB;
+  font-family: "Poppins";
+  color: #e040fb;
 }
 
 .brand-cards {
@@ -308,12 +324,12 @@ h2 {
 
 .request-btn {
   margin-top: 20px;
-  background-color: #E040FB;
+  background-color: #e040fb;
   color: #fff;
-  font-family: 'Poppins';
+  font-family: "Poppins";
 }
 .request-btn:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 .fade-enter-active,
@@ -335,7 +351,7 @@ h2 {
 .spinner {
   border: 16px solid #f3f3f3;
   /* Light grey */
-  border-top: 16px solid #E040FB;
+  border-top: 16px solid #e040fb;
   /* Blue */
   border-radius: 50%;
   width: 120px;

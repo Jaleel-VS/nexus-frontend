@@ -20,7 +20,7 @@ function toggleSidebar() {
     <aside :vue:is-open="isSidebarOpen">
       <ul class="sidebar-head">
         <li>
-          <img src="@/assets/logo.svg" alt="logo" width="32" height="32">
+          <i class="fas fa-cube fa-2xl"></i>
         </li>
         <li>
           <button class="sidebar-toggle" :class="isSidebarOpen ? 'toggle-button' : ''">
