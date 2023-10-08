@@ -1,6 +1,5 @@
 <template>
   <div class="main">
-    <h1 v-if="userDetails">Welcome, {{ userDetails.username }}</h1>
     <h2>What brand would you like to work with?</h2>
 
     <div v-if="loading" class="loading">

@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar">
         <div class="logo">
-            <i class="fas fa-cube"></i> <!-- Replace with your logo -->
+            <img src="../assets/project_logo.png" alt="logo">
         </div>
         <div class="page">
             Brand Dashboard

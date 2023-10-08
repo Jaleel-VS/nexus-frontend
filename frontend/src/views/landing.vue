@@ -83,25 +83,25 @@
             </header>
         <div class="testimonial-container">
         <div class="testimonial-card">
-            <div class="text">Hello<i class="fas fa-quote-right quote"></i></div>
+            <div class="text">I can't say enough good things about their service. It's been a game-changer for me.<i class="fas fa-quote-right quote"></i></div>
             <div class="footer">
             <div class="image"><img src="../assets/Testimonial_DP1.jpg" alt="Image 1"></div>
             <h3 class='person'>Paul</h3></div>
         </div>
         <div class="testimonial-card">
-            <div class="text">Hello<i class="fas fa-quote-right quote"></i></div>
+            <div class="text">Just received my product. Nexus does not dissapoint!<i class="fas fa-quote-right quote"></i></div>
             <div class="footer">
             <div class="image"><img src="../assets/Testimonial_DP2.jpg" alt="Image 1"></div>
             <h3 class='person'>Elizabeth</h3></div>
         </div>
         <div class="testimonial-card">
-            <div class="text">Hello<i class="fas fa-quote-right quote"></i></div>
+            <div class="text">Would highly recommend Nexus. Their service is phenomenal.<i class="fas fa-quote-right quote"></i></div>
             <div class="footer">
             <div class="image"><img src="../assets/Testimonial_DP3.jpg" alt="Image 1"></div>
             <h3 class='person'>Mary</h3></div>
         </div>
         <div class="testimonial-card">
-            <div class="text">Hello<i class="fas fa-quote-right quote"></i></div>
+            <div class="text">I've used them a couple of times and the quality of their products are honestly the best.<i class="fas fa-quote-right quote"></i></div>
             <div class="footer">
             <div class="image"><img src="../assets/Testimonial_DP4.jpg" alt="Image 1"></div>
             <h3 class='person'>Susan</h3></div>
