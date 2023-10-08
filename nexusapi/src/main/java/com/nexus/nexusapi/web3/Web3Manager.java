@@ -22,6 +22,7 @@ import java.util.Map;
 public class Web3Manager {
     private final String ALCHEMY_API_URL = "https://eth-sepolia.g.alchemy.com/v2/rwHETGslhGFm8yUHbrOv3IvyHs2VRDGt";
     private final String OWNER_PRIVATE_KEY = "cd8939c98ffa0d4b475d6aeceddc40816bfa44bd3e400b72b2b0b5dfcd6f1886";
+    private final PinataUploader pinataUploader = new PinataUploader();
 
     private final Map<String, String> contractAddresses = new HashMap<>();
 

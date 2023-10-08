@@ -22,6 +22,7 @@ contract Voucher is ERC721URIStorage, Ownable {
         string influencerID;
         string supplierIDs;
         string productID;
+        uint256 price;
         bool redeemed;
         uint256 expiryDate;
     }
@@ -61,8 +62,10 @@ contract Voucher is ERC721URIStorage, Ownable {
         );
     }
 
-    function redeem(uint256 voucherId, address supplierAddress) public {
+    function redeem(uint256 voucherId, address supplierAddress, string memory tokenURI) public {
         _isRedeemable(voucherId);
+
+        _setTokenURI(voucherId, tokenURI);
 
         _vouchers[voucherId].redeemed = true;
 
