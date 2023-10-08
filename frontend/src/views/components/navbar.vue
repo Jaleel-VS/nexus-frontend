@@ -3,6 +3,9 @@
         <div class="logo">
             <i class="fas fa-cube"></i> <!-- Replace with your logo -->
         </div>
+        <div class="page">
+            Brand Dashboard
+        </div>
         <div class="profile-section">
             <div class="username">{{ username }}</div>
             <button @click="handleLogout" class="logout-btn">Logout</button>
@@ -53,6 +56,9 @@ export default {
     font-family: 'Poppins', sans-serif;
     position: relative;
     z-index: 1000;
+    /* white outline */
+    outline: 1px solid white;
+    
 }
 
 .logo {
@@ -63,6 +69,11 @@ export default {
     display: flex;
     align-items: center;
     gap: 20px;
+}
+
+.page {
+    font-size: 1.2em;
+    padding-left: 8em;
 }
 
 .profile-pic img {
@@ -76,7 +87,8 @@ export default {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #007bff;
+    background-color: #E040FB;
+    font-size: 0.9em;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;

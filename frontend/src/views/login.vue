@@ -17,96 +17,98 @@
         <input v-model="password" type="password" placeholder="Password" />
       </div>
       <!-- Add Remember Me checkbox and Forgot Password link here -->
-     
-      
+
       <button @click="handleLogin" class="login-btn">
         <span v-if="loading" class="spinner"></span>
         <span v-else>Login</span>
       </button>
-      
-      <div class="apply-section">
-        <label>Don't have an account?</label><ul>
-        <li><router-link to="/application"><h3>Apply</h3></router-link></li>
-      </ul>
-        
-      </div>
 
+      <div class="apply-section">
+        <label>Don't have an account?</label>
+        <ul>
+          <li>
+            <router-link to="/application"><h3>Apply</h3></router-link>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
-
-
-  
 </template>
 
-
 <script>
-import { ref } from 'vue';
-import axios from 'axios' // You need to install axios via npm install axios
-import { useUserStore } from '@/store/user'
-import { useRouter } from 'vue-router'
+import { ref } from "vue";
+import axios from "axios"; // You need to install axios via npm install axios
+import { useUserStore } from "@/store/user";
+import { useRouter } from "vue-router";
 
-import { API_ENDPOINT, OTHER_CONST } from '@/config/constants.js';
+import { API_ENDPOINT, OTHER_CONST } from "@/config/constants.js";
 
 export default {
   setup() {
-    const username = ref('');
-    const password = ref('');
-    const error = ref('');
+    const username = ref("");
+    const password = ref("");
+    const error = ref("");
     const loading = ref(false);
-    const router = useRouter()
-    const userStore = useUserStore()
+    const router = useRouter();
+    const userStore = useUserStore();
 
     const handleLogin = async () => {
       loading.value = true;
-      await axios.post(`${API_ENDPOINT}/users/login`, {
-        username: username.value,
-        password: password.value
-      }, {
-        headers: {
-          'accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      }).then((result) => {
-        console.log(result);
-        loading.value = false; // Reset the loader once the request is successful
+      await axios
+        .post(
+          `${API_ENDPOINT}/users/login`,
+          {
+            username: username.value,
+            password: password.value,
+          },
+          {
+            headers: {
+              accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((result) => {
+          console.log(result);
+          loading.value = false; // Reset the loader once the request is successful
 
-        const role = result.data.userType;
+          const role = result.data.userType;
 
-        userStore.setUserDetails(result.data);
+          userStore.setUserDetails(result.data);
 
-        console.log("User details:")
-        console.log(userStore.details);
+          console.log("User details:");
+          console.log(userStore.details);
 
-        switch ((role.toLowerCase())) {
-          case 'supplier':
-            router.push('/supplier/dashboard');
-            break;
-          case 'influencer':
-            router.push('/influencerDash');
-            break;
-          case 'brand':
-            router.push('/brand/dashboard');
-            break;
-          default:
-            router.push('/login');
-            break;
-        }
-        console.log(role);
-      }).catch((err) => {
-        error.value = "Username or password is incorrect";
-        loading.value = false; // Reset the loader if there's an error
-        console.log(err);
-      });
-    }
+          switch (role.toLowerCase()) {
+            case "supplier":
+              router.push("/supplier/dashboard");
+              break;
+            case "influencer":
+              router.push("/influencerDash");
+              break;
+            case "brand":
+              router.push("/brand/dashboard");
+              break;
+            default:
+              router.push("/login");
+              break;
+          }
+          console.log(role);
+        })
+        .catch((err) => {
+          error.value = "Username or password is incorrect";
+          loading.value = false; // Reset the loader if there's an error
+          console.log(err);
+        });
+    };
 
     return { username, password, error, handleLogin, loading };
-
-  }
+  },
 };
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 .centered-login {
   display: flex;
   flex-direction: row;
@@ -123,7 +125,6 @@ export default {
   overflow: hidden;
 }*/
 
-
 /*.login-background-image img {
   width: 100%;
   height: 300px;
@@ -136,10 +137,8 @@ export default {
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background-color: #001f3f;
-  
-
 }
 .login-wrapper {
   width: 30%;
@@ -155,21 +154,20 @@ export default {
   background-color: #f7f7f7;
   position: relative;
   z-index: 1; /* Ensure the login form is above the background image */
-  
 }
 
 h2 {
   font-size: 2em;
   text-align: center;
-  color: #E040FB;
-  font-family: 'Poppins';
+  color: #e040fb;
+  font-family: "Poppins";
 }
 
 .input-wrapper {
   display: flex;
   align-items: center;
   gap: 10px;
-  color:#001f3f; 
+  color: #001f3f;
 }
 
 .remember-forgot {
@@ -194,16 +192,13 @@ h2 {
   margin-left: auto;
 }
 
-
-
-
 .apply-section {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 10px; /* Add top margin for spacing */
   color: black;
-  gap: 10px; 
+  gap: 10px;
 }
 .apply-section a {
   color: #0b2c5c;
@@ -211,14 +206,14 @@ h2 {
 }
 
 .spinner {
-    border: 6px solid #f3f3f3;
-    /* Light grey */
-    border-top: 6px solid #E040FB;
-    /* Blue */
-    border-radius: 50%;
-    width: 10px;
-    height: 10px;
-    animation: spin 2s linear infinite;
+  border: 6px solid #f3f3f3;
+  /* Light grey */
+  border-top: 6px solid #e040fb;
+  /* Blue */
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
@@ -232,7 +227,7 @@ h2 {
 }
 
 .login-btn {
-  background-color: #E040FB;
+  background-color: #e040fb;
   color: #fff;
   font-size: 1.2em;
   border-radius: 5px;
@@ -245,7 +240,7 @@ h2 {
 }
 button:hover {
   opacity: 0.8;
-  }
+}
 
 input {
   flex: 1;
@@ -273,8 +268,4 @@ input {
     font-size: 1.5em;
   }
 }
-
-
-
-
 </style>

@@ -136,7 +136,7 @@ const routes = [
     ],
   },
   {
-    path: "/supplierT",
+    path: "/supplier",
     name: "supplierT", 
     component: supplierT,
     children: [
@@ -165,7 +165,7 @@ const routes = [
   },
 
   {
-    path: "/influencerDash",
+    path: "/influencer",
     name: "influencerDash",
     component: influencerDash,
     children: [
@@ -174,7 +174,7 @@ const routes = [
         name: "requestVouchers",
         component: () => import("../views/influencer/influencer_requests.vue"),
       },
-      { path: "/yellow", component: () => import("../views/influencer/influencer_vouchers.vue") },
+      { path: "/influencer/vouchers", component: () => import("../views/influencer/influencer_vouchers.vue") },
       { path: "/blue", component: () => import("../views/pages/Blue.vue") },
       { path: "/red", component: () => import("../views/pages/Red.vue") },
     ],

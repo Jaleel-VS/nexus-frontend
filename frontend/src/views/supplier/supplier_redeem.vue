@@ -10,6 +10,10 @@
 <script>
 import { useRouter } from "vue-router";
 
+import { QrcodeStream } from 'vue-qrcode-reader';
+
+
+
 // import on mount
 import { onMounted } from "vue";
 
@@ -32,8 +36,24 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 .redeem_page {
+  background-image: url(../../assets/color-bars.svg);
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(0px);
   background-color: #001f3f;
 }
+
+.redeem_page::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 1, 63, 0.85); /* Adjust the opacity as needed */
+    z-index: -1; /* Ensure the semi-transparent pane is behind other elements */
+}
+
 h1 {
   font-size: 3rem;
   margin: 2rem 0;

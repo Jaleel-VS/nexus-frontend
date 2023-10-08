@@ -1,114 +1,130 @@
 <template>
-    <div class="register-page">
-    <div class="application-page">
-        
-        <div class="logo">
-            <img src="../assets/project_logo.png" class ="top-left" alt="logo">       
-        </div>
-
-            <div>
-                <h1>Sign up</h1>
-            </div>
-            <div class="button">
-            <router-link to="/login">
-                <button class="sign-in-btn">Login</button>
-            </router-link>
-        </div>
-
-        <body>
-        <div class="container">
-            <div class="card">
-                <div class="card-content">
-            <h2>Influencer</h2>
-            <div class="images" >
-                <img src="@/assets/influencer.png" />
-            </div>
-            <p>You've built your own following on social media, and now you're looking to track and monetize your influence. This is precisely the account you have been seeking.</p>
-            <router-link to="/influencer/influencer_register">
-                <button class="join-button">Register</button>
-            </router-link>
-        </div>
-        </div>
-        <div class="card">
-            <div class="card-content">
-            <h2>Brand Manager</h2>
-            <div class="images">
-                <img src="@/assets/brand.png" />
-            </div>
-            <p>Are you a brand manager looking to amplify your brand's reach? Join us to connect with influencers and create impactful campaigns that resonate with your target audience.</p>
-            <router-link to="/brand/brand_register">
-                <button class="join-button">Register</button>
-            </router-link>
-            </div>
-            
-        </div>
-        <div class="card">
-            <div class="card-content">
-            <h2>Supplier</h2>
-            <div class="images">
-                <img src="@/assets/supplier.png" />
-            </div>
-            <p>Are you a supplier interested in collaborating with brands and influencers? Join us to showcase your products and services, and be a vital part of innovative influencer campaigns.</p>
-            <router-link to="/supplier/supplier_register">
-                <button class="join-button">Register</button>
-            </router-link>
-            </div>
-        </div>
-        </div>
-        </body>
+  <div class="register-page">
+    <div class="logo">
+      <img src="../assets/project_logo.png" class="top-left" alt="logo" />
     </div>
-</div>
+
+    <h1>Sign up</h1>
+
+    <div class="button">
+      <router-link to="/login">
+        <button class="sign-in-btn">Login</button>
+      </router-link>
+    </div>
+
+    <div class="container">
+      <div class="card">
+        <div class="card-content">
+          <h2>Influencer</h2>
+          <div class="images">
+            <img src="@/assets/influencer.png" />
+          </div>
+          <p>
+            You've built your own following on social media, and now you're
+            looking to track and monetize your influence. This is precisely the
+            account you have been seeking.
+          </p>
+          <router-link to="/influencer/influencer_register">
+            <button class="join-button">Register</button>
+          </router-link>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <h2>Brand Manager</h2>
+          <div class="images">
+            <img src="@/assets/brand.png" />
+          </div>
+          <p>
+            Are you a brand manager looking to amplify your brand's reach? Join
+            us to connect with influencers and create impactful campaigns that
+            resonate with your target audience.
+          </p>
+          <router-link to="/brand/brand_register">
+            <button class="join-button">Register</button>
+          </router-link>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-content">
+          <h2>Supplier</h2>
+          <div class="images">
+            <img src="@/assets/supplier.png" />
+          </div>
+          <p>
+            Are you a supplier interested in collaborating with brands and
+            influencers? Join us to showcase your products and services, and be
+            a vital part of innovative influencer campaigns.
+          </p>
+          <router-link to="/supplier/supplier_register">
+            <button class="join-button">Register</button>
+          </router-link>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import { useRouter } from 'vue-router'
+import { useRouter } from "vue-router";
 
 // import on mount
-import { onMounted } from 'vue'
+import { onMounted } from "vue";
 
 // api
-import { API_ENDPOINT, OTHER_CONST } from '@/config/constants.js';
+import { API_ENDPOINT, OTHER_CONST } from "@/config/constants.js";
 
 // import axios
-import axios from 'axios'
-
+import axios from "axios";
 
 export default {
-    setup() {
-        const router = useRouter();
+  setup() {
+    const router = useRouter();
 
-        // call api on mount
-        onMounted(() => {
-            axios.get(API_ENDPOINT)
-                .then(res => {
-                    console.log(res.data)
-                })
-                .catch(err => {
-                    console.log(err)
-                })
+    // call api on mount
+    onMounted(() => {
+      axios
+        .get(API_ENDPOINT)
+        .then((res) => {
+          console.log(res.data);
         })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
 
+    const displayLoginPage = () => {
+      router.push("/login");
+    };
 
-
-        const displayLoginPage = () => {
-            router.push('/login')
-        }
-
-        return { displayLoginPage }
-    }
+    return { displayLoginPage };
+  },
 };
 </script>
 
-
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 .register-page {
-    background-color: #001f3f;
+  background-image: url(../assets/color-bars.svg);
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(0px);
+  background-color: #001f3f;
 }
+
+.register-page::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 1, 63, 0.85); /* Adjust the opacity as needed */
+  z-index: -1; /* Ensure the semi-transparent pane is behind other elements */
+}
+
 .logo {
   text-align: center;
-  margin-top: 1rem; /* Adjust the margin as needed */
   position: relative;
 }
 
@@ -118,154 +134,137 @@ export default {
   display: inline-block;
 }
 h1 {
-    font-size: 4em;
-    color: #E040FB;
-    text-align: center;
-    animation: slideDown 1s ease-in-out forwards;
-    font-family: 'Poppins';
-    
+  font-size: 4em;
+  color: #e040fb;
+  text-align: center;
+  animation: slideDown 1s ease-in-out forwards;
+  font-family: "Poppins";
 }
 
 .buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    font-family: 'Poppins';
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  font-family: "Poppins";
 }
 
 button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s;
-    font-family: 'Poppins';
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
+  font-family: "Poppins";
 }
 .image {
-    position: absolute;
-    width: 40px;
-    height: auto;
-    top: 0;
-    left: 100px;
-    
+  position: absolute;
+  width: 40px;
+  height: auto;
+  top: 0;
+  left: 100px;
 }
 
 .sign-in-btn {
-    position: absolute;
-    top: 50px; /* Adjust this value for desired vertical position */
-    right: 50px; /* Adjust this value for desired horizontal position */
-    padding: 10px 20px;
-    background-color: #E040FB;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'Poppins';
+  position: absolute;
+  top: 50px; /* Adjust this value for desired vertical position */
+  right: 50px; /* Adjust this value for desired horizontal position */
+  padding: 10px 20px;
+  background-color: #e040fb;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Poppins";
 }
 button:hover {
-    opacity: 0.8;
-}
-
-body {
-    font-family: 'Roboto', serif;
-    background-color: #001f3f;
-    margin: 0;
-    padding: 0;
+  opacity: 0.8;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-wrap: wrap;
-    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .card-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center vertically */
-    align-items: center; /* Center horizontally */
-    height: 100%;
-     /* Ensure the content takes full height */
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  height: 100%;
+  /* Ensure the content takes full height */
+}
 
 .card {
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    text-align: center;
-    border-radius: 8px;
-    width: 350px;
-    height: 400px;
-    margin: 20px;
-    margin-bottom: 400px;
-    animation: slideUp 1s ease-in-out forwards;
-    flex: 1;
-    max-width: calc(33.33% - 20px);
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  width: 350px;
+  height: auto;
+  margin: 20px;
+  margin-bottom: 400px;
+  animation: slideUp 1s ease-in-out forwards;
+  flex: 1;
+  max-width: calc(33.33% - 20px);
 }
 
 @media (max-width: 768px) {
-    .card {
-        max-width: calc(50% - 20px);
-    }
+  .card {
+    max-width: calc(50% - 20px);
+  }
 }
 
 h2 {
-    color: #001f3f;
-    font-size: 24px;
-    margin-bottom: 10px;
-    font-family: 'Poppins';
+  color: #001f3f;
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-family: "Poppins";
 }
 
 p {
-    color: #001f3f;
-    font-size: 16px;
-    margin-bottom: 20px;
-    font-family: 'Roboto';
+  color: #001f3f;
+  font-size: 16px;
+  margin-bottom: 20px;
+  font-family: "Roboto";
 }
 
 .join-button {
-    background-color: #E040FB;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-family: 'Poppins';
+  background-color: #e040fb;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: "Poppins";
 }
 
-
-
 .images {
-    position: relative; /* Change to relative positioning */
-    margin-top: 20px; 
-    width: 90px;
-    height: auto;
-    max-width: 100%;
-  }
-
+  position: relative; /* Change to relative positioning */
+  margin-top: 20px;
+  width: 90px;
+  height: auto;
+  max-width: 100%;
+}
 
 @media (max-width: 768px) {
+  .text-section,
+  .content-wrapper {
+    justify-content: center;
+  }
 
-    .text-section,
-   
+  h1 {
+    font-size: 2em;
+  }
 
-    .content-wrapper {
-        justify-content: center;
-    }
-
-    h1 {
-        font-size: 2em;
-    }
-
-    .buttons {
-        justify-content: center;
-    }
+  .buttons {
+    justify-content: center;
+  }
 }
 @keyframes slideUp {
   0% {
@@ -288,5 +287,3 @@ p {
   }
 }
 </style>
-
-

@@ -1,10 +1,11 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import SidebarMenu from '@/views/components/SidebarMenu.vue';
+import Navbar from '@/views/components/navbar.vue'; // Changed component name to start with an uppercase letter
 import { ref } from 'vue'
 
 const menuItems = ref([
-  { icon: 'fa fa-home fa-2x', name: 'Redeem Voucher', path: '/supplier/supplier_redeem' },
+  { icon: 'fa fa-home fa-2x', name: 'Redeem Voucher', path: '/supplier' },
   { icon: 'fa fa-chart-line fa-2x', name: 'Performance metrics', path: '/supplier/supplier_metrics' },
   { icon: 'fa fa-home fa-2x', name: 'View Vouchers', path: '/supplier/supplier_viewvoucher'},
   { icon: 'fa fa-bell fa-2x', name: 'Change password', path: '/change_password' },
@@ -13,33 +14,40 @@ const menuItems = ref([
 </script>
 
 <template>
-  <div id="root">
-    <SidebarMenu
-      :menuItems="menuItems"
-     class="sidebar" />
-    <RouterView class="router-view" />
+  <div id="root" class="container">
+    <Navbar username="John Doe" class="navbar" />
+    <div class="content">
+      <SidebarMenu :menuItems="menuItems" class="sidebar" />
+      <RouterView class="router-view" />
+    </div>
   </div>
 </template>
 
 
 <style scoped lang="scss">
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-#root {
-  display: grid;
-  grid-template-areas: 'sidebar router-view';
-  grid-template-columns: auto 1fr;
-  font-family: sans-serif;
-  
+
+.container {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  height: 100vh; /* Set the container to fill the entire viewport height */
+}
+
+.content {
+  display: flex;
+  flex: 1; /* Grow and fill the available space */
+}
+
+.navbar {
+  flex: 0 0 auto; /* Navbar does not grow or shrink, maintains its initial size */
 }
 
 .sidebar {
-  grid-area: 'sidebar';
-  background-color: #E040FB;
+  flex: 0 0; /* Sidebar width */
 }
 
 .router-view {
-  grid-area: 'router-view';
-  padding: 1rem;
+  flex: 1; /* Router view takes up remaining space */
 }
 </style>
