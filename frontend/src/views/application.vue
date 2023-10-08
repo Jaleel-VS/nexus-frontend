@@ -23,7 +23,7 @@
             <div class="images" >
                 <img src="@/assets/influencer.png" />
             </div>
-            <p>You've built your own following on social, and now you're looking to track and monetize your influence. This is the account you want.</p>
+            <p>You've built your own following on social media, and now you're looking to track and monetize your influence. This is precisely the account you have been seeking.</p>
             <router-link to="/influencer/influencer_register">
                 <button class="join-button">Register</button>
             </router-link>

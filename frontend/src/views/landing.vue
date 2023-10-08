@@ -56,28 +56,29 @@
         <ol>
           <li class="active">
             <span class="point"></span>
-            <h5 class="diplome"><b>Step 1</b></h5>
-            <p class="timestamp">APPLY<br><br>Create your profile and connect your social platforms</p>
+            <h3 class="diplome"><b>Step 1</b></h3>
+            <p class="timestamp"><strong>APPLY</strong><br><br>Create your profile and connect your social platforms</p>
           </li>
           <li class="active">
             <span class="point"></span>
-            <h5 class="diplome"><b>Step 2</b></h5>
-            <p class="timestamp">BROWSE THROUGH ALL THE BRANDS<br><br>Browse through many brands and see which brands stand out to you</p>
+            <h3 class="diplome"><b>Step 2</b></h3>
+            <p class="timestamp"><strong>BROWSE THROUGH ALL BRANDS</strong><br><br>Browse through many brands and see which brands stand out to you</p>
           </li>
           <li class="active">
             <span class="point"></span>
-            <h5 class="diplome"><b>Step 3</b></h5>
-            <p class="timestamp">REQUEST A VOUCHER<br><br>Enter the information required to request a voucher and wait for an approval by the brand</p>
+            <h3 class="diplome"><b>Step 3</b></h3>
+            <p class="timestamp"><strong>REQUEST A VOUCHER</strong><br><br>Enter the information required to request a voucher and wait for an approval by the brand</p>
           </li>
           <li class="active">
             <span class="point"></span>
-            <h5 class="diplome"><b>Step 4</b></h5>
-            <p class="timestamp">START PROMOTING<br><br>Share and promote your brand new product across your social media platforms</p>
+            <h3 class="diplome"><b>Step 4</b></h3>
+            <p class="timestamp"><strong>START PROMOTING</strong><br><br>Share and promote your brand new product across your social media platforms</p>
           </li>
         </ol>
       </div>
     </div>
-            <header class="header">
+    <div style="margin-top: 100px;"></div>
+            <header class="header" >
             <h3>Testimonials</h3>
             </header>
         <div class="testimonial-container">
@@ -98,6 +99,12 @@
             <div class="footer">
             <div class="image"><img src="../assets/Testimonial_DP3.jpg" alt="Image 1"></div>
             <h3 class='person'>Mary</h3></div>
+        </div>
+        <div class="testimonial-card">
+            <div class="text">Hello<i class="fas fa-quote-right quote"></i></div>
+            <div class="footer">
+            <div class="image"><img src="../assets/Testimonial_DP4.jpg" alt="Image 1"></div>
+            <h3 class='person'>Susan</h3></div>
         </div>
         </div>    
     </div>
@@ -394,8 +401,8 @@ button:hover {
   text-align: center;
   margin-top: 20px;
   margin-bottom: 10px; 
-  font-size: 1em;
-  font-family: 'Poppins', serif;
+  font-size: 1.2em;
+  font-family: 'Poppins',sans-serif serif;
   color: #E040FB;
 }
 
@@ -413,8 +420,8 @@ button:hover {
 }
 
 #timeline li .timestamp {
-  font-size: 14px;
-  font-family: 'Poppins';
+  font-size: 1.2em;
+  font-family: 'Poppins',sans-serif;
   text-align: center;
   margin-right: 20px;
   margin-bottom: 20px;
@@ -455,6 +462,7 @@ button:hover {
     line-height: 1.7em;
     position: relative;
     font-size: 12px;
+    color: black; 
   }
   .image{
     height: 75px;

@@ -7,6 +7,7 @@ import About from "../views/about.vue";
 import Dummy from "../views/dummy.vue";
 
 
+import Contact from "../views/contact.vue";
 // Brand Routes
 
 // import brandDash from '../views/brand/brand_dash2.vue';
@@ -37,6 +38,12 @@ const routes = [
     path: "/",
     name: "home",
     component: Home,
+  },
+
+  {
+    path: "/contact",
+    name: "contact",
+    component: Contact,
   },
 
   {
