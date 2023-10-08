@@ -25,32 +25,27 @@
         faqList: [
           {
             question: 'What is Blockchain?',
-            answer: 'Who knows',
+            answer: 'Blockchain is a type of shared database that stores information in blocks which are connected in a chain',
             active: false,
           },
           {
-            question: 'What is nexus all about?',
-            answer: 'Greatness',
+            question: 'Who is Impact.com?',
+            answer: 'Impact is a global leader in partnership automation and they offer businesses a comprehensive set of software tools to manage their partner marketing activities.',
             active: false,
           },
           {
             question: 'How do I sign up as an influencer?',
-            answer: 'You dont',
-            active: false,
-          },
-          {
-            question: 'What challenges has Nexus faced?',
-            answer: 'None',
+            answer: 'Simply follow the application process on our home page.',
             active: false,
           },
           {
             question: 'What are smart contracts?',
-            answer: 'I dont know',
+            answer: 'Smart contracts are programs stored on a blockchain that exxecutes automatically when specific conditions are met.',
             active: false,
           },
           {
             question: 'What brands do you work with?',
-            answer: 'The best of the best',
+            answer: '',
             active: false,
           },
         ],
