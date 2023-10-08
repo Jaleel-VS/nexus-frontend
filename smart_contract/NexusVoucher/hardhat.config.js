@@ -6,11 +6,11 @@ const METAMASK_URL = "cd8939c98ffa0d4b475d6aeceddc40816bfa44bd3e400b72b2b0b5dfcd
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: "0.8.19",
-  networks: {
-    sepolia: {
-      url: ALCHEMY_URL,
-      accounts: [`0x${METAMASK_URL}`]
-    },
-  },
+  // networks: {
+  //   sepolia: {
+  //     url: ALCHEMY_URL,
+  //     accounts: [`0x${METAMASK_URL}`]
+  //   },
+  // },
   
 };

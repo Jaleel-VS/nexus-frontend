@@ -257,6 +257,11 @@
             "type": "string"
           },
           {
+            "internalType": "uint256",
+            "name": "price",
+            "type": "uint256"
+          },
+          {
             "internalType": "bool",
             "name": "redeemed",
             "type": "bool"
@@ -347,6 +352,11 @@
             "type": "string"
           },
           {
+            "internalType": "uint256",
+            "name": "price",
+            "type": "uint256"
+          },
+          {
             "internalType": "bool",
             "name": "redeemed",
             "type": "bool"
@@ -429,6 +439,11 @@
         "internalType": "address",
         "name": "supplierAddress",
         "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "tokenURI",
+        "type": "string"
       }
     ],
     "name": "redeem",
