@@ -46,4 +46,10 @@ public class VoucherController {
         return ResponseEntity.ok(voucherService.isRedeemed(id));
     }
 
+    // redeem voucher
+    @GetMapping("/redeem/{id}/supplier/{supplierId})")
+    public ResponseEntity<Boolean> redeemVoucher(@PathVariable Long id, @PathVariable Long supplierId) {
+        return ResponseEntity.ok(voucherService.redeemVoucher(id, supplierId));
+    }
+
 }

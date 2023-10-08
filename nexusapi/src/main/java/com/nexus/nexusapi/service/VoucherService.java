@@ -1,5 +1,6 @@
 package com.nexus.nexusapi.service;
 
+import java.math.BigInteger;
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -156,4 +157,21 @@ public class VoucherService {
                 return voucher.isRedeemed();
         }
 
+    public Boolean redeemVoucher(Long id, Long supplierId) {
+        Voucher voucher = voucherRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Voucher not found"));
+
+        String supplierAddress = supplierRepository.findById(supplierId)
+                .orElseThrow(() -> new NotFoundException("Supplier not found"))
+                .getMetamaskAddress();
+
+        String success = web3Manager.redeemVoucher(BigInteger.ONE, supplierAddress);
+
+        if (success.equals("true")) {
+            voucher.setRedeemed(true);
+            voucherRepository.save(voucher);
+        }
+
+        return true;
+    }
 }

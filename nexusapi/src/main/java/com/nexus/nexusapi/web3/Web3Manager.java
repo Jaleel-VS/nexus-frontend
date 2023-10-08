@@ -39,15 +39,8 @@ public class Web3Manager {
         voucherContract = Voucher.load(contractAddresses.get("voucher"), web3j, credentials, new DefaultGasProvider());
     }
 
-    public String mintVoucher(String influencerID, String brandID, String supplierIds, String productID, 
+    public String mintVoucher(String influencerID, String brandID, String supplierIds, String productID,
      Long expiryDateLong, String requestAddress) {
-        // string brandID;
-        // string influencerID;
-        // string supplierID;
-        // string productID;
-        // string productDescription;
-        // bool redeemed;
-        // uint256 expiryDate;
         System.out.println("Minting voucher...");
         VoucherData voucherData = new VoucherData(
                 brandID,
@@ -62,8 +55,19 @@ public class Web3Manager {
 
         System.out.println("Voucher minted!");
 
+
         return receipt.getTransactionHash();
 
+    }
+
+    public String redeemVoucher(BigInteger voucherId, String supplierAddress) {
+        System.out.println("Redeeming voucher...");
+
+        TransactionReceipt receipt = voucherContract.redeem(voucherId, supplierAddress).sendAsync().join();
+
+        System.out.println("Voucher redeemed!");
+
+        return  receipt.getTransactionHash();
     }
 
 }

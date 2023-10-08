@@ -1,5 +1,6 @@
 package com.nexus.nexusapi;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +20,7 @@ public class NexusRestApiApplication {
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
 			@Override
-			public void addCorsMappings(CorsRegistry registry) { // CORS (Cross-Origin Resource Sharing) 설정
+			public void addCorsMappings(@NotNull CorsRegistry registry) { // CORS (Cross-Origin Resource Sharing) 설정
 				registry.addMapping("/**")
 						.allowedOrigins("*")
 						.allowedMethods("*")
