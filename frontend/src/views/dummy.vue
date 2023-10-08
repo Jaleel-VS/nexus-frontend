@@ -4,11 +4,11 @@
 
 <h1> QR Test </h1>
 
-  <div>
-    <div>
+
+    <div class="qrcode-container">
       <qrcode-stream @decode="decode" :track="drawOutline"></qrcode-stream>
     </div>
-  </div>
+
 
 </template>
 
@@ -69,3 +69,11 @@ export default {
 }
 
 </script>
+
+<style scoped>
+.qrcode-container {
+  width: 300px; /* Set your desired width */
+  height: 300px; /* Set your desired height */
+  margin: 0 auto; /* Center the component on the page */
+}
+</style>
