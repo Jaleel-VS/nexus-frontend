@@ -100,6 +100,7 @@ import { API_ENDPOINT, OTHER_CONST } from '@/config/constants.js';
     text-align: center;
     color: rgb(13, 13, 72);
     font-family: Poppins;
+    color: #e040fb;
   }
   
   
@@ -193,7 +194,7 @@ import { API_ENDPOINT, OTHER_CONST } from '@/config/constants.js';
 h2 {
   font-size: 2em;
   text-align: center;
-  color: #001f3f;
+  color: #e040fb;
   font-family: Poppins;
 }
 
@@ -214,7 +215,7 @@ h2 {
 
 
 .contact-btn {
-  background-color: #0b2c5c;
+  background-color:  #e040fb;
   color: #fff;
   font-size: 1.2em;
   border-radius: 5px;
