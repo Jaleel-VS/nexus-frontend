@@ -95,7 +95,7 @@ export default {
             router.push('/supplier/dashboard');
             break;
           case 'influencer':
-            router.push('/influencer/dashboard');
+            router.push('/influencerDash');
             break;
           case 'brand':
             router.push('/brand/dashboard');
