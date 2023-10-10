@@ -19,4 +19,7 @@ public class VoucherResponseDTO {
     private LocalDate expiryDate;
     private boolean redeemed;   
     private String blockchainURL; 
+    private Integer voucherContractID;
+    private String voucherQRCodeString;
+    
 }

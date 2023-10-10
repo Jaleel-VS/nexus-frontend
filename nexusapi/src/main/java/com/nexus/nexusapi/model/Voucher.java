@@ -40,4 +40,8 @@ public class Voucher {
     private boolean redeemed;
 
     private String blockchainUrl;
+
+    private Integer voucherContractID;
+
+    private String voucherQRCodeString;
 }

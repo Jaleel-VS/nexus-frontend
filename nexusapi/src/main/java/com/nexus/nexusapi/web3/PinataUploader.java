@@ -17,12 +17,17 @@ import java.util.regex.Pattern;
 public class PinataUploader {
 
     private final OkHttpClient client;
+    Map<String, String> jsonContent;
+    String pinataJwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiIzNTBmMDk0MC02NGU4LTQ1YTEtYTYyOC0yYzFlODk4OGE0YTciLCJlbWFpbCI6Imp1bGlvZXVzZWJpb3ZzQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiRlJBMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfSx7ImlkIjoiTllDMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2UsInN0YXR1cyI6IkFDVElWRSJ9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiI3MzQ0ZGViZmZiYzZiODExNGYwNyIsInNjb3BlZEtleVNlY3JldCI6IjliNjcyZjBkMTcxODU3YTg0N2NlNWQxMzg1ZWJkOTEzYTY4YWNkNTc5MDQzNzI4ZmU2ZDk4NmVlZGI1MmNlOWMiLCJpYXQiOjE2OTY3ODU1Nzd9.Sr9ZlOycihM-zxB5sDAh9fkg1hlvfNLcfYZbw-iJMio";
 
-    public PinataUploader() {
+
+
+    PinataUploader(LinkedHashMap<String, String> jsonContent) {
         this.client = new OkHttpClient();
+        this.jsonContent = jsonContent;
     }
 
-    public String uploadJsonToPinata(Map<String, String> pinataContent, String pinataJwt) throws IOException {
+    private String uploadJsonToPinata(Map<String, String> pinataContent, String pinataJwt) throws IOException {
         MediaType mediaType = MediaType.parse("application/json");
         String jsonContent = "{\"pinataContent\":" + toJson(pinataContent) + "}";
         RequestBody body = RequestBody.create(jsonContent, mediaType);
@@ -59,7 +64,7 @@ public class PinataUploader {
         return json.toString();
     }
 
-    public String getIpfsHash(String json) {
+    private String getIpfsHash(String json) {
         // get the ipfs hash from the JSON response
          // Create a regular expression pattern to match the IPFS hash.
          Pattern pattern = Pattern.compile("\"IpfsHash\":\"([A-Za-z0-9]+)\"");
@@ -81,32 +86,17 @@ public class PinataUploader {
 
     }
 
-    public static void main(String[] args) {
+    public String request() {
         try {
-            String pinataJwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiIzNTBmMDk0MC02NGU4LTQ1YTEtYTYyOC0yYzFlODk4OGE0YTciLCJlbWFpbCI6Imp1bGlvZXVzZWJpb3ZzQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiRlJBMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfSx7ImlkIjoiTllDMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2UsInN0YXR1cyI6IkFDVElWRSJ9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiI3MzQ0ZGViZmZiYzZiODExNGYwNyIsInNjb3BlZEtleVNlY3JldCI6IjliNjcyZjBkMTcxODU3YTg0N2NlNWQxMzg1ZWJkOTEzYTY4YWNkNTc5MDQzNzI4ZmU2ZDk4NmVlZGI1MmNlOWMiLCJpYXQiOjE2OTY3ODU1Nzd9.Sr9ZlOycihM-zxB5sDAh9fkg1hlvfNLcfYZbw-iJMio";
-
-            Map<String, String> jsonContent = new LinkedHashMap<>();
-            jsonContent.put("name", "Jaleel");
-            jsonContent.put("surname", "van Staden");
-            jsonContent.put("age", "17");
-
-
-            PinataUploader uploader = new PinataUploader();
-            String response = uploader.uploadJsonToPinata(jsonContent, pinataJwt);
-
-            if (response != null) {
-                System.out.println("JSON file uploaded successfully!");
-                System.out.println("Response:");
-                System.out.println(response);
-
-                String ipfsHash = uploader.getIpfsHash(response);
-                System.out.println("IPFS hash:");
-                System.out.println(ipfsHash);
-            } else {
-                System.out.println("Upload failed.");
-            }
+            String response = uploadJsonToPinata(jsonContent, pinataJwt);
+            String ipfsHash = getIpfsHash(response);
+            return ipfsHash;
         } catch (IOException e) {
+            System.out.println("Failed to upload JSON file!");
             e.printStackTrace();
+            return null;
         }
     }
+
+    
 }

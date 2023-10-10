@@ -23,7 +23,7 @@ public class Product {
     private String productName;
     private String productDescription;
     private String productImageUrl;
-    private Double productPrice;
+    private Integer productPrice;
 
     @ManyToMany
     @JoinTable(name = "product_supplier",

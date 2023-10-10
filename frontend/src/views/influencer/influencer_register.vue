@@ -1,91 +1,98 @@
 <template>
-    <div class="register-page">
-        <!--<div class="login-background-image">
-      <img src="@/assets/blockchain.jpg" alt="Background Image" />
-    </div>-->
-      <div class="registration-card">
-        <h1>Register as an Influencer</h1>
-        <form @submit.prevent="register">
-            <div class="name-fields">
+  <div class="register-page">
+    <div class="registration-card">
+      <h1>Register as an Influencer</h1>
+      <form @submit.prevent="register">
+        <div class="name-fields">
           <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" id="name" v-model="formData.name" required>
+            <input type="text" id="name" v-model="formData.name" required />
           </div>
           <div class="form-group">
             <label for="surname">Surname:</label>
-            <input type="text" id="surname" v-model="formData.surname" required>
+            <input type="text" id="surname" v-model="formData.surname" required />
           </div>
         </div>
         <div class="form-group">
-            <label for="socialmedia">Social Media Handle:</label>
-            <input type="socialmedia" id="socialmedia" v-model="formData.socialmedia" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" v-model="formData.email" required>
-          </div>
-          <div class="form-group">
-            <label for="username">Username:</label>
-            <input type="username" id="username" v-model="formData.username" required>
-          </div>
-          <div class="password-fields">
+          <label for="socialmedia">Social Media Handle:</label>
+          <input type="text" id="socialmedia" v-model="formData.socialmedia" required />
+        </div>
+        <div class="form-group">
+          <label for="profilepicture">Profile Picture:</label>
+          <input type="text" id="profilepicture" v-model="formData.profilepicture" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" v-model="formData.email" required />
+        </div>
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" v-model="formData.username" required />
+        </div>
+        <div class="password-fields">
           <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" id="password" v-model="formData.password" required>
+            <input type="password" id="password" v-model="formData.password" required />
             <span id="password-message"></span>
           </div>
-          <div class="form-group">
-            <label for="confirm-password">Confirm Password:</label>
-            <input type="password" id="confirm-password" v-model="formData.confirmPassword" required>
-            <span id="confirm-password-message"></span>
+        </div>
+        <div class="button-container">
+          <button @click="connectMetamask" type="button">Connect to MetaMask</button>
+          <div v-if="publicAddress" style="padding-bottom: 30px; color: black;">
+            <p>Registering with public wallet address: {{ publicAddress }}</p>
+          </div>
+          <div class="register-buttons">
+            <button type="submit">Register</button>
+            <router-link to="/application">
+              <button type="button">Cancel</button>
+            </router-link>
           </div>
         </div>
-          <div class="button-container">
-            <button>Connect to MetaMask</button>
-            <div class="register-buttons">
-            <router-link to ="/login">
-                <button>Register</button>
-            </router-link>
-            <router-link to ="/application">
-                <button>Cancel</button>
-            </router-link>
-        </div>
-          </div>
-        </form>
-      </div>
+      </form>
     </div>
-  </template>
-  
-  <script>
-  
-  export default {
-    data() {
-      return {
-        formData: {
-          name: '',
-          surname: '',
-          socialmedia: '',
-          email: '',
-          username: '',
-          password: '',
-          confirmPassword: ''
-        }
-      };
-    },
-    methods: {
-      register() {
-        // Implement registration logic here
-        // Access form data using this.formData
-      },
-      connectMetaMask() {
-        // Implement MetaMask connection logic here
-      },
-      cancelRegistration() {
-        // Implement cancel registration logic here
-      }
+  </div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+
+const formData = ref({
+  name: "",
+  surname: "",
+  socialmedia: "",
+  profilepicture: "",
+  email: "",
+  username: "",
+  password: "",
+  confirmPassword: "",
+});
+
+const publicAddress = ref("");
+
+const register = () => {
+  // Implement registration logic here
+  // Access form data using formData.value
+};
+
+const connectMetamask = async () => {
+  if (window.ethereum) {
+    try {
+      const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+      publicAddress.value = accounts[0];
+    } catch (error) {
+      console.error(error);
     }
-  };
-  </script>
+  } else {
+    alert("Please install MetaMask to use this feature");
+
+    // You can redirect to the MetaMask installation page here
+    const url = "https://metamask.io/download/";
+    window.open(url, "_blank");
+  }
+};
+
+
+</script>
   
   <style scoped>
   @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
@@ -111,8 +118,23 @@
     justify-content: center;
     align-items: center;
   
-    background-color: #001f3f;
+    background-image: url(../../assets/color-bars.svg);
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(0px);
+  background-color: #001f3f;
   }
+
+  .register-page::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 1, 63, 0.85); /* Adjust the opacity as needed */
+  z-index: -1; /* Ensure the semi-transparent pane is behind other elements */
+}
   
   .registration-card {
     margin-top: 40px;

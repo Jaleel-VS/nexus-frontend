@@ -34,6 +34,12 @@ public class VoucherController {
         return ResponseEntity.ok(voucherService.getVoucherById(id));
     }
 
+    // get all vouchers
+    @GetMapping
+    public ResponseEntity<Iterable<VoucherResponseDTO>> getAllVouchers() {
+        return ResponseEntity.ok(voucherService.getAllVouchers());
+    }
+
     // update voucher status
     @PutMapping("/{id}/{status}")
     public ResponseEntity<VoucherResponseDTO> updateVoucherStatus(@PathVariable Long id, @PathVariable boolean status) {

@@ -40,9 +40,9 @@
             us to connect with influencers and create impactful campaigns that
             resonate with your target audience.
           </p>
-          <router-link to="/brand/brand_register">
-            <button class="join-button">Register</button>
-          </router-link>
+          <!-- <router-link to="/brand/brand_register"> -->
+            <button class="join-button disable-button">Register</button>
+          <!-- </router-link> -->
         </div>
       </div>
       <div class="card">
@@ -56,9 +56,9 @@
             influencers? Join us to showcase your products and services, and be
             a vital part of innovative influencer campaigns.
           </p>
-          <router-link to="/supplier/supplier_register">
-            <button class="join-button">Register</button>
-          </router-link>
+          <!-- <router-link to="/supplier/supplier_register"> -->
+            <button class="join-button disable-button">Register</button>
+          <!-- </router-link> -->
         </div>
       </div>
     </div>
@@ -240,6 +240,22 @@ p {
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: "Poppins";
+}
+
+.join-button:hover {
+  opacity: 0.8;
+}
+
+.disable-button {
+  background-color: grey;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: not-allowed;
   transition: background-color 0.3s;
   font-family: "Poppins";
 }

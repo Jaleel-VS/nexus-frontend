@@ -2,6 +2,8 @@ package com.nexus.nexusapi.service;
 
 import java.math.BigInteger;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -82,10 +84,16 @@ public class VoucherService {
                 String recipientAddress = influencer.getMetamaskAddress();
 
                 voucher.setRedeemed(false);
-                String blockchainUrl = mintVoucher(influencer, brand, product,
-                                voucher.getExpiryDate(), recipientAddress);
 
-                voucher.setBlockchainUrl(blockchainUrl);
+                ArrayList<String> blockchainUrl = mintVoucher(influencer, brand, product, expiryDateInSeconds,
+                                recipientAddress);
+
+                voucher.setBlockchainUrl(blockchainUrl.get(0));
+                voucher.setVoucherContractID(Integer.parseInt(blockchainUrl.get(1)));
+
+                UUID uuid = UUID.randomUUID();
+
+                voucher.setVoucherQRCodeString(uuid.toString());
 
                 voucherRepository.save(voucher);
 
@@ -98,22 +106,34 @@ public class VoucherService {
                 voucherResponseDTO.setExpiryDate(voucher.getExpiryDate());
                 voucherResponseDTO.setRedeemed(voucher.isRedeemed());
                 voucherResponseDTO.setBlockchainURL(voucher.getBlockchainUrl());
+                voucherResponseDTO.setVoucherContractID(voucher.getVoucherContractID());
+                voucherResponseDTO.setVoucherQRCodeString(voucher.getVoucherQRCodeString());
+
                 return voucherResponseDTO;
         }
 
-        private String mintVoucher(Influencer influencer, Brand brand, Product product,
-                        LocalDate expiryDate, String requestAddress) {
-                String influencerID = influencer.getId().toString();
-                String brandID = brand.getId().toString();
-                String productID = product.getId().toString();
-                // use streams, with a map function to convert the list of suppliers to a string, and have a comma
-                String supplierIDs = product.getSuppliers().stream().map(supplier -> supplier.getId().toString())
+        private ArrayList<String> mintVoucher(Influencer influencer, Brand brand, Product product,
+                        Long expiryDate, String requestAddress) {
+                String influencerID = influencer.getUsername().toString();
+                String brandID = brand.getBrandName().toString();
+                String productID = product.getProductName().toString();
+                // use streams, with a map function to convert the list of suppliers to a
+                // string, and have a comma
+                String supplierIDs = product.getSuppliers().stream()
+                                .map(supplier -> supplier.getSupplierName().toString())
                                 .reduce("", (a, b) -> a + "," + b);
-                Long expiryDateLong = expiryDate.toEpochDay();
+                
 
-                String blockchainUrl = web3Manager.mintVoucher(influencerID, brandID, supplierIDs,
+                Integer price = product.getProductPrice();
+
+                ArrayList<String> blockchainUrl = web3Manager.mintVoucher(
+                                influencerID,
+                                brandID,
+                                supplierIDs,
                                 productID,
-                                expiryDateLong, requestAddress);
+                                price,
+                                expiryDate,
+                                requestAddress);
 
                 // System.out.println(supplierIDs);
 
@@ -157,21 +177,56 @@ public class VoucherService {
                 return voucher.isRedeemed();
         }
 
-    public Boolean redeemVoucher(Long id, Long supplierId) {
-        Voucher voucher = voucherRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Voucher not found"));
+        public Boolean redeemVoucher(Long id, Long supplierId) {
+                Voucher voucher = voucherRepository.findById(id)
+                                .orElseThrow(() -> new NotFoundException("Voucher not found"));
 
-        String supplierAddress = supplierRepository.findById(supplierId)
-                .orElseThrow(() -> new NotFoundException("Supplier not found"))
-                .getMetamaskAddress();
+                String supplierAddress = supplierRepository.findById(supplierId)
+                                .orElseThrow(() -> new NotFoundException("Supplier not found"))
+                                .getMetamaskAddress();
 
-        String success = web3Manager.redeemVoucher(BigInteger.ONE, supplierAddress);
+                String suppliers = voucher.getProduct().getSuppliers().stream()
+                                .map(supplier -> supplier.getSupplierName().toString())
+                                .reduce("", (a, b) -> a + "," + b);
 
-        if (success.equals("true")) {
-            voucher.setRedeemed(true);
-            voucherRepository.save(voucher);
+                String result = web3Manager.redeemVoucher(
+                                BigInteger.valueOf(voucher.getVoucherContractID()),
+                                "0x000",
+                                suppliers,
+                                voucher.getBrand().getBrandName(),
+                                voucher.getInfluencer().getUsername(),
+                                voucher.getProduct().getProductName(),
+                                voucher.getProduct().getProductPrice(),
+                                voucher.getExpiryDate().toEpochDay());
+
+                if (result != null) {
+                        voucher.setRedeemed(true);
+                        voucherRepository.save(voucher);
+                        return true;
+                }
+
+                return false;
         }
 
-        return true;
-    }
+        public Iterable<VoucherResponseDTO> getAllVouchers() {
+                Iterable<Voucher> vouchers = voucherRepository.findAll();
+                ArrayList<VoucherResponseDTO> voucherResponseDTOs = new ArrayList<>();
+
+                for (Voucher voucher : vouchers) {
+                        VoucherResponseDTO voucherResponseDTO = new VoucherResponseDTO();
+                        voucherResponseDTO.setId(voucher.getId());
+                        voucherResponseDTO.setBrandId(voucher.getBrand().getId());
+                        voucherResponseDTO.setInfluencerId(voucher.getInfluencer().getId());
+                        voucherResponseDTO.setProductId(voucher.getProduct().getId());
+                        voucherResponseDTO.setCreationDate(voucher.getCreatedDate());
+                        voucherResponseDTO.setExpiryDate(voucher.getExpiryDate());
+                        voucherResponseDTO.setRedeemed(voucher.isRedeemed());
+                        voucherResponseDTO.setBlockchainURL(voucher.getBlockchainUrl());
+                        voucherResponseDTO.setVoucherContractID(voucher.getVoucherContractID());
+                        voucherResponseDTO.setVoucherQRCodeString(voucher.getVoucherQRCodeString());
+                        voucherResponseDTOs.add(voucherResponseDTO);
+                }
+
+                return voucherResponseDTOs;
+        }
 }
