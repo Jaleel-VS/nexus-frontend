@@ -1,6 +1,8 @@
 <template>
   <div class="redeem_page">
   <div class="main-container">
+
+    
     
     <button class="Redeem-voucher" @click="redeemVoucherQR">Redeem with QR Code</button> 
     <button class="Redeem-voucher" @click="redeemVoucherPin">Redeem with Voucher Pin</button> 
@@ -13,6 +15,8 @@ import { useRouter } from "vue-router";
 
 import { QrcodeStream } from 'vue-qrcode-reader';
 
+import { ref } from "vue";
+
 
 
 // import on mount
@@ -20,6 +24,14 @@ import { onMounted } from "vue";
 
 // api
 import { API_ENDPOINT, OTHER_CONST } from "@/config/constants.js";
+
+const viewScanner = ref(false);
+
+const viewPinRedeem = ref(false);
+
+
+
+
 
 
 const redeemVoucher = () => {
@@ -45,8 +57,8 @@ const redeemVoucher = () => {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 1, 63, 0.85); /* Adjust the opacity as needed */
-    z-index: -1; /* Ensure the semi-transparent pane is behind other elements */
+    background-color: rgba(0, 1, 63, 0.85); 
+    z-index: -1; 
 }
 
 h1 {
