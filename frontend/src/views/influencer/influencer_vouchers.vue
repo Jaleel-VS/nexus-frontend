@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <h1 v-if="userDetails">Welcome, {{ userDetails.username }}</h1>
+    
 
     <h2>View and claim your vouchers </h2>
 
