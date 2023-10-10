@@ -63,6 +63,7 @@ h1 {
   justify-content: center;
   flex-wrap: wrap;
   gap: 2rem;
+  padding: 100px 100px;
   
 }
 
@@ -77,6 +78,7 @@ button {
   transition: background-color 0.3s;
   justify-content: center;
   display: flex;
+  
 }
 button:hover{
   opacity: 0.8;
