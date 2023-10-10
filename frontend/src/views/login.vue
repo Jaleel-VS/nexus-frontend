@@ -138,7 +138,22 @@ export default {
   height: 100vh;
   width: 100vw;
   font-family: "Poppins", sans-serif;
+  background-image: url(../assets/color-bars.svg);
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(0px);
   background-color: #001f3f;
+}
+
+.login-page::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 1, 63, 0.85); /* Adjust the opacity as needed */
+    z-index: -1; /* Ensure the semi-transparent pane is behind other elements */
 }
 .login-wrapper {
   width: 30%;
