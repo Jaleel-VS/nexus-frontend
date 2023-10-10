@@ -82,11 +82,6 @@ const routes = [
     name: "supplier_metrics",
     component: supplier_metrics,
   },
-  // {
-  //   path: '/supplier/supplier_viewvoucher',
-  //   name: 'supplier_viewvoucher',
-  //   component: supplier_viewvoucher
-  // },
   {
     path: "/supplier/supplier_redeem",
     name: "supplier_redeem",
@@ -121,7 +116,7 @@ const routes = [
   // testing ⬇
 
   {
-    path: "/brandT",
+    path: "/brand",
     name: "brandT", //
     component: brandT,
     children: [
@@ -130,9 +125,6 @@ const routes = [
         name: "viewVoucherRequests",
         component: () => import("../views/brand/brand_requests.vue"), 
       },
-      // { path: "/yellow", component: () => import("../views/pages/Yellow.vue") },
-      // { path: "/blue", component: () => import("../views/pages/Blue.vue") },
-      // { path: "/red", component: () => import("../views/pages/Yellow.vue") },
     ],
   },
   {

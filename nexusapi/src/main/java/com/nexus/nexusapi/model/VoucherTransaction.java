@@ -31,6 +31,12 @@ public class VoucherTransaction {
     @Enumerated(EnumType.STRING)
     private TransactionType transactionType;
 
+    // Supplier at which voucher was redeemed
+    @ManyToOne
+    @JoinColumn(name = "supplier_id")
+    private Supplier supplier;
+    
+
     public enum TransactionType {
         REDEEMED, EXPIRED
     }

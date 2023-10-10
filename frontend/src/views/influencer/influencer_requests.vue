@@ -281,8 +281,6 @@ h2 {
 .brand-cards {
   display: flex;
   flex-direction: row;
-  // align-items: center;
-  // justify-content: center;
   align-items: baseline;
   justify-content: flex-start;
   gap: 5em;
@@ -298,8 +296,6 @@ h2 {
 .product-cards {
   display: flex;
   flex-direction: row;
-  // align-items: center;
-  // justify-content: center;
   align-items: baseline;
   justify-content: flex-start;
   gap: 5em;

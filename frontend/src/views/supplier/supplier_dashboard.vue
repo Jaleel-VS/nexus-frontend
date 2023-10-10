@@ -2,20 +2,30 @@
 import { RouterView } from 'vue-router'
 import SidebarMenu from '@/views/components/SidebarMenu.vue';
 import Navbar from '@/views/components/navbar.vue'; // Changed component name to start with an uppercase letter
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+
+import { useUserStore } from "@/store/user";
+
+const userDetails = ref(null);
+const userStore = useUserStore();
+userDetails.value = userStore.details;
+
+
+onMounted(async () => {
+  
+});
 
 const menuItems = ref([
   { icon: 'fa fa-home fa-2x', name: 'Redeem Voucher', path: '/supplier' },
   { icon: 'fa fa-chart-line fa-2x', name: 'Performance metrics', path: '/supplier/supplier_metrics' },
-  { icon: 'fa fa-home fa-2x', name: 'View Vouchers', path: '/supplier/supplier_viewvoucher'},
-  { icon: 'fa fa-bell fa-2x', name: 'Change password', path: '/change_password' },
-  { icon: 'fa fa-envelope fa-2x', name: 'Contact', path: '/contact' },
+
 ]);
 </script>
 
 <template>
   <div id="root" class="container">
-    <Navbar username="John Doe" class="navbar" />
+    <Navbar :username ="userDetails.username"
+     class="navbar" />
     <div class="content">
       <SidebarMenu :menuItems="menuItems" class="sidebar" />
       <RouterView class="router-view" />

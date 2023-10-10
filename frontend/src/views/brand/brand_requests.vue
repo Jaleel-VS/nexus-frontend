@@ -1,6 +1,5 @@
 <template>
   <div class="main">
-    <h1 v-if="userDetails">Welcome, {{ userDetails.username }}</h1>
     <h2>Review Voucher Requests</h2>
 
     <div v-if="loading" class="loading">
@@ -64,6 +63,9 @@
             }}
           </h3>
 
+          <h2>Social Media Handle: </h2>
+          <h3>{{ getInfluencerDetails(selectedRequest).socialMediaHandle }}</h3>
+
           <h2>Product:</h2>
           <h3>
             {{ getProductDetails(selectedRequest).productName }}
@@ -78,6 +80,7 @@
         <div class="buttons">
           <button @click="approveRequest">Approve</button>
           <button @click="denyRequest">Deny</button>
+          <button @click="returnTo">Return</button>
 
           
         </div>
@@ -272,16 +275,34 @@ const denyRequest = async() => {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url(../../assets/color-bars.svg);
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(0px);
+  background-color: #001f3f;
 }
+
+.main::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 1, 63, 0.85); /* Adjust the opacity as needed */
+  z-index: -1; /* Ensure the semi-transparent pane is behind other elements */
+}
+
 
 .main-container {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: auto;
   flex-wrap: wrap;
-  gap: 5em;
+  gap: 2em;
+  padding-inline: 2em;
 }
 
 .approve-container {
@@ -298,22 +319,23 @@ h1 {
   font-size: 3rem;
   margin: 2rem 0;
   //  use Trocchi
-  font-family: "Trocchi", serif;
+  font-family: "Poppins";
+  color: white;
 }
 
 h2 {
   font-size: 2rem;
   margin: 1rem 0;
   // Trocchi
-  font-family: "Trocchi", serif;
-  
+  font-family: "Poppins";
+  color: white;
 }
 
 h3 {
   font-size: 1.5rem;
   margin: 1rem 0;
   // Trocchi
-  font-family: "Trocchi", serif;
+  font-family: "Poppins";
   // color #e4532b
   color: #e4532b;
 }
@@ -323,7 +345,7 @@ p {
   margin: 1rem 0;
   // Trocchi
   font-family: "Trocchi", serif;
-  color: #0b2c5c;
+  color: #ffffff;
 }
 
 button {

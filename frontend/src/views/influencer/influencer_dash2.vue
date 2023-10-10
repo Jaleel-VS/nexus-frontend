@@ -3,6 +3,17 @@ import { RouterView } from 'vue-router'
 import SidebarMenu from '@/views/components/SidebarMenu.vue';
 import Navbar from '@/views/components/navbar.vue'; // Changed component name to start with an uppercase letter
 import { ref } from 'vue'
+import { onMounted } from 'vue'
+
+import { useUserStore } from "@/store/user";
+
+const userDetails = ref(null);
+
+
+onMounted(async () => {
+  const userStore = useUserStore();
+  userDetails.value = userStore.details;
+});
 
 const menuItems = ref([
   { icon: 'fa fa-home fa-2x', name: 'Request Voucher', path: '/influencerDash' },
@@ -15,7 +26,8 @@ const menuItems = ref([
 
 <template>
   <div id="root" class="container">
-    <Navbar username="John Doe" class="navbar" />
+    <Navbar :username ="userDetails.username"
+     class="navbar" />
     <div class="content">
       <SidebarMenu :menuItems="menuItems" class="sidebar" />
       <RouterView class="router-view" />
