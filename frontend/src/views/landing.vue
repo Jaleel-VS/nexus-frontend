@@ -83,25 +83,25 @@
             </header>
         <div class="testimonial-container">
         <div class="testimonial-card">
-            <div class="text">I can't say enough good things about their service. It's been a game-changer for me.<i class="fas fa-quote-right quote"></i></div>
+            <div class="text">Blockchain's authentication features protect my identity and reputation. They significantly reduce the risk of impersonation, which is crucial for a consistent and trustworthy online presence<i class="fas fa-quote-right quote"></i></div>
             <div class="footer">
             <div class="image"><img src="../assets/Testimonial_DP1.jpg" alt="Image 1"></div>
             <h3 class='person'>Paul</h3></div>
         </div>
         <div class="testimonial-card">
-            <div class="text">Just received my product. Nexus does not dissapoint!<i class="fas fa-quote-right quote"></i></div>
+            <div class="text">Decentralization is liberating. I'm not reliant on a single platform or intermediary. Blockchain gives me more freedom and flexibility in my work<i class="fas fa-quote-right quote"></i></div>
             <div class="footer">
             <div class="image"><img src="../assets/Testimonial_DP2.jpg" alt="Image 1"></div>
             <h3 class='person'>Elizabeth</h3></div>
         </div>
         <div class="testimonial-card">
-            <div class="text">Would highly recommend Nexus. Their service is phenomenal.<i class="fas fa-quote-right quote"></i></div>
+            <div class="text">I can build and protect my reputation on the blockchain. My track record of successful collaborations and ethical practices is recorded and remains unchangeable, instilling trust among brands and my followers<i class="fas fa-quote-right quote"></i></div>
             <div class="footer">
             <div class="image"><img src="../assets/Testimonial_DP3.jpg" alt="Image 1"></div>
             <h3 class='person'>Mary</h3></div>
         </div>
         <div class="testimonial-card">
-            <div class="text">I've used them a couple of times and the quality of their products are honestly the best.<i class="fas fa-quote-right quote"></i></div>
+            <div class="text">With smart contracts, the whole voucher redemption process becomes a breeze. They automate everything, especially ensuring that I get my products on time.<i class="fas fa-quote-right quote"></i></div>
             <div class="footer">
             <div class="image"><img src="../assets/Testimonial_DP4.jpg" alt="Image 1"></div>
             <h3 class='person'>Susan</h3></div>
