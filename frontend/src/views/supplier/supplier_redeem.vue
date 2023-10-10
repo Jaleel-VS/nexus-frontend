@@ -1,14 +1,20 @@
 <template>
   <div class="redeem_page">
-  <div class="main-container">
+    <div class="main-container">        
+      <button class="Redeem-voucher" @click="redeemWithQRCode">Redeem with QR Code</button>
+      <button class="Redeem-voucher" @click="redeemWithVoucherPin">Redeem with Voucher Pin</button>
 
-    
-    
-    <button class="Redeem-voucher" @click="redeemVoucherQR">Redeem with QR Code</button> 
-    <button class="Redeem-voucher" @click="redeemVoucherPin">Redeem with Voucher Pin</button> 
+      <div v-if="showQRCodeScanner">
+        <!-- Render content for QR Code scanner here -->
+        <!-- <qrcode-stream @decode="onDecode" style="width: 300px; height: 300px;"></qrcode-stream> -->
+        <!-- <qrcode-stream @decode="onDecode" style="width: 300px; height: 300px;"></qrcode-stream> -->
+      </div>
 
+      <div v-if="showVoucherPinInput">
+       
+      </div>
+    </div>
   </div>
-</div>
 </template>
 <script setup>
 import { useRouter } from "vue-router";
@@ -35,13 +41,14 @@ const viewPinRedeem = ref(false);
 
 
 const redeemVoucher = () => {
-    
-  };
+
+};
 </script>
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 .redeem_page {
   background-image: url(../../assets/color-bars.svg);
   background-size: cover;
@@ -51,14 +58,14 @@ const redeemVoucher = () => {
 }
 
 .redeem_page::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 1, 63, 0.85); 
-    z-index: -1; 
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 1, 63, 0.85);
+  z-index: -1;
 }
 
 h1 {
@@ -76,7 +83,7 @@ h1 {
   flex-wrap: wrap;
   gap: 2rem;
   padding: 100px 100px;
-  
+
 }
 
 button {
@@ -90,9 +97,10 @@ button {
   transition: background-color 0.3s;
   justify-content: center;
   display: flex;
-  
+
 }
-button:hover{
+
+button:hover {
   opacity: 0.8;
 }
 

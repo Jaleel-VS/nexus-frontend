@@ -9,21 +9,12 @@
     </div>
 
     <div v-else>
-        <div v-if="voucherRequests && !selectedRequest" class="main-container">
-        <v-card
-          v-for="request in voucherRequests"
-          class="mx-auto -card"
-          min-width="200"
-        >
+      <div v-if="voucherRequests && !selectedRequest" class="main-container">
+        <v-card v-for="request in voucherRequests" class="mx-auto -card" min-width="200">
 
-        <v-img
-        class="align-end text-white"
-            height="200"
-            :src="getBrandDetails(request).profilePictureUrl"
-            cover
-            >
-        </v-img>
-        <v-card-text>
+          <v-img class="align-end text-white" height="200" :src="getBrandDetails(request).profilePictureUrl" cover>
+          </v-img>
+          <v-card-text>
             <div>ID: {{ request.id }}</div>
             <div>Date: {{ request.requestDate }}</div>
             <div>Status: {{ request.requestStatus }}</div>
@@ -35,13 +26,15 @@
             </v-btn>
           </v-card-actions>
         </v-card>
-        </div> 
+      </div>
 
-        <div v-if="selectedRequest" class="approve-container">
+      <div v-if="selectedRequest" class="approve-container">
         <h2>Viewing voucher request with id {{ selectedRequest.id }}</h2>
 
+        <qrcode-vue :value="value" :level="level" :render-as="renderAs" />
+
         <button @click="claimVoucher">Claim</button>
-        </div>
+      </div>
 
 
 
@@ -56,12 +49,17 @@
 import { ref, onMounted } from "vue";
 import { API_ENDPOINT } from "@/config/constants.js";
 import { useUserStore } from "@/store/user";
+import QrcodeVue from 'qrcode.vue'
 
 const userDetails = ref(null);
 const voucherRequests = ref([]);
 const loading = ref(false);
 const selectedRequest = ref(null);
 const brandDetails = ref([]);
+
+const value = 'https://www.google.com';
+const level = 'M';
+const renderAs = 'svg';
 
 onMounted(async () => {
   loading.value = true;
@@ -78,9 +76,9 @@ onMounted(async () => {
 
   voucherRequests.value = data;
 
-//   setBrandDetails
+  //   setBrandDetails
 
-for (let i = 0; i < voucherRequests.value.length; i++) {
+  for (let i = 0; i < voucherRequests.value.length; i++) {
     const brandResponse = await fetch(
       `${API_ENDPOINT}/users/brands/${voucherRequests.value[i].brandId}`
     );
@@ -93,7 +91,7 @@ for (let i = 0; i < voucherRequests.value.length; i++) {
     }
   }
 
-  
+
 
 
   loading.value = false;
@@ -101,11 +99,11 @@ for (let i = 0; i < voucherRequests.value.length; i++) {
 
 const getBrandDetails = (request) => {
 
-    for (let i = 0; i < brandDetails.value.length; i++) {
-        if (brandDetails.value[i].id === request.brandId) {
-            return brandDetails.value[i];
-        }
+  for (let i = 0; i < brandDetails.value.length; i++) {
+    if (brandDetails.value[i].id === request.brandId) {
+      return brandDetails.value[i];
     }
+  }
 }
 
 const selectRequest = (request) => {
@@ -127,6 +125,7 @@ const claimVoucher = () => {
 @import url("https://fonts.googleapis.com/css2?family=Archivo:wght@100;400&family=DM+Serif+Display&family=Trocchi&family=Vesper+Libre&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 .main {
   display: flex;
   flex-direction: column;
@@ -140,14 +139,16 @@ const claimVoucher = () => {
 }
 
 .main::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 1, 63, 0.85); /* Adjust the opacity as needed */
-    z-index: -1; /* Ensure the semi-transparent pane is behind other elements */
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 1, 63, 0.85);
+  /* Adjust the opacity as needed */
+  z-index: -1;
+  /* Ensure the semi-transparent pane is behind other elements */
 }
 
 .main-container {
@@ -223,8 +224,8 @@ button {
   display: flex;
   font-family: 'Poppins';
 }
-button:hover {
-    opacity: 0.8;
-}
 
+button:hover {
+  opacity: 0.8;
+}
 </style>
