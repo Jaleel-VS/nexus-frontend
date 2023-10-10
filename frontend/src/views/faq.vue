@@ -60,15 +60,27 @@
   </script>
   
   <style scoped>
-  @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-}
+  @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
 .faq-page {
+  background-image: url(../assets/color-bars.svg);
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(0px);
   background-color: #001f3f;
+  height: 150vh;
+  width: 100vw;
+}
+
+.faq-page::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 1, 63, 0.85); /* Adjust the opacity as needed */
+    z-index: -1; /* Ensure the semi-transparent pane is behind other elements */
 }
 .wrapper {
   max-width: 75%;
@@ -83,13 +95,15 @@
   vertical-align: middle;
   display: inline-block;
 }
+
+
 .wrapper > p,
 .wrapper > h1 {
   margin: 1.5rem 0;
   text-align: center;
   font-size: 40px;
   color: #E040FB;
-  font-family: 'Montserrat', serif;
+  font-family: 'Poppins', serif;
 }
 .wrapper > h1 {
   letter-spacing: 3px;

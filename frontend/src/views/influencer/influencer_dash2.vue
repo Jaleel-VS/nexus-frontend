@@ -8,18 +8,14 @@ import { onMounted } from 'vue'
 import { useUserStore } from "@/store/user";
 
 const userDetails = ref(null);
+const userStore = useUserStore();
+userDetails.value = userStore.details;
 
-
-onMounted(async () => {
-  const userStore = useUserStore();
-  userDetails.value = userStore.details;
-});
 
 const menuItems = ref([
   { icon: 'fa fa-home fa-2x', name: 'Request Voucher', path: '/influencerDash' },
   { icon: 'fa fa-address-card fa-2x', name: 'View Requests', path: '/influencer/vouchers' },
-  { icon: 'fa fa-bell fa-2x', name: 'Tasks', path: '/blue' },
-  { icon: 'fa fa-envelope fa-2x', name: 'Stats', path: '/red' },
+  
   // Add more menu items as needed
 ]);
 </script>

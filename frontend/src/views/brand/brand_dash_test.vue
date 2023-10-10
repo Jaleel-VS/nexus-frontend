@@ -7,16 +7,10 @@ import { ref, onMounted } from 'vue'
 
 import { useUserStore } from "@/store/user";
 
+
 const userDetails = ref(null);
-
-const defaultUsername = 'Guest';
-
-onMounted(async () => {
-  const userStore = useUserStore();
-  userDetails.value = userStore.details;
-
-  console.log(userDetails.value);
-});
+const userStore = useUserStore();
+userDetails.value = userStore.details;
 
 
 

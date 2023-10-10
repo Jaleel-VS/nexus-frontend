@@ -75,14 +75,23 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-}
+
 .about-page {
-    background-color: #001f3f;
+  background-image: url(../assets/color-bars.svg);
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(0px);
+  background-color: #001f3f;
+}
+.about_page::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 1, 63, 0.85); 
+    z-index: -1; 
 }
 .wrapper {
   max-width: 75%;
@@ -111,7 +120,7 @@ export default {
   text-align: center;
   font-size: 20px;
   color: white;
-  font-family: 'Lora', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 .wrapper > h1 {
   margin: 1.5rem 0;
@@ -128,7 +137,7 @@ export default {
   text-align: center;
   font-size: 30px;
   color: #E040FB;
-  font-family: 'Roboto', serif;
+  font-family: 'Poppins', serif;
 }
 .wrapper > h2 {
   letter-spacing: 3px;
@@ -148,7 +157,7 @@ export default {
   border-radius: 5px;
   cursor: pointer;
   font-size: 30px;
-  font-family: 'Roboto', serif;
+  font-family: 'Poppins', serif;
   margin-bottom: 50px;
   
 }
