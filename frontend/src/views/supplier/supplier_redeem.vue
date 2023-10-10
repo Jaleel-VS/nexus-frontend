@@ -1,13 +1,14 @@
 <template>
   <div class="redeem_page">
   <div class="main-container">
-    <h1>Redeem Voucher</h1>
-    <input type="text" id="fname" name="fname" />
-    <button class="Redeem-voucher" @click="redeemVoucher">Redeem voucher</button> 
+    
+    <button class="Redeem-voucher" @click="redeemVoucherQR">Redeem with QR Code</button> 
+    <button class="Redeem-voucher" @click="redeemVoucherPin">Redeem with Voucher Pin</button> 
+
   </div>
 </div>
 </template>
-<script>
+<script setup>
 import { useRouter } from "vue-router";
 
 import { QrcodeStream } from 'vue-qrcode-reader';
@@ -21,17 +22,11 @@ import { onMounted } from "vue";
 import { API_ENDPOINT, OTHER_CONST } from "@/config/constants.js";
 
 
-export default {
-  setup() {
-
-    const redeemVoucher = () => {
-      alert("Voucher succesfully redeemed! Please give client the product.");
-    };
-
-    return {  redeemVoucher };
-  },
-};
+const redeemVoucher = () => {
+    
+  };
 </script>
+
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
@@ -66,7 +61,6 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
   flex-wrap: wrap;
   gap: 2rem;
   
