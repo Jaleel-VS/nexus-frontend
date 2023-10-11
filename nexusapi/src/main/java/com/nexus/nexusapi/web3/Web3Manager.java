@@ -42,10 +42,6 @@ public class Web3Manager {
 
     public ArrayList<String> mintVoucher(String influencerID, String brandID, String supplierIds, String productID, Integer price, 
      Long expiryDateLong, String requestAddress) {
-
-        
-
-
         System.out.println("Minting voucher...");
         VoucherData voucherData = new VoucherData(
             brandID,

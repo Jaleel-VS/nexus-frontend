@@ -75,7 +75,7 @@ const redeemWithVoucherPin = () => {
   showVoucherPinInput.value = true;
   // Add logic for Voucher Pin redemption here
 
-  redeemVoucher();
+  // redeemVoucher();
 };
 
 const resetViews = () => {

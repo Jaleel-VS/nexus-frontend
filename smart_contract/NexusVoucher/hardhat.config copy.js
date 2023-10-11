@@ -1,7 +1,7 @@
 require("@nomicfoundation/hardhat-toolbox");
 
-const ALCHEMY_URL = "https://eth-sepolia.g.alchemy.com/v2/q0Kxqaro3WgwaI1HavhYn7p7ANrIBtxR";
-const METAMASK_URL = "9b94f07022a8e93b6b4c3ef6ac950bdf013d0cfbaa056e70363a7bdb66621af8"
+const ALCHEMY_URL = "https://eth-sepolia.g.alchemy.com/v2/rwHETGslhGFm8yUHbrOv3IvyHs2VRDGt";
+const METAMASK_URL = "cd8939c98ffa0d4b475d6aeceddc40816bfa44bd3e400b72b2b0b5dfcd6f1886"
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
