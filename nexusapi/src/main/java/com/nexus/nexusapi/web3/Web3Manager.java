@@ -174,7 +174,7 @@ public class Web3Manager {
             Web3Manager web3Manager = new Web3Manager();
 
             // mint voucher
-            ArrayList<String> idAndHash = web3Manager.mintVoucher("0x1", "0x2", "0x3", "0x4", 100, 1697692010L, "");
+            ArrayList<String> idAndHash = web3Manager.mintVoucher("0x1", "0x2", "0x3", "0x4", 100, 19665L, "0xCA82B12598c5640748715696DA64193A26552Cfc");
 
 
         } catch (Exception e) {
