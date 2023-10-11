@@ -17,7 +17,7 @@ onMounted(async () => {
 
 const menuItems = ref([
   { icon: 'fa fa-home fa-2x', name: 'Redeem Voucher', path: '/supplier' },
-  { icon: 'fa fa-chart-line fa-2x', name: 'Performance metrics', path: '/supplier/supplier_metrics' },
+  // { icon: 'fa fa-chart-line fa-2x', name: 'Performance metrics', path: '/supplier/supplier_metrics' },
 
 ]);
 </script>

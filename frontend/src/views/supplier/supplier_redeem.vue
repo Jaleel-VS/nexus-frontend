@@ -1,17 +1,31 @@
 <template>
   <div class="redeem_page">
-    <div class="main-container">        
-      <button class="Redeem-voucher" @click="redeemWithQRCode">Redeem with QR Code</button>
-      <button class="Redeem-voucher" @click="redeemWithVoucherPin">Redeem with Voucher Pin</button>
+    <div v-if="loading" class="loading">
+      <div class="spinner"></div>
+    </div>
+
+    <div v-else class="main-container">
+      <button v-if="!showQRCodeScanner && !showVoucherPinInput" class="Redeem-voucher" @click="redeemWithQRCode">Redeem
+        with QR Code</button>
+      <button v-if="!showQRCodeScanner && !showVoucherPinInput" class="Redeem-voucher"
+        @click="redeemWithVoucherPin">Redeem with Voucher Pin</button>
 
       <div v-if="showQRCodeScanner">
         <!-- Render content for QR Code scanner here -->
         <!-- <qrcode-stream @decode="onDecode" style="width: 300px; height: 300px;"></qrcode-stream> -->
         <!-- <qrcode-stream @decode="onDecode" style="width: 300px; height: 300px;"></qrcode-stream> -->
+        <h1>Scan QR Code</h1>
+        <!-- close button -->
+        <button @click="resetViews">Close</button>
       </div>
 
       <div v-if="showVoucherPinInput">
-       
+        <!-- Render content for voucher pin input here -->
+        <h1>Enter Voucher Pin</h1>
+        <input type="text" placeholder="Enter Voucher Pin" />
+        <button @click="redeemVoucher">Redeem</button>
+        <br>
+        <button @click="resetViews">Close</button>
       </div>
     </div>
   </div>
@@ -21,26 +35,84 @@ import { useRouter } from "vue-router";
 
 import { QrcodeStream } from 'vue-qrcode-reader';
 
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 
-
-// import on mount
-import { onMounted } from "vue";
 
 // api
-import { API_ENDPOINT, OTHER_CONST } from "@/config/constants.js";
+import { API_ENDPOINT } from "@/config/constants.js";
 
-const viewScanner = ref(false);
+// store
+import { useUserStore } from "@/store/user";
 
-const viewPinRedeem = ref(false);
+// details
+const userDetails = ref(null);
 
 
+onMounted(async () => {
+  const userStore = useUserStore();
+  userDetails.value = userStore.details;
+
+  console.log(userDetails.value);
+});
+
+
+
+const showQRCodeScanner = ref(false);
+const showVoucherPinInput = ref(false);
+
+const loading = ref(false);
+
+
+const redeemWithQRCode = () => {
+  showQRCodeScanner.value = true;
+  showVoucherPinInput.value = false;
+  // Add logic for QR Code redemption here
+};
+
+const redeemWithVoucherPin = () => {
+  showQRCodeScanner.value = false;
+  showVoucherPinInput.value = true;
+  // Add logic for Voucher Pin redemption here
+
+  redeemVoucher();
+};
+
+const resetViews = () => {
+  showQRCodeScanner.value = false;
+  showVoucherPinInput.value = false;
+};
 
 
 
 
 const redeemVoucher = () => {
+  loading.value = true;
+  // endpoint: /api/vouchers/redeem/{voucherQRCodeString}/supplier/{supplierId})
+  // method: GET
+
+  const supplierId = userDetails.value.id;
+  // parse input and alert if empty
+  const voucherPin = document.querySelector("input").value;
+  if (voucherPin === "") {
+    alert("Please enter a voucher pin");
+    loading.value = false;
+    return;
+  }
+
+  // fetch
+  fetch(
+    `${API_ENDPOINT}/vouchers/redeem/${voucherPin}/supplier/${supplierId}`
+  ).then((response) => {
+    console.log(response);
+    if (response.status === 200) {
+      alert("Voucher redeemed successfully. Please hand over the item to the customer.");
+    } else {
+      alert("Voucher redemption failed");
+    }
+  });
+  loading.value = false;
+
 
 };
 </script>
@@ -109,6 +181,35 @@ input {
   /* padding: 10px; */
   border: 1px solid #ccc;
   border-radius: 5px;
-  color: #0b2c5c;
+  color: white;
+}
+
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+
+.spinner {
+  border: 16px solid #f3f3f3;
+  /* Light grey */
+  border-top: 16px solid #3498db;
+  /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>

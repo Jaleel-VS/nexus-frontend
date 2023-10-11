@@ -53,9 +53,15 @@ public class VoucherController {
     }
 
     // redeem voucher
-    @GetMapping("/redeem/{id}/supplier/{supplierId})")
-    public ResponseEntity<Boolean> redeemVoucher(@PathVariable Long id, @PathVariable Long supplierId) {
-        return ResponseEntity.ok(voucherService.redeemVoucher(id, supplierId));
+    @GetMapping("/redeem/{voucherQRCodeString}/supplier/{supplierId})")
+    public ResponseEntity<Boolean> redeemVoucher(@PathVariable String voucherQRCodeString, @PathVariable Long supplierId) {
+        return ResponseEntity.ok(voucherService.redeemVoucher(voucherQRCodeString, supplierId));
+    }
+
+    // get voucher by voucherRequest id
+    @GetMapping("/voucherRequest/{id}")
+    public ResponseEntity<VoucherResponseDTO> getVoucherByVoucherRequestId(@PathVariable Long id) {
+        return ResponseEntity.ok(voucherService.getVoucherByRequestId(id));
     }
 
 }

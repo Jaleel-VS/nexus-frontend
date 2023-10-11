@@ -21,9 +21,11 @@
           </v-card-text>
 
           <v-card-actions>
-            <v-btn color="orange" @click="selectRequest(request)">
-              Select
-            </v-btn>
+            <div v-if="request.requestStatus === 'APPROVED'">
+              <v-btn color="orange" @click="selectRequest(request)">
+                View
+              </v-btn>
+            </div>
           </v-card-actions>
         </v-card>
       </div>
@@ -31,8 +33,23 @@
       <div v-if="selectedRequest" class="approve-container">
         <h2>Viewing voucher request with id {{ selectedRequest.id }}</h2>
 
-        <qrcode-vue :value="value" :level="level" :render-as="renderAs" />
+        
 
+        <qrcode-vue :value="value" :level="level" :render-as="renderAs" :size="300" />
+
+        <!-- v-html to opensea -->
+
+        <div v-if="voucherPin">
+          <h2>Voucher Pin</h2>
+          <p>{{ voucherPin }}</p>
+        </div>
+
+        <div v-if="openseaUrl">
+          <h2>Opensea URL</h2>
+          <a :href="openseaUrl" target="_blank">View on Opensea</a>
+        </div>
+
+        
         <button @click="claimVoucher">Claim</button>
       </div>
 
@@ -57,9 +74,15 @@ const loading = ref(false);
 const selectedRequest = ref(null);
 const brandDetails = ref([]);
 
-const value = 'https://www.google.com';
-const level = 'M';
-const renderAs = 'svg';
+const value = ref(null);
+const level = ref(null);
+const renderAs = ref(null);
+
+const CONTRACT_ADDY = "https://testnets.opensea.io/assets/sepolia/0x4efcaba6842489958e9b09feaed3d9a77499455d/"
+
+const voucherPin = ref(null);
+const voucherContractId = ref(null);
+const openseaUrl = ref(null);
 
 onMounted(async () => {
   loading.value = true;
@@ -106,8 +129,38 @@ const getBrandDetails = (request) => {
   }
 }
 
-const selectRequest = (request) => {
+const selectRequest = async(request) => {
+
   selectedRequest.value = request;
+
+  loading.value = true;
+
+  // /api/vouchers/voucherRequest/{id}
+  // method: GET
+
+  const response = await fetch(
+    `${API_ENDPOINT}/vouchers/voucherRequest/${selectedRequest.value.id}`
+  );
+
+
+  if (response.status === 200) {
+    const data = await response.json();
+    voucherPin.value = data.voucherQRCodeString;
+    voucherContractId.value = data.voucherContractID;
+    openseaUrl.value = CONTRACT_ADDY + voucherContractId.value;
+
+
+    value.value = voucherPin.value;
+    level.value = 'M';
+    renderAs.value = 'svg';
+
+
+  } else {
+    alert("Error fetching voucher details");
+    
+  }
+
+  loading.value = false;
 };
 
 const deselectRequest = () => {

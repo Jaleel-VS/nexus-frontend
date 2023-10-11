@@ -83,7 +83,7 @@ export default {
   backdrop-filter: blur(0px);
   background-color: #001f3f;
 }
-.about_page::before {
+.about-page::before {
     content: "";
     position: fixed;
     top: 0;

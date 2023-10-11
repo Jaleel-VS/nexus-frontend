@@ -74,7 +74,11 @@ public class Web3Manager {
 
         PinataUploader pinataUploader = new PinataUploader(jsonContent);
 
+        System.out.println("Uploading to IPFS...");
+
         String tokenURI = IPFS_PREFIX + pinataUploader.request();    
+
+        System.out.println("Uploaded to IPFS!");
                 
 
         TransactionReceipt receipt = voucherContract.mintVoucher(requestAddress, tokenURI, voucherData).sendAsync()
@@ -103,43 +107,53 @@ public class Web3Manager {
 
     }
 
-    public String redeemVoucher(BigInteger voucherId, String supplierAddress, String brandID, String influencerID, String supplierIds, String productID, Integer price, Long expiryDateLong) {
+    public String redeemVoucher(BigInteger voucherId, String supplierAddress, String brandID, String influencerID, String productID, Integer price, Long expiryDateLong) {
         System.out.println("Redeeming voucher...");
 
-        String tokenURI = getTokenURI(true, brandID, influencerID, supplierIds, productID, price, expiryDateLong);
+        String tokenURI = getTokenURI(true, brandID, influencerID, supplierAddress, productID, price, expiryDateLong);
 
-        TransactionReceipt receipt = voucherContract.redeem(voucherId, supplierAddress, tokenURI).sendAsync().join();
+        TransactionReceipt receipt = voucherContract.redeem(voucherId, "0xB6033c36754396957d3a2F307e9536074cd2d695", tokenURI).sendAsync().join();
 
         System.out.println("Voucher redeemed!");
 
         return  receipt.getTransactionHash();
     }
 
-    private String getTokenURI(Boolean redeemed, String brandID, String influencerID, String supplierIds, String productID, Integer price, Long expiryDateLong) {
-        
-        StringBuilder description = new StringBuilder();
+    private String getTokenURI(Boolean redeemed, String brandID, String influencerID, String supplierId, String productID, Integer price, Long expiryDateLong) {
 
+        StringBuilder description = new StringBuilder();
+    
         description.append("Brand ID: ").append(brandID).append("; ");
         description.append("Influencer ID: ").append(influencerID).append("; ");
-        description.append("Supplier IDs: ").append(supplierIds).append("; ");
+        description.append("Supplier ID: ").append(supplierId).append("; ");
         description.append("Product ID: ").append(productID).append("; ");
         description.append("Price: ").append(price).append("; ");
         description.append("Redeemed: ").append(redeemed).append("; ");
         description.append("Expiry Date: ").append(expiryDateLong).append("; ");
-
+    
+        // Debug statements to print the values
+        System.out.println("Description: " + description.toString());
+        System.out.println("Price: " + price);
+        System.out.println("Expiry Date: " + expiryDateLong);
+    
         LinkedHashMap<String, String> jsonContent = new LinkedHashMap<>();
         jsonContent.put("name", "Nexus Voucher");
         jsonContent.put("description", description.toString());
         jsonContent.put("image", IMG_URL);
-        
-
+    
+        // Debug statement to print JSON content
+        System.out.println("JSON Content: " + jsonContent);
+    
         PinataUploader pinataUploader = new PinataUploader(jsonContent);
-
+    
         String tokenURI = IPFS_PREFIX + pinataUploader.request();
-
+    
+        // Debug statement to print final token URI
+        System.out.println("Token URI: " + tokenURI);
+    
         return tokenURI;
     }
-
+    
     public String getVoucherData(BigInteger voucherId) {
         try {
             VoucherData voucherData = voucherContract.getVoucher(voucherId).sendAsync().join();

@@ -64,7 +64,11 @@
           </h3>
 
           <h2>Social Media Handle: </h2>
-          <h3>{{ getInfluencerDetails(selectedRequest).socialMediaHandle }}</h3>
+          <h3>{{ getInfluencerDetails(selectedRequest).instagramHandle }}</h3>
+          
+          <!-- click (target open new page) instagram link  -->
+
+          <a href="https://www.instagram.com/jakebaldino/?hl=en" target="_blank">View on Instagram</a>
 
           <h2>Product:</h2>
           <h3>
@@ -175,18 +179,14 @@ const deselectRequest = () => {
 
 const approveRequest = async() => {
 
+  // if days not entered or days < 7 or days > 21 alert and return
+
+  if (document.getElementById("expiry").value === "" || document.getElementById("expiry").value < 7 || document.getElementById("expiry").value > 21) {
+    alert("Please enter a number between 7 and 21");
+    return;
+  }
+
   loading.value = true;
-  /*
-
-  body:
-  {
-  "voucherRequestID": "string",
-  "expiryDate": 0
-}
-
-endpoint: /api/vouchers
-
-  */
 
   const days = document.getElementById("expiry").value;
 
@@ -396,7 +396,7 @@ input {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  color: #0b2c5c;
+  color: white;
 }
 
 .buttons {

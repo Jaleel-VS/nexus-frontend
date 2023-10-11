@@ -1,7 +1,9 @@
 package com.nexus.nexusapi.service;
 
 import java.math.BigInteger;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -75,8 +77,16 @@ public class VoucherService {
 
                 Long expiryDateInSeconds = voucherDTO.getExpiryDate();
                 if (expiryDateInSeconds != null) {
-                        long daysSinceEpoch = expiryDateInSeconds / (24 * 60 * 60); // Convert seconds to days
-                        voucher.setExpiryDate(LocalDate.ofEpochDay(daysSinceEpoch));
+                      // Convert the epoch timestamp to Instant
+                        Instant instant = Instant.ofEpochMilli(expiryDateInSeconds);
+
+                        // Define the time zone you want to use
+                        ZoneId zoneId = ZoneId.of("UTC"); // You can change this to your desired time zone
+
+                        // Convert Instant to LocalDate using the defined time zone
+                        LocalDate localDate = instant.atZone(zoneId).toLocalDate();
+
+                        voucher.setExpiryDate(localDate);
                 } else {
                         voucher.setExpiryDate(LocalDate.ofEpochDay(0));
                 }
@@ -90,10 +100,12 @@ public class VoucherService {
 
                 voucher.setBlockchainUrl(blockchainUrl.get(0));
                 voucher.setVoucherContractID(Integer.parseInt(blockchainUrl.get(1)));
-
+                
                 UUID uuid = UUID.randomUUID();
 
-                voucher.setVoucherQRCodeString(uuid.toString());
+                String voucherQRCodeString = uuid.toString().split("-")[0];
+
+                voucher.setVoucherQRCodeString(voucherQRCodeString);
 
                 voucherRepository.save(voucher);
 
@@ -154,6 +166,26 @@ public class VoucherService {
                 return voucherResponseDTO;
         }
 
+        // get voucher by request id
+        public VoucherResponseDTO getVoucherByRequestId(Long id) {
+                Voucher voucher = voucherRepository.findByVoucherRequest_Id(id)
+                                .orElseThrow(() -> new NotFoundException("Voucher not found"));
+
+                VoucherResponseDTO voucherResponseDTO = new VoucherResponseDTO();
+                voucherResponseDTO.setId(voucher.getId());
+                voucherResponseDTO.setBrandId(voucher.getBrand().getId());
+                voucherResponseDTO.setInfluencerId(voucher.getInfluencer().getId());
+                voucherResponseDTO.setProductId(voucher.getProduct().getId());
+                voucherResponseDTO.setCreationDate(voucher.getCreatedDate());
+                voucherResponseDTO.setExpiryDate(voucher.getExpiryDate());
+                voucherResponseDTO.setRedeemed(voucher.isRedeemed());
+                voucherResponseDTO.setBlockchainURL(voucher.getBlockchainUrl());
+                voucherResponseDTO.setVoucherContractID(voucher.getVoucherContractID());
+                voucherResponseDTO.setVoucherQRCodeString(voucher.getVoucherQRCodeString());
+
+                return voucherResponseDTO;
+        }
+
         // update voucher status
         public VoucherResponseDTO updateVoucherStatus(Long id, boolean status) {
                 Voucher voucher = voucherRepository.findById(id)
@@ -177,27 +209,33 @@ public class VoucherService {
                 return voucher.isRedeemed();
         }
 
-        public Boolean redeemVoucher(Long id, Long supplierId) {
-                Voucher voucher = voucherRepository.findById(id)
+        public Boolean redeemVoucher(String voucherPin, Long supplierId) {
+
+
+
+                Voucher voucher = voucherRepository.findByVoucherQRCodeString(voucherPin)
                                 .orElseThrow(() -> new NotFoundException("Voucher not found"));
 
-                String supplierAddress = supplierRepository.findById(supplierId)
-                                .orElseThrow(() -> new NotFoundException("Supplier not found"))
-                                .getMetamaskAddress();
 
                 String suppliers = voucher.getProduct().getSuppliers().stream()
                                 .map(supplier -> supplier.getSupplierName().toString())
                                 .reduce("", (a, b) -> a + "," + b);
 
+                // check if supplier is in the list of suppliers for the voucher/product
+                if (!suppliers.contains(supplierRepository.findById(supplierId).get().getSupplierName().toString())) {
+                        return false;
+                }
+
                 String result = web3Manager.redeemVoucher(
                                 BigInteger.valueOf(voucher.getVoucherContractID()),
-                                "0x000",
-                                suppliers,
+                                supplierRepository.findById(supplierId).get().getSupplierName().toString(),
                                 voucher.getBrand().getBrandName(),
                                 voucher.getInfluencer().getUsername(),
                                 voucher.getProduct().getProductName(),
                                 voucher.getProduct().getProductPrice(),
                                 voucher.getExpiryDate().toEpochDay());
+
+                
 
                 if (result != null) {
                         voucher.setRedeemed(true);
@@ -207,6 +245,8 @@ public class VoucherService {
 
                 return false;
         }
+
+
 
         public Iterable<VoucherResponseDTO> getAllVouchers() {
                 Iterable<Voucher> vouchers = voucherRepository.findAll();
