@@ -18,13 +18,6 @@ async function main() {
   await voucher.deployed();
   console.log("Voucher address:", voucher.address);
 
-  // Deploy escrow contract
-  // const Escrow = await ethers.getContractFactory("Escrow");
-  // const escrow = await Escrow.deploy(voucher.address, TOKEN_ADDR);
-  // await escrow.deployed();
-  // console.log("Escrow address:", escrow.address);
-
-  // await voucher.setEscrowContract(escrow.address);
 }
 
 main()
