@@ -22,7 +22,7 @@ import java.util.Map;
 @Service
 public class Web3Manager {
     private final String ALCHEMY_API_URL = "https://eth-sepolia.g.alchemy.com/v2/rwHETGslhGFm8yUHbrOv3IvyHs2VRDGt";
-    private final String OWNER_PRIVATE_KEY = "cd8939c98ffa0d4b475d6aeceddc40816bfa44bd3e400b72b2b0b5dfcd6f1886";
+    private final String OWNER_PRIVATE_KEY = "311257c97980c77bab83de5cb567500df4d51e20d95e07ffc9daddd102b45c91";
     private final String IPFS_PREFIX = "https://ivory-coloured-lobster-148.mypinata.cloud/ipfs/";
     private final String IMG_URL = "https://ivory-coloured-lobster-148.mypinata.cloud/ipfs/QmRRRVTsAV3N3mvkXvAYe6cGCUgw6pTyC8mpvG6bbdKx3t";
 
@@ -35,7 +35,7 @@ public class Web3Manager {
         web3j = Web3j.build(new HttpService(ALCHEMY_API_URL));
         Credentials credentials = Credentials.create(OWNER_PRIVATE_KEY);
 
-        contractAddresses.put("voucher", "0x4EfCaBa6842489958E9b09feaeD3d9a77499455D");
+        contractAddresses.put("voucher", "0x08d07DF60004Db8d2188494F3a02A37f44a70c5d");
 
         voucherContract = Voucher.load(contractAddresses.get("voucher"), web3j, credentials, new DefaultGasProvider());
     }
@@ -100,7 +100,6 @@ public class Web3Manager {
 
 
         return idAndHash;
-
     }
 
     public String redeemVoucher(BigInteger voucherId, String supplierAddress, String brandID, String influencerID, String productID, Integer price, Long expiryDateLong) {
@@ -175,7 +174,7 @@ public class Web3Manager {
             Web3Manager web3Manager = new Web3Manager();
 
             // mint voucher
-            ArrayList<String> idAndHash = web3Manager.mintVoucher("0x1", "0x2", "0x3", "0x4", 100, 1697692010L, "0x5");
+            ArrayList<String> idAndHash = web3Manager.mintVoucher("0x1", "0x2", "0x3", "0x4", 100, 1697692010L, "");
 
 
         } catch (Exception e) {
