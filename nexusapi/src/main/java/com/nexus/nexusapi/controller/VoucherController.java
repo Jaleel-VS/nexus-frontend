@@ -53,7 +53,7 @@ public class VoucherController {
     }
 
     // redeem voucher
-    @GetMapping("/redeem/{voucherQRCodeString}/supplier/{supplierId})")
+    @GetMapping("/redeem/{voucherQRCodeString}/supplier/{supplierId}")
     public ResponseEntity<Boolean> redeemVoucher(@PathVariable String voucherQRCodeString, @PathVariable Long supplierId) {
         return ResponseEntity.ok(voucherService.redeemVoucher(voucherQRCodeString, supplierId));
     }
