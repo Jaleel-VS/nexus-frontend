@@ -62,7 +62,7 @@ import { useRouter } from "vue-router";
 
 import { QrcodeStream } from "vue-qrcode-reader";
 
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 
 // api
 import { API_ENDPOINT } from "@/config/constants.js";
@@ -165,8 +165,6 @@ const redeemWithQRCodeString = async (voucherQRCodeString) => {
 
 const redeemVoucher = () => {
   loading.value = true;
-  // endpoint: /api/vouchers/redeem/{voucherQRCodeString}/supplier/{supplierId})
-  // method: GET
 
   const supplierId = userDetails.value.id;
   // parse input and alert if empty
