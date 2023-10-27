@@ -12,8 +12,7 @@
 
       <div v-if="showQRCodeScanner">
         <!-- Render content for QR Code scanner here -->
-        <!-- <qrcode-stream @decode="onDecode" style="width: 300px; height: 300px;"></qrcode-stream> -->
-        <!-- <qrcode-stream @decode="onDecode" style="width: 300px; height: 300px;"></qrcode-stream> -->
+        <qrcode-stream @decode="onDecode" style="width: 300px; height: 300px;"></qrcode-stream>
         <h1>Scan QR Code</h1>
         <!-- close button -->
         <button @click="resetViews">Close</button>
