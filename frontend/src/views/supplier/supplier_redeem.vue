@@ -5,15 +5,43 @@
     </div>
 
     <div v-else class="main-container">
-      <button v-if="!showQRCodeScanner && !showVoucherPinInput" class="Redeem-voucher" @click="redeemWithQRCode">Redeem
-        with QR Code</button>
-      <button v-if="!showQRCodeScanner && !showVoucherPinInput" class="Redeem-voucher"
-        @click="redeemWithVoucherPin">Redeem with Voucher Pin</button>
+      <button
+        v-if="!showQRCodeScanner && !showVoucherPinInput"
+        class="Redeem-voucher"
+        @click="redeemWithQRCode"
+      >
+        Redeem with QR Code
+      </button>
+      <button
+        v-if="!showQRCodeScanner && !showVoucherPinInput"
+        class="Redeem-voucher"
+        @click="redeemWithVoucherPin"
+      >
+        Redeem with Voucher Pin
+      </button>
 
       <div v-if="showQRCodeScanner">
-        <!-- Render content for QR Code scanner here -->
-        <qrcode-stream @decode="onDecode" style="width: 300px; height: 300px;"></qrcode-stream>
         <h1>Scan QR Code</h1>
+
+        <!-- Render content for QR Code scanner here -->
+        <qrcode-stream
+          :paused="paused"
+          @detect="onDetect"
+          @error="onError"
+          style="width: 300px; height: 300px"
+        >
+          <!-- Messages based on QR validation -->
+          <div v-if="validationSuccess" class="validation-success">
+            Voucher detected. Redeeming...
+          </div>
+          <div v-if="validationFailure" class="validation-failure">
+            Invalid voucher QR code!
+          </div>
+          <div v-if="validationPending" class="validation-pending">
+            Processing voucher...
+          </div>
+        </qrcode-stream>
+
         <!-- close button -->
         <button @click="resetViews">Close</button>
       </div>
@@ -23,7 +51,7 @@
         <h1>Enter Voucher Pin</h1>
         <input type="text" placeholder="Enter Voucher Pin" />
         <button @click="redeemVoucher">Redeem</button>
-        <br>
+        <br />
         <button @click="resetViews">Close</button>
       </div>
     </div>
@@ -32,11 +60,9 @@
 <script setup>
 import { useRouter } from "vue-router";
 
-import { QrcodeStream } from 'vue-qrcode-reader';
+import { QrcodeStream } from "vue-qrcode-reader";
 
 import { ref, onMounted } from "vue";
-
-
 
 // api
 import { API_ENDPOINT } from "@/config/constants.js";
@@ -47,7 +73,6 @@ import { useUserStore } from "@/store/user";
 // details
 const userDetails = ref(null);
 
-
 onMounted(async () => {
   const userStore = useUserStore();
   userDetails.value = userStore.details;
@@ -55,13 +80,10 @@ onMounted(async () => {
   console.log(userDetails.value);
 });
 
-
-
 const showQRCodeScanner = ref(false);
 const showVoucherPinInput = ref(false);
 
 const loading = ref(false);
-
 
 const redeemWithQRCode = () => {
   showQRCodeScanner.value = true;
@@ -82,6 +104,62 @@ const resetViews = () => {
   showVoucherPinInput.value = false;
 };
 
+const isValid = ref(undefined);
+const paused = ref(false);
+const result = ref(null);
+
+const validationPending = computed(() => isValid.value === undefined && paused.value);
+const validationSuccess = computed(() => isValid.value === true);
+const validationFailure = computed(() => isValid.value === false);
+
+const onError = (error) => {
+  console.error(error);
+};
+
+const resetValidationState = () => {
+  isValid.value = undefined;
+};
+
+const onDetect = async ([firstDetectedCode]) => {
+  result.value = firstDetectedCode.rawValue;
+  paused.value = true;
+
+  // If you want to validate the QR code content, you can use a condition similar to below:
+  // For now, we're assuming any scanned QR is a valid voucherQRCodeString, but you can add conditions
+  isValid.value = true; // Assume true for all QR codes. Modify as needed.
+  
+  if (isValid.value) {
+    await redeemWithQRCodeString(result.value); // Use the QR code string for redemption
+  }
+
+  paused.value = false;
+};
+
+const redeemWithQRCodeString = async (voucherQRCodeString) => {
+  loading.value = true;
+
+  const supplierId = userDetails.value.id;
+  
+  fetch(
+    `${API_ENDPOINT}/vouchers/redeem/${voucherQRCodeString}/supplier/${supplierId}`
+  )
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      alert("Voucher redeemed successfully. Please hand over the item to the customer.");
+    } else {
+      alert(data.message || "Voucher redemption failed");
+    }
+    loading.value = false;
+    resetValidationState();
+    resetViews(); // Reset views to hide the QR scanner
+  })
+  .catch(error => {
+    console.error("Error redeeming voucher:", error);
+    alert("An error occurred while redeeming the voucher. Please try again.");
+    loading.value = false;
+  });
+};
 
 
 
@@ -105,20 +183,20 @@ const redeemVoucher = () => {
   ).then((response) => {
     console.log(response);
     if (response.status === 200) {
-      alert("Voucher redeemed successfully. Please hand over the item to the customer.");
+      alert(
+        "Voucher redeemed successfully. Please hand over the item to the customer."
+      );
     } else {
       alert("Voucher redemption failed");
     }
   });
   loading.value = false;
-
-
 };
 </script>
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 .redeem_page {
   background-image: url(../../assets/color-bars.svg);
@@ -142,8 +220,8 @@ const redeemVoucher = () => {
 h1 {
   font-size: 3rem;
   margin: 2rem 0;
-  font-family: 'Poppins';
-  color: #E040FB;
+  font-family: "Poppins";
+  color: #e040fb;
 }
 
 .main-container {
@@ -154,11 +232,10 @@ h1 {
   flex-wrap: wrap;
   gap: 2rem;
   padding: 100px 100px;
-
 }
 
 button {
-  background-color: #E040FB;
+  background-color: #e040fb;
   color: #fff;
   font-size: 1.2em;
   border-radius: 5px;
@@ -168,7 +245,6 @@ button {
   transition: background-color 0.3s;
   justify-content: center;
   display: flex;
-
 }
 
 button:hover {
@@ -182,7 +258,6 @@ input {
   border-radius: 5px;
   color: white;
 }
-
 
 .loading {
   display: flex;
@@ -210,5 +285,36 @@ input {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/* QR Code validation styles */
+.validation-success,
+.validation-failure,
+.validation-pending {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: black;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  font-family: "Poppins"; /* Using Poppins font for consistency */
+}
+
+.validation-success {
+  color: green;
+}
+
+.validation-failure {
+  color: red;
+}
+
+.validation-pending {
+  color: #e040fb; /* Using your purple theme color for the pending message */
 }
 </style>
